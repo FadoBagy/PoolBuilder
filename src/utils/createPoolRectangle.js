@@ -15,11 +15,11 @@ export function createPoolRectangle(poolWidth, poolHeight, poolDepth1, poolDepth
         drawingHeight = 4 * 10;
     }
 
-    if (poolWidth > 95) {
-        drawingWidth = 95 * 10;
+    if (poolWidth > 65) {
+        drawingWidth = 65 * 10;
     }
-    if (poolHeight > 46) {
-        drawingHeight = 46 * 10;
+    if (poolHeight > 30) {
+        drawingHeight = 30 * 10;
     }
 
     const poolEl = document.createElement('div');

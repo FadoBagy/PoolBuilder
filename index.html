@@ -11,60 +11,102 @@
 </head>
 
 <body>
-    <section id="input-section">
-        <div id="shape-select">
-            <h1>Select Shape</h1>
-            <div>
-                <button>Rectangle</button>
-                <button>Circle</button>
-                <button disabled>Irregular Shapes</button>
-                <button disabled>Custom</button>
-            </div>
-        </div>
+    <main>
+        <section id="calculator">
+            <section id="main-section">
+                <section id="input-section">
+                    <h1>Pool calculator</h1>
+                    <div id="shape-select">
+                        <h2>1. Select pool shape:</h2>
+                        <div>
+                            <button style="background-color: #42855B; color: #f2f2f2;">Rectangle</button>
+                            <button>Circle</button>
+                            <button>Irregular Shapes</button>
+                            <button>Custom</button>
+                        </div>
+                    </div>
+                    <h2>2. Enter dimensions:</h2>
+                    <div id="rectangle-form">
+                        <form id="size-input">
+                            <div class="section">
 
-        <div id="rectangle-form">
-            <form id="size-input">
-                <label for="width">Width</label>
-                <input type="text" name="width">
-                <label for="height">Height</label>
-                <input type="text" name="height">
-                <label for="depth1">Depth #1</label>
-                <input type="text" name="depth1">
-                <label for="depth2">Depth #2</label>
-                <input type="text" name="depth2">
-                <input type="submit" value="Calculate">
-            </form>
-        </div>
+                                <div class="subsection">
+                                    <label for="width">Width</label>
+                                    <input type="number" name="width" min="0" autocomplete="off">
+                                </div>
+                                <div class="subsection">
+                                    <label for="height">Height</label>
+                                    <input type="number" name="height" min="0" autocomplete="off">
+                                </div>
 
-        <div id="circle-form">
-            <form id="size-input-circle">
-                <label for="diameter">Diameter</label>
-                <input type="text" name="diameter">
+                            </div>
 
-                <label for="width">Width</label>
-                <input type="text" name="width">
+                            <div class="section">
 
-                <label for="depth1">Depth #1</label>
-                <input type="text" name="depth1">
+                                <div class="subsection">
+                                    <label for="depth1">Depth #1</label>
+                                    <input type="number" name="depth1" min="0" autocomplete="off">
+                                </div>
+                                <div class="subsection">
+                                    <label for="depth2">Depth #2</label>
+                                    <input type="number" name="depth2" min="0" autocomplete="off">
+                                </div>
 
-                <label for="depth2">Depth #2</label>
-                <input type="text" name="depth2">
+                            </div>
+                            <input type="submit" value="Calculate">
+                        </form>
+                    </div>
 
-                <input type="submit" value="Calculate">
-            </form>
-        </div>
-    </section>
+                    <div id="circle-form">
+                        <form id="size-input-circle">
+                            <div class="section">
 
-    <section id="pool-section">
+                                <div class="subsection">
+                                    <label for="diameter">Diameter</label>
+                                    <input type="number" name="diameter" min="0" autocomplete="off">
+                                </div>
+                                <div class="subsection">
+                                    <label for="width">Width</label>
+                                    <input type="number" name="width" min="0" autocomplete="off">
+                                </div>
 
-    </section>
+                            </div>
 
-    <section id="results">
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-    </section>
+                            <div class="section">
+
+                                <div class="subsection">
+                                    <label for="depth1">Depth #1</label>
+                                    <input type="number" name="depth1" min="0" autocomplete="off">
+                                </div>
+                                <div class="subsection">
+                                    <label for="depth2">Depth #2</label>
+                                    <input type="number" name="depth2" min="0" autocomplete="off">
+                                </div>
+
+                            </div>
+                            <input type="submit" value="Calculate">
+                        </form>
+                    </div>
+                </section>
+                <section id="visualization-section">
+
+                    <section id="pool-section">
+
+                    </section>
+                </section>
+            </section>
+
+            <section id="results">
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+            </section>
+
+        </section>
+    </main>
+
+
 </body>
 
 </html>

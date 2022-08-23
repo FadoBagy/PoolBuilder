@@ -11,6 +11,18 @@ const circleFormSectionEl = document.getElementById('circle-form');
 const rectangleFormEl = document.getElementById('size-input');
 const circleFormEl = document.getElementById('size-input-circle');
 
+const shapeBtnSectionEl = document.querySelector('#shape-select div');
+const shapeBtnSectionElArray = Array.from(document.querySelectorAll('#shape-select div button'));
+
+shapeBtnSectionEl.addEventListener('click', (e) => {
+    if (e.target.type == 'submit') {
+        for (const btn of shapeBtnSectionElArray) {
+            btn.removeAttribute('style');
+        }
+        e.target.setAttribute('style', 'background-color: #42855B; color: #f2f2f2;');
+    }
+});
+
 rectangleBtnEl.addEventListener('click', (e) => {
     e.preventDefault();
 

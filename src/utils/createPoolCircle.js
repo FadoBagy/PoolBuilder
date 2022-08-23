@@ -15,8 +15,8 @@ export function createPoolCircle(diameter, poolWidth, poolDepth1, poolDepth2) {
         drawingWidth = 5 * 20;
     }
 
-    if (diameter > 50) {
-        drawingDiameter = 50 * 20;
+    if (diameter > 40) {
+        drawingDiameter = 40 * 20;
     }
     if (poolWidth > 22) {
         drawingWidth = 22 * 20;
