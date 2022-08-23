@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pool</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <script defer type="module" src="./src/app.js"></script>
+</head>
+
+<body>
+    <section id="input-section">
+        <div id="shape-select">
+            <h1>Select Shape</h1>
+            <div>
+                <button>Rectangle</button>
+                <button>Circle</button>
+                <button disabled>Irregular Shapes</button>
+                <button disabled>Custom</button>
+            </div>
+        </div>
+
+        <div id="rectangle-form">
+            <form id="size-input">
+                <label for="width">Width</label>
+                <input type="text" name="width">
+                <label for="height">Height</label>
+                <input type="text" name="height">
+                <label for="depth1">Depth #1</label>
+                <input type="text" name="depth1">
+                <label for="depth2">Depth #2</label>
+                <input type="text" name="depth2">
+                <input type="submit" value="Calculate">
+            </form>
+        </div>
+
+        <div id="circle-form">
+            <form id="size-input-circle">
+                <label for="diameter">Diameter</label>
+                <input type="text" name="diameter">
+
+                <label for="width">Width</label>
+                <input type="text" name="width">
+
+                <label for="depth1">Depth #1</label>
+                <input type="text" name="depth1">
+
+                <label for="depth2">Depth #2</label>
+                <input type="text" name="depth2">
+
+                <input type="submit" value="Calculate">
+            </form>
+        </div>
+    </section>
+
+    <section id="pool-section">
+
+    </section>
+
+    <section id="results">
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+    </section>
+</body>
+
+</html>
