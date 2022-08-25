@@ -249,13 +249,8 @@ body {
     border-bottom: 1px solid #161616;
 }
 
-#calculationp p {
-    cursor: pointer !important;
-    border: 1px solid #D2D79F;
-    transition: 100ms;
-}
-
-#calculation p:hover {
+#rectangle-calculation p:hover,
+#circle-calculation p:hover {
     background-color: #b9c169 !important;
     border-radius: 20px !important;
     border: 1px solid #161616 !important;
@@ -263,6 +258,9 @@ body {
 
 #statistics-section {
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .circle {

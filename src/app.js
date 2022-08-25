@@ -7,6 +7,8 @@ const rectangleBtnEl = document.querySelector('#shape-select div button:nth-chil
 const circleBtnEl = document.querySelector('#shape-select div button:nth-child(2)');
 const rectangleFormSectionEl = document.getElementById('rectangle-form');
 const circleFormSectionEl = document.getElementById('circle-form');
+const rectangleStatsBtnEl = document.getElementById('rectangle-stats');
+const circleStatsBtnEl = document.getElementById('circle-stats');
 
 const rectangleFormEl = document.getElementById('size-input');
 const circleFormEl = document.getElementById('size-input-circle');
@@ -17,10 +19,17 @@ const shapeBtnSectionElArray = Array.from(document.querySelectorAll('#shape-sele
 const resultBtnSectionEl = document.querySelector('#heading-stats div');
 const resultBtnSectionElArray = Array.from(document.querySelectorAll('#heading-stats div button'));
 
-const statParamsBtnSectionEl = document.querySelector('#calculation');
-const statParamsBtnSectionElArray = Array.from(document.querySelectorAll('#calculation p'));
+const rectangleCalculationBtnSectionEl = document.querySelector('#rectangle-calculation');
+const rectangleCalculationBtnSectionElArray = Array.from(document.querySelectorAll('#rectangle-calculation p'));
+const circleCalculationBtnSectionEl = document.querySelector('#circle-calculation');
+const circleCalculationBtnSectionElArray = Array.from(document.querySelectorAll('#circle-calculation p'));
 
-statParamsBtnSectionEl.addEventListener('click', (e) => {
+document.onload = () => {
+    console.log('loaded');
+}
+
+// Stitistics buton styings
+rectangleCalculationBtnSectionEl.addEventListener('click', (e) => {
     if (e.target.hasAttribute('style')) {
 
         if (e.target.classList.contains('active-stat')) {
@@ -28,7 +37,7 @@ statParamsBtnSectionEl.addEventListener('click', (e) => {
             e.target.setAttribute('style',
                 'cursor: pointer; border: 1px solid #D2D79F; transition: 100ms;');
         } else {
-            for (const btn of statParamsBtnSectionElArray) {
+            for (const btn of rectangleCalculationBtnSectionElArray) {
                 btn.removeAttribute('style');
                 btn.removeAttribute('class');
                 btn.setAttribute('style',
@@ -42,6 +51,30 @@ statParamsBtnSectionEl.addEventListener('click', (e) => {
 
     }
 });
+
+circleCalculationBtnSectionEl.addEventListener('click', (e) => {
+    if (e.target.hasAttribute('style')) {
+
+        if (e.target.classList.contains('active-stat')) {
+            e.target.classList.remove('active-stat');
+            e.target.setAttribute('style',
+                'cursor: pointer; border: 1px solid #D2D79F; transition: 100ms;');
+        } else {
+            for (const btn of circleCalculationBtnSectionElArray) {
+                btn.removeAttribute('style');
+                btn.removeAttribute('class');
+                btn.setAttribute('style',
+                    'cursor: pointer; border: 1px solid #D2D79F; transition: 100ms;');
+            }
+
+            e.target.classList.add('active-stat');
+            e.target.setAttribute('style',
+                'cursor: pointer; background-color: #b9c169;border-radius: 20px; border: 1px solid #161616;');
+        }
+
+    }
+});
+// Stitistics buton styings
 
 shapeBtnSectionEl.addEventListener('click', (e) => {
     if (e.target.type == 'submit') {
@@ -66,6 +99,9 @@ rectangleBtnEl.addEventListener('click', (e) => {
 
     rectangleFormSectionEl.style.display = 'block';
     circleFormSectionEl.style.display = 'none';
+
+    rectangleStatsBtnEl.style.display = 'flex';
+    circleStatsBtnEl.style.display = 'none';
 });
 
 circleBtnEl.addEventListener('click', (e) => {
@@ -73,6 +109,9 @@ circleBtnEl.addEventListener('click', (e) => {
 
     rectangleFormSectionEl.style.display = 'none';
     circleFormSectionEl.style.display = 'block';
+
+    rectangleStatsBtnEl.style.display = 'none';
+    circleStatsBtnEl.style.display = 'flex';
 });
 
 rectangleFormEl.addEventListener('submit', (e) => {
