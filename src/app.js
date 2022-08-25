@@ -14,9 +14,47 @@ const circleFormEl = document.getElementById('size-input-circle');
 const shapeBtnSectionEl = document.querySelector('#shape-select div');
 const shapeBtnSectionElArray = Array.from(document.querySelectorAll('#shape-select div button'));
 
+const resultBtnSectionEl = document.querySelector('#heading-stats div');
+const resultBtnSectionElArray = Array.from(document.querySelectorAll('#heading-stats div button'));
+
+const statParamsBtnSectionEl = document.querySelector('#calculation');
+const statParamsBtnSectionElArray = Array.from(document.querySelectorAll('#calculation p'));
+
+statParamsBtnSectionEl.addEventListener('click', (e) => {
+    if (e.target.hasAttribute('style')) {
+
+        if (e.target.classList.contains('active-stat')) {
+            e.target.classList.remove('active-stat');
+            e.target.setAttribute('style',
+                'cursor: pointer; border: 1px solid #D2D79F; transition: 100ms;');
+        } else {
+            for (const btn of statParamsBtnSectionElArray) {
+                btn.removeAttribute('style');
+                btn.removeAttribute('class');
+                btn.setAttribute('style',
+                    'cursor: pointer; border: 1px solid #D2D79F; transition: 100ms;');
+            }
+
+            e.target.classList.add('active-stat');
+            e.target.setAttribute('style',
+                'cursor: pointer; background-color: #b9c169;border-radius: 20px; border: 1px solid #161616;');
+        }
+
+    }
+});
+
 shapeBtnSectionEl.addEventListener('click', (e) => {
     if (e.target.type == 'submit') {
         for (const btn of shapeBtnSectionElArray) {
+            btn.removeAttribute('style');
+        }
+        e.target.setAttribute('style', 'background-color: #42855B; color: #f2f2f2;');
+    }
+});
+
+resultBtnSectionEl.addEventListener('click', (e) => {
+    if (e.target.type == 'submit') {
+        for (const btn of resultBtnSectionElArray) {
             btn.removeAttribute('style');
         }
         e.target.setAttribute('style', 'background-color: #42855B; color: #f2f2f2;');
