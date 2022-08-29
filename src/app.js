@@ -3,6 +3,16 @@ import { createPoolCircle } from './utils/createPoolCircle.js';
 import { makeStatisticsRectangle, resetStatisticsRectangle } from './utils/createStatisticsRectangle.js';
 import { makeStatisticsCircle, resetStatisticsCircle } from './utils/createStatisticsCircle.js';
 
+const rectangleCalculationBtnSectionEl = document.querySelector('#rectangle-calculation');
+const rectangleCalculationBtnSectionElArray = Array.from(document.querySelectorAll('#rectangle-calculation p'));
+const circleCalculationBtnSectionEl = document.querySelector('#circle-calculation');
+const circleCalculationBtnSectionElArray = Array.from(document.querySelectorAll('#circle-calculation p'));
+
+const shapeBtnSectionEl = document.querySelector('#shape-select div');
+const shapeBtnSectionElArray = Array.from(document.querySelectorAll('#shape-select div button'));
+const resultBtnSectionEl = document.querySelector('#heading-stats div');
+const resultBtnSectionElArray = Array.from(document.querySelectorAll('#heading-stats div button'));
+
 const rectangleBtnEl = document.querySelector('#shape-select div button:nth-child(1)');
 const circleBtnEl = document.querySelector('#shape-select div button:nth-child(2)');
 const rectangleFormSectionEl = document.getElementById('rectangle-form');
@@ -12,17 +22,6 @@ const circleStatsBtnEl = document.getElementById('circle-stats');
 
 const rectangleFormEl = document.getElementById('size-input');
 const circleFormEl = document.getElementById('size-input-circle');
-
-const shapeBtnSectionEl = document.querySelector('#shape-select div');
-const shapeBtnSectionElArray = Array.from(document.querySelectorAll('#shape-select div button'));
-
-const resultBtnSectionEl = document.querySelector('#heading-stats div');
-const resultBtnSectionElArray = Array.from(document.querySelectorAll('#heading-stats div button'));
-
-const rectangleCalculationBtnSectionEl = document.querySelector('#rectangle-calculation');
-const rectangleCalculationBtnSectionElArray = Array.from(document.querySelectorAll('#rectangle-calculation p'));
-const circleCalculationBtnSectionEl = document.querySelector('#circle-calculation');
-const circleCalculationBtnSectionElArray = Array.from(document.querySelectorAll('#circle-calculation p'));
 
 // Stitistics button styings
 rectangleCalculationBtnSectionEl.addEventListener('click', (e) => {

@@ -1,3 +1,5 @@
+import { animateStatistics } from './animations.js'
+
 const perimeterResultEl = document.querySelector('#rectangle-stats div:nth-child(2) p:nth-child(2)');
 const areaResultEl = document.querySelector('#rectangle-stats div:nth-child(2) p:nth-child(3)');
 const volumeResultEl = document.querySelector('#rectangle-stats div:nth-child(2) p:nth-child(4)');
@@ -15,6 +17,11 @@ export function makeStatisticsRectangle(width, height, depth1, depth2) {
     areaResultEl.innerHTML = `${(width * height).toLocaleString('en-US')} m<sup>2</sup>`;
     volumeResultEl.innerHTML = `${(height * width * averageDepth).toLocaleString('en-US')} m<sup>3</sup>`;
     litersResultEl.textContent = `${(height * width * averageDepth * 1000).toLocaleString('en-US')} l`;
+
+    // animateStatistics(perimeterResultEl, (2 * (height + width)), 'm');
+    // animateStatistics(areaResultEl, (width * height), 'm<sup>2</sup>');
+    // animateStatistics(volumeResultEl, (height * width * averageDepth), 'm<sup>3</sup>');
+    // animateStatistics(litersResultEl, (height * width * averageDepth * 1000), 'l');
 };
 
 export function resetStatisticsRectangle() {
