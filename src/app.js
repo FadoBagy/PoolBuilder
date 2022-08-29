@@ -1,7 +1,7 @@
 import { createPoolRectangle } from './utils/createPoolRectangle.js';
 import { createPoolCircle } from './utils/createPoolCircle.js';
-import { makeStatisticsRectangle } from './utils/createStatisticsRectangle.js';
-import { makeStatisticsCircle } from './utils/createStatisticsCircle.js';
+import { makeStatisticsRectangle, resetStatisticsRectangle } from './utils/createStatisticsRectangle.js';
+import { makeStatisticsCircle, resetStatisticsCircle } from './utils/createStatisticsCircle.js';
 
 const rectangleBtnEl = document.querySelector('#shape-select div button:nth-child(1)');
 const circleBtnEl = document.querySelector('#shape-select div button:nth-child(2)');
@@ -24,11 +24,7 @@ const rectangleCalculationBtnSectionElArray = Array.from(document.querySelectorA
 const circleCalculationBtnSectionEl = document.querySelector('#circle-calculation');
 const circleCalculationBtnSectionElArray = Array.from(document.querySelectorAll('#circle-calculation p'));
 
-document.onload = () => {
-    console.log('loaded');
-}
-
-// Stitistics buton styings
+// Stitistics button styings
 rectangleCalculationBtnSectionEl.addEventListener('click', (e) => {
     if (e.target.hasAttribute('style')) {
 
@@ -51,7 +47,6 @@ rectangleCalculationBtnSectionEl.addEventListener('click', (e) => {
 
     }
 });
-
 circleCalculationBtnSectionEl.addEventListener('click', (e) => {
     if (e.target.hasAttribute('style')) {
 
@@ -74,8 +69,9 @@ circleCalculationBtnSectionEl.addEventListener('click', (e) => {
 
     }
 });
-// Stitistics buton styings
+// Stitistics button styings
 
+// Active buttons styling
 shapeBtnSectionEl.addEventListener('click', (e) => {
     if (e.target.type == 'submit') {
         for (const btn of shapeBtnSectionElArray) {
@@ -84,7 +80,6 @@ shapeBtnSectionEl.addEventListener('click', (e) => {
         e.target.setAttribute('style', 'background-color: #42855B; color: #f2f2f2;');
     }
 });
-
 resultBtnSectionEl.addEventListener('click', (e) => {
     if (e.target.type == 'submit') {
         for (const btn of resultBtnSectionElArray) {
@@ -93,7 +88,9 @@ resultBtnSectionEl.addEventListener('click', (e) => {
         e.target.setAttribute('style', 'background-color: #42855B; color: #f2f2f2;');
     }
 });
+// Active buttons styling
 
+// Pool shape buttons dispay setters
 rectangleBtnEl.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -102,8 +99,9 @@ rectangleBtnEl.addEventListener('click', (e) => {
 
     rectangleStatsBtnEl.style.display = 'flex';
     circleStatsBtnEl.style.display = 'none';
-});
 
+    resetStatisticsCircle();
+});
 circleBtnEl.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -112,15 +110,18 @@ circleBtnEl.addEventListener('click', (e) => {
 
     rectangleStatsBtnEl.style.display = 'none';
     circleStatsBtnEl.style.display = 'flex';
+
+    resetStatisticsRectangle();
 });
+// Pool shape buttons dispay setters
 
 rectangleFormEl.addEventListener('submit', (e) => {
     e.preventDefault();
     let formData = new FormData(rectangleFormEl);
-    let poolWidth = parseInt(formData.get('width'));
-    let poolHeight = parseInt(formData.get('height'));
-    let poolDepth1 = parseInt(formData.get('depth1'));
-    let poolDepth2 = parseInt(formData.get('depth2'));
+    let poolWidth = parseFloat(formData.get('width'));
+    let poolHeight = parseFloat(formData.get('height'));
+    let poolDepth1 = parseFloat(formData.get('depth1'));
+    let poolDepth2 = parseFloat(formData.get('depth2'));
 
     if (poolWidth && poolHeight && poolDepth1) {
         createPoolRectangle(poolWidth, poolHeight, poolDepth1, poolDepth2);
@@ -140,10 +141,10 @@ rectangleFormEl.addEventListener('submit', (e) => {
 circleFormEl.addEventListener('submit', (e) => {
     e.preventDefault();
     let formData = new FormData(circleFormEl);
-    let poolDiameter = parseInt(formData.get('diameter'));
-    let poolWidth = parseInt(formData.get('width'));
-    let poolDepth1 = parseInt(formData.get('depth1'));
-    let poolDepth2 = parseInt(formData.get('depth2'));
+    let poolDiameter = parseFloat(formData.get('diameter'));
+    let poolWidth = parseFloat(formData.get('width'));
+    let poolDepth1 = parseFloat(formData.get('depth1'));
+    let poolDepth2 = parseFloat(formData.get('depth2'));
 
     if (poolDiameter && poolWidth && poolDepth1) {
         createPoolCircle(poolDiameter, poolWidth, poolDepth1, poolDepth2);
