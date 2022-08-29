@@ -41,7 +41,7 @@ export function createPoolCircle(diameter, poolWidth, poolDepth1, poolDepth2) {
     poolSectionEl.appendChild(poolEl);
 }
 
-export function resetPoolCircle() {
+export function resetPoolDrawingCircle() {
     while (poolSectionEl.firstChild) {
         poolSectionEl.removeChild(poolSectionEl.lastChild);
     };

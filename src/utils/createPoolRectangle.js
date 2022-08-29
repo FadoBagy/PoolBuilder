@@ -42,7 +42,7 @@ export function createPoolRectangle(poolWidth, poolHeight, poolDepth1, poolDepth
     poolSectionEl.appendChild(poolEl);
 }
 
-export function resetPoolRectangle() {
+export function resetPoolDrawingRectangle() {
     while (poolSectionEl.firstChild) {
         poolSectionEl.removeChild(poolSectionEl.lastChild);
     }

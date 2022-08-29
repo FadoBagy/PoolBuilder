@@ -22,4 +22,3 @@ export function animateStatistics(element, calculation, unit) {
 
     window.requestAnimationFrame(step);
 }
-

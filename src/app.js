@@ -1,11 +1,17 @@
-import { createPoolRectangle, resetPoolRectangle } from './utils/createPoolRectangle.js';
-import { createPoolCircle, resetPoolCircle } from './utils/createPoolCircle.js';
+import { createPoolRectangle, resetPoolDrawingRectangle } from './utils/createPoolRectangle.js';
+import { createPoolCircle, resetPoolDrawingCircle } from './utils/createPoolCircle.js';
 import { makeStatisticsRectangle, resetStatisticsRectangle } from './utils/createStatisticsRectangle.js';
 import { makeStatisticsCircle, resetStatisticsCircle } from './utils/createStatisticsCircle.js';
+import {
+    activeStitisticsButtonsStyings,
+    activePrimaryButtonsStyling,
+    rectangleDispayView,
+    circleDispayView
+} from './utils/stylings.js';
 
 const rectangleCalculationBtnSectionEl = document.querySelector('#rectangle-calculation');
-const rectangleCalculationBtnSectionElArray = Array.from(document.querySelectorAll('#rectangle-calculation p'));
 const circleCalculationBtnSectionEl = document.querySelector('#circle-calculation');
+const rectangleCalculationBtnSectionElArray = Array.from(document.querySelectorAll('#rectangle-calculation p'));
 const circleCalculationBtnSectionElArray = Array.from(document.querySelectorAll('#circle-calculation p'));
 
 const shapeBtnSectionEl = document.querySelector('#shape-select div');
@@ -15,104 +21,40 @@ const resultBtnSectionElArray = Array.from(document.querySelectorAll('#heading-s
 
 const rectangleBtnEl = document.querySelector('#shape-select div button:nth-child(1)');
 const circleBtnEl = document.querySelector('#shape-select div button:nth-child(2)');
-const rectangleFormSectionEl = document.getElementById('rectangle-form');
-const circleFormSectionEl = document.getElementById('circle-form');
-const rectangleStatsBtnEl = document.getElementById('rectangle-stats');
-const circleStatsBtnEl = document.getElementById('circle-stats');
 
 const rectangleFormEl = document.getElementById('size-input');
 const circleFormEl = document.getElementById('size-input-circle');
 
-// Stitistics button styings
 rectangleCalculationBtnSectionEl.addEventListener('click', (e) => {
-    if (e.target.hasAttribute('style')) {
-
-        if (e.target.classList.contains('active-stat')) {
-            e.target.classList.remove('active-stat');
-            e.target.setAttribute('style',
-                'cursor: pointer; border: 1px solid #D2D79F; transition: 100ms;');
-        } else {
-            for (const btn of rectangleCalculationBtnSectionElArray) {
-                btn.removeAttribute('style');
-                btn.removeAttribute('class');
-                btn.setAttribute('style',
-                    'cursor: pointer; border: 1px solid #D2D79F; transition: 100ms;');
-            }
-
-            e.target.classList.add('active-stat');
-            e.target.setAttribute('style',
-                'cursor: pointer; background-color: #b9c169;border-radius: 20px; border: 1px solid #161616;');
-        }
-
-    }
+    activeStitisticsButtonsStyings(e.target, rectangleCalculationBtnSectionElArray);
 });
 circleCalculationBtnSectionEl.addEventListener('click', (e) => {
-    if (e.target.hasAttribute('style')) {
-
-        if (e.target.classList.contains('active-stat')) {
-            e.target.classList.remove('active-stat');
-            e.target.setAttribute('style',
-                'cursor: pointer; border: 1px solid #D2D79F; transition: 100ms;');
-        } else {
-            for (const btn of circleCalculationBtnSectionElArray) {
-                btn.removeAttribute('style');
-                btn.removeAttribute('class');
-                btn.setAttribute('style',
-                    'cursor: pointer; border: 1px solid #D2D79F; transition: 100ms;');
-            }
-
-            e.target.classList.add('active-stat');
-            e.target.setAttribute('style',
-                'cursor: pointer; background-color: #b9c169;border-radius: 20px; border: 1px solid #161616;');
-        }
-
-    }
+    activeStitisticsButtonsStyings(e.target, circleCalculationBtnSectionElArray);
 });
-// Stitistics button styings
 
-// Active buttons styling
 shapeBtnSectionEl.addEventListener('click', (e) => {
-    if (e.target.type == 'submit') {
-        for (const btn of shapeBtnSectionElArray) {
-            btn.removeAttribute('style');
-        }
-        e.target.setAttribute('style', 'background-color: #42855B; color: #f2f2f2;');
-    }
+    activePrimaryButtonsStyling(e.target, shapeBtnSectionElArray);
 });
 resultBtnSectionEl.addEventListener('click', (e) => {
-    if (e.target.type == 'submit') {
-        for (const btn of resultBtnSectionElArray) {
-            btn.removeAttribute('style');
-        }
-        e.target.setAttribute('style', 'background-color: #42855B; color: #f2f2f2;');
-    }
+    activePrimaryButtonsStyling(e.target, resultBtnSectionElArray);
 });
-// Active buttons styling
 
 // Pool shape buttons dispay setters
 rectangleBtnEl.addEventListener('click', (e) => {
     e.preventDefault();
 
-    rectangleFormSectionEl.style.display = 'block';
-    circleFormSectionEl.style.display = 'none';
-
-    rectangleStatsBtnEl.style.display = 'flex';
-    circleStatsBtnEl.style.display = 'none';
+    rectangleDispayView();
 
     resetStatisticsCircle();
-    resetPoolCircle();
+    resetPoolDrawingCircle();
 });
 circleBtnEl.addEventListener('click', (e) => {
     e.preventDefault();
 
-    rectangleFormSectionEl.style.display = 'none';
-    circleFormSectionEl.style.display = 'block';
-
-    rectangleStatsBtnEl.style.display = 'none';
-    circleStatsBtnEl.style.display = 'flex';
+    circleDispayView();
 
     resetStatisticsRectangle();
-    resetPoolRectangle();
+    resetPoolDrawingRectangle();
 });
 // Pool shape buttons dispay setters
 
