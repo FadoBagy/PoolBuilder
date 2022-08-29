@@ -41,3 +41,9 @@ export function createPoolRectangle(poolWidth, poolHeight, poolDepth1, poolDepth
 
     poolSectionEl.appendChild(poolEl);
 }
+
+export function resetPoolRectangle() {
+    while (poolSectionEl.firstChild) {
+        poolSectionEl.removeChild(poolSectionEl.lastChild);
+    }
+}

@@ -1,5 +1,5 @@
-import { createPoolRectangle } from './utils/createPoolRectangle.js';
-import { createPoolCircle } from './utils/createPoolCircle.js';
+import { createPoolRectangle, resetPoolRectangle } from './utils/createPoolRectangle.js';
+import { createPoolCircle, resetPoolCircle } from './utils/createPoolCircle.js';
 import { makeStatisticsRectangle, resetStatisticsRectangle } from './utils/createStatisticsRectangle.js';
 import { makeStatisticsCircle, resetStatisticsCircle } from './utils/createStatisticsCircle.js';
 
@@ -100,6 +100,7 @@ rectangleBtnEl.addEventListener('click', (e) => {
     circleStatsBtnEl.style.display = 'none';
 
     resetStatisticsCircle();
+    resetPoolCircle();
 });
 circleBtnEl.addEventListener('click', (e) => {
     e.preventDefault();
@@ -111,6 +112,7 @@ circleBtnEl.addEventListener('click', (e) => {
     circleStatsBtnEl.style.display = 'flex';
 
     resetStatisticsRectangle();
+    resetPoolRectangle();
 });
 // Pool shape buttons dispay setters
 
