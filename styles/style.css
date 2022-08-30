@@ -53,12 +53,14 @@ body {
     border-radius: 20px;
 }
 
-#circle-form {
+#circle-form,
+#irregular-form {
     display: none;
 }
 
 #circle-form p,
-#rectangle-form p {
+#rectangle-form p,
+#irregular-form p {
     width: fit-content;
     margin: 0;
     padding-left: 20px;
@@ -147,13 +149,14 @@ body {
 }
 
 #size-input,
-#size-input-circle {
+#size-input-circle,
+#irregular-form {
     padding: 10px;
-    ;
 }
 
 #size-input input,
-#size-input-circle input {
+#size-input-circle input,
+#irregular-form input {
     border: none;
     border-radius: 20px;
     font-size: 1rem;
@@ -162,7 +165,8 @@ body {
 }
 
 #size-input input[type="submit"],
-#size-input-circle input[type="submit"] {
+#size-input-circle input[type="submit"],
+#irregular-form input[type="submit"] {
     width: 100%;
     background-color: #D2D79F;
     border: none;
@@ -175,7 +179,8 @@ body {
 }
 
 #size-input input[type="submit"]:hover,
-#size-input-circle input[type="submit"]:hover {
+#size-input-circle input[type="submit"]:hover,
+#irregular-form input[type="submit"]:hover {
     background-color: #b9c169;
 }
 
@@ -230,8 +235,10 @@ body {
     color: #f2f2f2;
 }
 
+
 #rectangle-stats,
-#circle-stats {
+#circle-stats,
+#irregular-stats {
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -268,7 +275,8 @@ body {
 }
 
 #rectangle-calculation p:hover,
-#circle-calculation p:hover {
+#circle-calculation p:hover,
+#irregular-calculation p:hover {
     background-color: #b9c169 !important;
     border-radius: 20px !important;
     border: 1px solid #161616 !important;

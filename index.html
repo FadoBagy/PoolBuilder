@@ -92,6 +92,52 @@
                         </form>
                         <p></p>
                     </div>
+
+                    <div id="irregular-form">
+                        <form id="size-input-irregular">
+                            <div class="section">
+
+                                <div class="subsection">
+                                    <label for="sideA">Side a</label>
+                                    <input type="number" name="sideA" min="0" autocomplete="off" step="any">
+                                </div>
+                                <div class="subsection">
+                                    <label for="sideB">Side b</label>
+                                    <input type="number" name="sideB" min="0" autocomplete="off" step="any">
+                                </div>
+
+                            </div>
+
+                            <div class="section">
+
+                                <div class="subsection">
+                                    <label for="sideC">Side c</label>
+                                    <input type="number" name="sideC" min="0" autocomplete="off" step="any">
+                                </div>
+                                <div class="subsection">
+                                    <label for="sideD">Side d</label>
+                                    <input type="number" name="sideD" min="0" autocomplete="off" step="any">
+                                </div>
+
+                            </div>
+
+                            <div class="section">
+
+                                <div class="subsection">
+                                    <label for="depth1">Deepest point</label>
+                                    <input type="number" name="depth1" min="0" autocomplete="off" step="any">
+                                </div>
+                                <div class="subsection">
+                                    <label for="depth2">Shallowest point</label>
+                                    <input type="number" name="depth2" min="0" autocomplete="off" step="any">
+                                </div>
+
+                            </div>
+
+                            <input type="submit" value="Calculate">
+                        </form>
+                        <p></p>
+                    </div>
                 </section>
                 <section id="visualization-section">
                     <section id="pool-section">
@@ -142,6 +188,27 @@
                                 <h2>Calculation for</h2>
                                 <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Circumference
                                 </p>
+                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Surface area
+                                </p>
+                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Volume</p>
+                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Liters</p>
+                            </div>
+                        </div>
+                        <div class="stat-section">
+                            <h2>Number</h2>
+                            <p>N/A</p>
+                            <p>N/A</p>
+                            <p>N/A</p>
+                            <p>N/A</p>
+                        </div>
+
+                    </section>
+                    <section id="irregular-stats" style="display: none;">
+
+                        <div class="stat-section">
+                            <div id="irregular-calculation">
+                                <h2>Calculation for</h2>
+                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Perimeter</p>
                                 <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Surface area
                                 </p>
                                 <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Volume</p>
