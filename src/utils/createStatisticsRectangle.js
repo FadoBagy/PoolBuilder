@@ -1,9 +1,9 @@
 import { animateStatistics } from './animations.js'
 
-const perimeterResultEl = document.querySelector('#rectangle-stats div:nth-child(2) p:nth-child(2)');
-const areaResultEl = document.querySelector('#rectangle-stats div:nth-child(2) p:nth-child(3)');
-const volumeResultEl = document.querySelector('#rectangle-stats div:nth-child(2) p:nth-child(4)');
-const litersResultEl = document.querySelector('#rectangle-stats div:nth-child(2) p:nth-child(5)');
+const perimeterResultEl = document.querySelector('#rectangle-stats tbody tr:nth-child(1) td:nth-child(2)');
+const areaResultEl = document.querySelector('#rectangle-stats tbody tr:nth-child(2) td:nth-child(2)');
+const volumeResultEl = document.querySelector('#rectangle-stats tbody tr:nth-child(3) td:nth-child(2)');
+const litersResultEl = document.querySelector('#rectangle-stats tbody tr:nth-child(4) td:nth-child(2)');
 
 export function makeStatisticsRectangle(width, height, depth1, depth2) {
     let averageDepth = 0;

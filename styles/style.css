@@ -45,10 +45,8 @@ body {
 }
 
 #results {
-    width: fit-content;
-    background-color: #161616;
+    width: 100%;
     color: #f2f2f2;
-    margin-top: 50px;
     font-size: 1.2rem;
     border-radius: 20px;
 }
@@ -87,6 +85,7 @@ body {
 }
 
 #input-section {
+    height: 500px;
     font-size: 1.4rem;
     z-index: 50;
 
@@ -197,6 +196,9 @@ body {
 #main-section {
     width: 100%;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 #heading-stats {
@@ -235,19 +237,6 @@ body {
     color: #f2f2f2;
 }
 
-
-#rectangle-stats,
-#circle-stats,
-#irregular-stats {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #D2D79F;
-    color: #161616;
-    border-radius: 20px;
-}
-
 .stat-section {
     padding: 10px;
     height: 250px;
@@ -284,9 +273,6 @@ body {
 
 #statistics-section {
     padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
 }
 
 .circle {

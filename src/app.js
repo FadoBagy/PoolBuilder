@@ -15,12 +15,9 @@ import {
     resetPoolDrawing
 } from './utils/stylings.js';
 
-const rectangleCalculationBtnSectionEl = document.querySelector('#rectangle-calculation');
-const circleCalculationBtnSectionEl = document.querySelector('#circle-calculation');
-const irregularCalculationBtnSectionEl = document.querySelector('#irregular-calculation');
-const rectangleCalculationBtnSectionElArray = Array.from(document.querySelectorAll('#rectangle-calculation p'));
-const circleCalculationBtnSectionElArray = Array.from(document.querySelectorAll('#circle-calculation p'));
-const irregularCalculationBtnSectionElArray = Array.from(document.querySelectorAll('#irregular-calculation p'));
+const rectangleCalculationlRows = document.querySelectorAll('#rectangle-stats tbody tr');
+const circleCalculationlRows = document.querySelectorAll('#circle-stats tbody tr');
+const irregularCalculationlRows = document.querySelectorAll('#irregular-stats tbody tr');
 
 const shapeBtnSectionEl = document.querySelector('#shape-select div');
 const shapeBtnSectionElArray = Array.from(document.querySelectorAll('#shape-select div button'));
@@ -35,14 +32,20 @@ const rectangleFormEl = document.getElementById('size-input');
 const circleFormEl = document.getElementById('size-input-circle');
 const irregularFormEl = document.getElementById('size-input-irregular');
 
-rectangleCalculationBtnSectionEl.addEventListener('click', (e) => {
-    activeStitisticsButtonsStyings(e.target, rectangleCalculationBtnSectionElArray);
+rectangleCalculationlRows.forEach(row => {
+    row.addEventListener('click', () => {
+        activeStitisticsButtonsStyings(row, rectangleCalculationlRows);
+    });
 });
-circleCalculationBtnSectionEl.addEventListener('click', (e) => {
-    activeStitisticsButtonsStyings(e.target, circleCalculationBtnSectionElArray);
+circleCalculationlRows.forEach(row => {
+    row.addEventListener('click', () => {
+        activeStitisticsButtonsStyings(row, circleCalculationlRows);
+    });
 });
-irregularCalculationBtnSectionEl.addEventListener('click', (e) => {
-    activeStitisticsButtonsStyings(e.target, irregularCalculationBtnSectionElArray);
+irregularCalculationlRows.forEach(row => {
+    row.addEventListener('click', () => {
+        activeStitisticsButtonsStyings(row, irregularCalculationlRows);
+    });
 });
 
 shapeBtnSectionEl.addEventListener('click', (e) => {

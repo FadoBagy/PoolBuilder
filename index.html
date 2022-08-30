@@ -8,6 +8,7 @@
     <title>Pool Calculator</title>
     <link rel="icon" type="image/x-icon" href="./images/fav.png">
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/table.css">
     <script defer type="module" src="./src/app.js"></script>
 </head>
 
@@ -139,94 +140,107 @@
                         <p></p>
                     </div>
                 </section>
-                <section id="visualization-section">
-                    <section id="pool-section">
+                <section id="results">
 
-                    </section>
+                    <div id="heading-stats">
+                        <h1>Result:</h1>
+                        <p>Calculation Results (Approximate)</p>
+                        <div>
+                            <button style="background-color: #42855B; color: #f2f2f2;">Geoetric formulas</button>
+                            <button>Something else</button>
+                        </div>
+                    </div>
+
+                    <div id="statistics-section">
+
+                        <table id="rectangle-stats" class="content-table">
+                            <thead>
+                                <tr>
+                                    <th>Calculation for</th>
+                                    <th>Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Perimeter</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Surface area</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Volume</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Liters</td>
+                                    <td>N/A</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="circle-stats" class="content-table" style="display: none;">
+                            <thead>
+                                <tr>
+                                    <th>Calculation for</th>
+                                    <th>Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Circumference</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Surface area</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Volume</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Liters</td>
+                                    <td>N/A</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="irregular-stats" class="content-table" style="display: none;">
+                            <thead>
+                                <tr>
+                                    <th>Calculation for</th>
+                                    <th>Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Perimeter</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Surface area</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Volume</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Liters</td>
+                                    <td>N/A</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </section>
 
             </section>
 
-            <section id="results">
+            <section id="visualization-section">
+                <section id="pool-section">
 
-                <div id="heading-stats">
-                    <h1>Result:</h1>
-                    <p>Calculation Results (Approximate)</p>
-                    <div>
-                        <button style="background-color: #42855B; color: #f2f2f2;">Geoetric formulas</button>
-                        <button>Something else</button>
-                    </div>
-                </div>
-
-                <div id="statistics-section">
-
-                    <section id="rectangle-stats">
-
-                        <div class="stat-section">
-                            <div id="rectangle-calculation">
-                                <h2>Calculation for</h2>
-                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Perimeter</p>
-                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Surface area
-                                </p>
-                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Volume</p>
-                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Liters</p>
-                            </div>
-                        </div>
-                        <div class="stat-section">
-                            <h2>Number</h2>
-                            <p>N/A</p>
-                            <p>N/A</p>
-                            <p>N/A</p>
-                            <p>N/A</p>
-                        </div>
-
-                    </section>
-                    <section id="circle-stats" style="display: none;">
-
-                        <div class="stat-section">
-                            <div id="circle-calculation">
-                                <h2>Calculation for</h2>
-                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Circumference
-                                </p>
-                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Surface area
-                                </p>
-                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Volume</p>
-                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Liters</p>
-                            </div>
-                        </div>
-                        <div class="stat-section">
-                            <h2>Number</h2>
-                            <p>N/A</p>
-                            <p>N/A</p>
-                            <p>N/A</p>
-                            <p>N/A</p>
-                        </div>
-
-                    </section>
-                    <section id="irregular-stats" style="display: none;">
-
-                        <div class="stat-section">
-                            <div id="irregular-calculation">
-                                <h2>Calculation for</h2>
-                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Perimeter</p>
-                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Surface area
-                                </p>
-                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Volume</p>
-                                <p style="cursor: pointer;  border: 1px solid #D2D79F; transition: 80ms;">Liters</p>
-                            </div>
-                        </div>
-                        <div class="stat-section">
-                            <h2>Number</h2>
-                            <p>N/A</p>
-                            <p>N/A</p>
-                            <p>N/A</p>
-                            <p>N/A</p>
-                        </div>
-
-                    </section>
-
-                </div>
-
+                </section>
             </section>
 
         </section>
