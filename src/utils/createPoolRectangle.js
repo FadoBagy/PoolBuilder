@@ -1,4 +1,34 @@
+import { makeStatisticsRectangle } from "./createStatisticsRectangle.js";
+
+const rectangleErrorMsgEl = document.querySelector('#rectangle-form p');
+
 const poolSectionEl = document.getElementById('pool-section');
+
+export function validateRectangleForm(form) {
+    let formData = new FormData(form);
+    let poolWidth = parseFloat(formData.get('width'));
+    let poolHeight = parseFloat(formData.get('height'));
+    let poolDepth1 = parseFloat(formData.get('depth1'));
+    let poolDepth2 = parseFloat(formData.get('depth2'));
+
+    if (poolWidth && poolHeight && poolDepth1) {
+        createPoolRectangle(poolWidth, poolHeight, poolDepth1, poolDepth2);
+        form.reset();
+        rectangleErrorMsgEl.textContent = '';
+
+        makeStatisticsRectangle(poolWidth, poolHeight, poolDepth1, poolDepth2);
+    } else {
+        if (!poolWidth) {
+            rectangleErrorMsgEl.textContent = 'Enter number for width';
+        }
+        else if (!poolHeight) {
+            rectangleErrorMsgEl.textContent = 'Enter number for height';
+        }
+        else if (!poolDepth1) {
+            rectangleErrorMsgEl.textContent = 'Enter number for deepest point';
+        }
+    }
+}
 
 export function createPoolRectangle(poolWidth, poolHeight, poolDepth1, poolDepth2) {
     while (poolSectionEl.firstChild) {

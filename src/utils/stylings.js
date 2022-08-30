@@ -3,6 +3,9 @@ const circleFormSectionEl = document.getElementById('circle-form');
 const rectangleStatsBtnEl = document.getElementById('rectangle-stats');
 const circleStatsBtnEl = document.getElementById('circle-stats');
 
+const rectangleErrorMsgEl = document.querySelector('#rectangle-form p');
+const circleErrorMsgEl = document.querySelector('#circle-form p');
+
 export function activeStitisticsButtonsStyings(element, array) {
     if (element.hasAttribute('style')) {
         if (element.classList.contains('active-stat')) {
@@ -39,6 +42,8 @@ export function rectangleDispayView() {
 
     rectangleStatsBtnEl.style.display = 'flex';
     circleStatsBtnEl.style.display = 'none';
+
+    circleErrorMsgEl.textContent = '';
 }
 
 export function circleDispayView() {
@@ -47,4 +52,6 @@ export function circleDispayView() {
 
     rectangleStatsBtnEl.style.display = 'none';
     circleStatsBtnEl.style.display = 'flex';
+
+    rectangleErrorMsgEl.textContent = '';
 }

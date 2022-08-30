@@ -1,7 +1,7 @@
-import { createPoolRectangle, resetPoolDrawingRectangle } from './utils/createPoolRectangle.js';
-import { createPoolCircle, resetPoolDrawingCircle } from './utils/createPoolCircle.js';
-import { makeStatisticsRectangle, resetStatisticsRectangle } from './utils/createStatisticsRectangle.js';
-import { makeStatisticsCircle, resetStatisticsCircle } from './utils/createStatisticsCircle.js';
+import { resetPoolDrawingRectangle, validateRectangleForm } from './utils/createPoolRectangle.js';
+import { resetPoolDrawingCircle, validateCircleForm } from './utils/createPoolCircle.js';
+import { resetStatisticsRectangle } from './utils/createStatisticsRectangle.js';
+import { resetStatisticsCircle } from './utils/createStatisticsCircle.js';
 import {
     activeStitisticsButtonsStyings,
     activePrimaryButtonsStyling,
@@ -39,7 +39,6 @@ resultBtnSectionEl.addEventListener('click', (e) => {
     activePrimaryButtonsStyling(e.target, resultBtnSectionElArray);
 });
 
-// Pool shape buttons dispay setters
 rectangleBtnEl.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -56,43 +55,15 @@ circleBtnEl.addEventListener('click', (e) => {
     resetStatisticsRectangle();
     resetPoolDrawingRectangle();
 });
-// Pool shape buttons dispay setters
 
 rectangleFormEl.addEventListener('submit', (e) => {
     e.preventDefault();
-    let formData = new FormData(rectangleFormEl);
-    let poolWidth = parseFloat(formData.get('width'));
-    let poolHeight = parseFloat(formData.get('height'));
-    let poolDepth1 = parseFloat(formData.get('depth1'));
-    let poolDepth2 = parseFloat(formData.get('depth2'));
 
-    if (poolWidth && poolHeight && poolDepth1) {
-        createPoolRectangle(poolWidth, poolHeight, poolDepth1, poolDepth2);
-        rectangleFormEl.reset();
-
-        makeStatisticsRectangle(poolWidth, poolHeight, poolDepth1, poolDepth2);
-    } else {
-        if (!poolWidth) {
-            console.log('Enter Valid Width Number');
-        }
-        if (!poolHeight) {
-            console.log('Enter Valid Height Number');
-        }
-    }
+    validateRectangleForm(rectangleFormEl);
 });
 
 circleFormEl.addEventListener('submit', (e) => {
     e.preventDefault();
-    let formData = new FormData(circleFormEl);
-    let poolDiameter = parseFloat(formData.get('diameter'));
-    let poolWidth = parseFloat(formData.get('width'));
-    let poolDepth1 = parseFloat(formData.get('depth1'));
-    let poolDepth2 = parseFloat(formData.get('depth2'));
 
-    if (poolDiameter && poolWidth && poolDepth1) {
-        createPoolCircle(poolDiameter, poolWidth, poolDepth1, poolDepth2);
-        circleFormEl.reset();
-
-        makeStatisticsCircle(poolDiameter, poolWidth, poolDepth1, poolDepth2);
-    }
+    validateCircleForm(circleFormEl);
 });

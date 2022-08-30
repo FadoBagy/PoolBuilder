@@ -1,4 +1,34 @@
+import { makeStatisticsCircle } from "./createStatisticsCircle.js";
+
+const circleErrorMsgEl = document.querySelector('#circle-form p');
+
 const poolSectionEl = document.getElementById('pool-section');
+
+export function validateCircleForm(form) {
+    let formData = new FormData(form);
+    let poolDiameter = parseFloat(formData.get('diameter'));
+    let poolWidth = parseFloat(formData.get('width'));
+    let poolDepth1 = parseFloat(formData.get('depth1'));
+    let poolDepth2 = parseFloat(formData.get('depth2'));
+
+    if (poolDiameter && poolWidth && poolDepth1) {
+        createPoolCircle(poolDiameter, poolWidth, poolDepth1, poolDepth2);
+        form.reset();
+        circleErrorMsgEl.textContent = '';
+
+        makeStatisticsCircle(poolDiameter, poolWidth, poolDepth1, poolDepth2);
+    } else {
+        if (!poolDiameter) {
+            circleErrorMsgEl.textContent = 'Enter number for diameter';
+        }
+        else if (!poolWidth) {
+            circleErrorMsgEl.textContent = 'Enter number for width';
+        }
+        else if (!poolDepth1) {
+            circleErrorMsgEl.textContent = 'Enter number for deepest point';
+        }
+    }
+}
 
 export function createPoolCircle(diameter, poolWidth, poolDepth1, poolDepth2) {
     while (poolSectionEl.firstChild) {
