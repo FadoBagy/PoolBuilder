@@ -15,9 +15,7 @@
 <body>
     <main>
         <section id="calculator">
-
             <section id="main-section">
-
                 <section id="input-section">
                     <h1>Pool calculator</h1>
                     <div id="shape-select">
@@ -26,14 +24,13 @@
                             <button style="background-color: #42855B; color: #f2f2f2;">Rectangle</button>
                             <button>Circle</button>
                             <button>Irregular Shapes</button>
-                            <button>Custom</button>
+                            <button disabled>Custom</button>
                         </div>
                     </div>
                     <h2>2. Enter dimensions:</h2>
                     <div id="rectangle-form">
                         <form id="size-input">
                             <div class="section">
-
                                 <div class="subsection">
                                     <label for="width">Width</label>
                                     <input type="number" name="width" min="0" autocomplete="off" step="any">
@@ -42,11 +39,8 @@
                                     <label for="height">Height</label>
                                     <input type="number" name="height" min="0" autocomplete="off" step="any">
                                 </div>
-
                             </div>
-
                             <div class="section">
-
                                 <div class="subsection">
                                     <label for="depth1">Deepest point</label>
                                     <input type="number" name="depth1" min="0" autocomplete="off" step="any">
@@ -55,17 +49,14 @@
                                     <label for="depth2">Shallowest point</label>
                                     <input type="number" name="depth2" min="0" autocomplete="off" step="any">
                                 </div>
-
                             </div>
                             <input type="submit" value="Calculate">
                         </form>
                         <p></p>
                     </div>
-
                     <div id="circle-form">
                         <form id="size-input-circle">
                             <div class="section">
-
                                 <div class="subsection">
                                     <label for="diameter">Diameter</label>
                                     <input type="number" name="diameter" min="0" autocomplete="off" step="any">
@@ -74,11 +65,8 @@
                                     <label for="width">Width</label>
                                     <input type="number" name="width" min="0" autocomplete="off" step="any">
                                 </div>
-
                             </div>
-
                             <div class="section">
-
                                 <div class="subsection">
                                     <label for="depth1">Deepest point</label>
                                     <input type="number" name="depth1" min="0" autocomplete="off" step="any">
@@ -87,17 +75,14 @@
                                     <label for="depth2">Shallowest point</label>
                                     <input type="number" name="depth2" min="0" autocomplete="off" step="any">
                                 </div>
-
                             </div>
                             <input type="submit" value="Calculate">
                         </form>
                         <p></p>
                     </div>
-
                     <div id="irregular-form">
                         <form id="size-input-irregular">
                             <div class="section">
-
                                 <div class="subsection">
                                     <label for="sideA">Side a</label>
                                     <input type="number" name="sideA" min="0" autocomplete="off" step="any">
@@ -106,11 +91,8 @@
                                     <label for="sideB">Side b</label>
                                     <input type="number" name="sideB" min="0" autocomplete="off" step="any">
                                 </div>
-
                             </div>
-
                             <div class="section">
-
                                 <div class="subsection">
                                     <label for="sideC">Side c</label>
                                     <input type="number" name="sideC" min="0" autocomplete="off" step="any">
@@ -119,11 +101,8 @@
                                     <label for="sideD">Side d</label>
                                     <input type="number" name="sideD" min="0" autocomplete="off" step="any">
                                 </div>
-
                             </div>
-
                             <div class="section">
-
                                 <div class="subsection">
                                     <label for="depth1">Deepest point</label>
                                     <input type="number" name="depth1" min="0" autocomplete="off" step="any">
@@ -132,16 +111,13 @@
                                     <label for="depth2">Shallowest point</label>
                                     <input type="number" name="depth2" min="0" autocomplete="off" step="any">
                                 </div>
-
                             </div>
-
                             <input type="submit" value="Calculate">
                         </form>
                         <p></p>
                     </div>
                 </section>
                 <section id="results">
-
                     <div id="heading-stats">
                         <h1>Result:</h1>
                         <p>Calculation Results (Approximate)</p>
@@ -152,7 +128,6 @@
                     </div>
 
                     <div id="statistics-section">
-
                         <table id="rectangle-stats" class="content-table">
                             <thead>
                                 <tr>
@@ -232,9 +207,7 @@
                             </tbody>
                         </table>
                     </div>
-
                 </section>
-
             </section>
 
             <section id="visualization-section">
@@ -242,7 +215,6 @@
 
                 </section>
             </section>
-
         </section>
     </main>
 </body>

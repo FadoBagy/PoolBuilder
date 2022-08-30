@@ -32,6 +32,15 @@ export function activeStitisticsButtonsStyings(element, array) {
     }
 }
 
+export function removeAllActiveStitisticsButtonsStyings(array) {
+    for (const btn of array) {
+        btn.removeAttribute('style');
+        btn.removeAttribute('class');
+        btn.setAttribute('style',
+            'cursor: pointer; transition: 80ms;');
+    }
+}
+
 export function activePrimaryButtonsStyling(element, array) {
     if (element.type == 'submit') {
         for (const btn of array) {

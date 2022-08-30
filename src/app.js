@@ -12,7 +12,8 @@ import {
     rectangleDispayView,
     circleDispayView,
     irregularDispayView,
-    resetPoolDrawing
+    resetPoolDrawing,
+    removeAllActiveStitisticsButtonsStyings
 } from './utils/stylings.js';
 
 const rectangleCalculationlRows = document.querySelectorAll('#rectangle-stats tbody tr');
@@ -32,8 +33,9 @@ const rectangleFormEl = document.getElementById('size-input');
 const circleFormEl = document.getElementById('size-input-circle');
 const irregularFormEl = document.getElementById('size-input-irregular');
 
+// Statistics styling
 rectangleCalculationlRows.forEach(row => {
-    row.addEventListener('click', () => {
+    row.addEventListener('click', (e) => {
         activeStitisticsButtonsStyings(row, rectangleCalculationlRows);
     });
 });
@@ -48,6 +50,7 @@ irregularCalculationlRows.forEach(row => {
     });
 });
 
+// Styling for primary buttons
 shapeBtnSectionEl.addEventListener('click', (e) => {
     activePrimaryButtonsStyling(e.target, shapeBtnSectionElArray);
 });
@@ -55,11 +58,13 @@ resultBtnSectionEl.addEventListener('click', (e) => {
     activePrimaryButtonsStyling(e.target, resultBtnSectionElArray);
 });
 
+// Navigating in the input section
 rectangleBtnEl.addEventListener('click', (e) => {
     e.preventDefault();
 
     rectangleDispayView();
 
+    removeAllActiveStitisticsButtonsStyings(rectangleCalculationlRows);
     resetStatisticsCircle();
     resetPoolDrawing();
 });
@@ -68,6 +73,7 @@ circleBtnEl.addEventListener('click', (e) => {
 
     circleDispayView();
 
+    removeAllActiveStitisticsButtonsStyings(circleCalculationlRows);
     resetStatisticsRectangle();
     resetPoolDrawing();
 });
@@ -76,10 +82,12 @@ irregularBtnEl.addEventListener('click', (e) => {
 
     irregularDispayView();
 
+    removeAllActiveStitisticsButtonsStyings(irregularCalculationlRows);
     resetStatisticsIrregular();
     resetPoolDrawing();
 });
 
+// Validating and creating pool
 rectangleFormEl.addEventListener('submit', (e) => {
     e.preventDefault();
 
