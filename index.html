@@ -122,90 +122,174 @@
                         <h1>Result:</h1>
                         <p>Calculation Results (Approximate)</p>
                         <div>
-                            <button style="background-color: #42855B; color: #f2f2f2;">Geoetric formulas</button>
-                            <button>Something else</button>
+                            <button style="background-color: #42855B; color: #f2f2f2;">General</button>
+                            <button>Geometric formulas</button>
                         </div>
                     </div>
 
                     <div id="statistics-section">
-                        <table id="rectangle-stats" class="content-table">
-                            <thead>
-                                <tr>
-                                    <th>Calculation for</th>
-                                    <th>Number</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Perimeter</td>
-                                    <td>N/A</td>
-                                </tr>
-                                <tr>
-                                    <td>Surface area</td>
-                                    <td>N/A</td>
-                                </tr>
-                                <tr>
-                                    <td>Volume</td>
-                                    <td>N/A</td>
-                                </tr>
-                                <tr>
-                                    <td>Liters</td>
-                                    <td>N/A</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table id="circle-stats" class="content-table" style="display: none;">
-                            <thead>
-                                <tr>
-                                    <th>Calculation for</th>
-                                    <th>Number</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Circumference</td>
-                                    <td>N/A</td>
-                                </tr>
-                                <tr>
-                                    <td>Surface area</td>
-                                    <td>N/A</td>
-                                </tr>
-                                <tr>
-                                    <td>Volume</td>
-                                    <td>N/A</td>
-                                </tr>
-                                <tr>
-                                    <td>Liters</td>
-                                    <td>N/A</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table id="irregular-stats" class="content-table" style="display: none;">
-                            <thead>
-                                <tr>
-                                    <th>Calculation for</th>
-                                    <th>Number</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Perimeter</td>
-                                    <td>N/A</td>
-                                </tr>
-                                <tr>
-                                    <td>Surface area</td>
-                                    <td>N/A</td>
-                                </tr>
-                                <tr>
-                                    <td>Volume</td>
-                                    <td>N/A</td>
-                                </tr>
-                                <tr>
-                                    <td>Liters</td>
-                                    <td>N/A</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div id="rectangle-stats">
+                            <table class="content-table general-stats">
+                                <thead>
+                                    <tr>
+                                        <th>Calculation for</th>
+                                        <th>Result</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Volume</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Liters</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="content-table geometric-stats" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th>Calculation for</th>
+                                        <th>Result</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Perimeter</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Surface area</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Diagonal</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Inradius</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Volume</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Liters</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="circle-stats" style="display: none;">
+                            <table class="content-table general-stats">
+                                <thead>
+                                    <tr>
+                                        <th>Calculation for</th>
+                                        <th>Result</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Volume</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Liters</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="content-table geometric-stats" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th>Calculation for</th>
+                                        <th>Result</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Perimeter</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Surface area</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Radius</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Diameter</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Volume</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Liters</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="irregular-stats" style="display: none;">
+                            <table class="content-table general-stats">
+                                <thead>
+                                    <tr>
+                                        <th>Calculation for</th>
+                                        <th>Result</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Volume</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Liters</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="content-table geometric-stats" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th>Calculation for</th>
+                                        <th>Result</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Perimeter</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Surface area</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Diagonal p</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Diagonal q</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Volume</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Liters</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </section>
             </section>

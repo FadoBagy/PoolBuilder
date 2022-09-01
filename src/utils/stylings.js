@@ -12,6 +12,14 @@ const irregularErrorMsgEl = document.querySelector('#irregular-form p');
 
 const poolSectionEl = document.getElementById('pool-section');
 
+const shapeButtonsEl = document.querySelectorAll('#shape-select button');
+const rectangleResultGeneralStatsEl = document.querySelector('#rectangle-stats .general-stats');
+const rectangleResultGeometricStatsEl = document.querySelector('#rectangle-stats .geometric-stats');
+const circleResultGeneralStatsEl = document.querySelector('#circle-stats .general-stats');
+const circleResultGeometricStatsEl = document.querySelector('#circle-stats .geometric-stats');
+const irregularResultGeneralStatsEl = document.querySelector('#irregular-stats .general-stats');
+const irregularResultGeometricStatsEl = document.querySelector('#irregular-stats .geometric-stats');
+
 export function activeStitisticsButtonsStyings(element, array) {
 
     if (element.classList.contains('active-stat')) {
@@ -55,7 +63,7 @@ export function rectangleDispayView() {
     circleFormSectionEl.style.display = 'none';
     irregularFormSectionEl.style.display = 'none';
 
-    rectangleStatsBtnEl.style.display = 'table';
+    rectangleStatsBtnEl.style.display = 'flex';
     circleStatsBtnEl.style.display = 'none';
     irregularStatsBtnEl.style.display = 'none';
 
@@ -69,7 +77,7 @@ export function circleDispayView() {
     irregularFormSectionEl.style.display = 'none';
 
     rectangleStatsBtnEl.style.display = 'none';
-    circleStatsBtnEl.style.display = 'table';
+    circleStatsBtnEl.style.display = 'flex';
     irregularStatsBtnEl.style.display = 'none';
 
     rectangleErrorMsgEl.textContent = '';
@@ -83,7 +91,7 @@ export function irregularDispayView() {
 
     rectangleStatsBtnEl.style.display = 'none';
     circleStatsBtnEl.style.display = 'none';
-    irregularStatsBtnEl.style.display = 'table';
+    irregularStatsBtnEl.style.display = 'flex';
 
     rectangleErrorMsgEl.textContent = '';
     circleErrorMsgEl.textContent = '';
@@ -93,4 +101,48 @@ export function resetPoolDrawing() {
     while (poolSectionEl.firstChild) {
         poolSectionEl.removeChild(poolSectionEl.lastChild);
     };
+}
+
+export function generalResultView() {
+    for (const btn of shapeButtonsEl) {
+        if (btn.hasAttribute("style")) {
+            if (btn.textContent == 'Rectangle') {
+                rectangleResultGeneralStatsEl.style.display = 'table';
+                rectangleResultGeometricStatsEl.style.display = 'none';
+            }
+            else if (btn.textContent == 'Circle') {
+                circleResultGeneralStatsEl.style.display = 'table';
+                circleResultGeometricStatsEl.style.display = 'none';
+            }
+            else if (btn.textContent == 'Irregular Shapes') {
+                irregularResultGeneralStatsEl.style.display = 'table';
+                irregularResultGeometricStatsEl.style.display = 'none';
+            }
+            else if (btn.textContent == 'Custom') {
+                console.log('not implemented - stats view changer');
+            }
+        }
+    }
+}
+
+export function geometricResultView() {
+    for (const btn of shapeButtonsEl) {
+        if (btn.hasAttribute("style")) {
+            if (btn.textContent == 'Rectangle') {
+                rectangleResultGeneralStatsEl.style.display = 'none';
+                rectangleResultGeometricStatsEl.style.display = 'table';
+            }
+            else if (btn.textContent == 'Circle') {
+                circleResultGeneralStatsEl.style.display = 'none';
+                circleResultGeometricStatsEl.style.display = 'table';
+            }
+            else if (btn.textContent == 'Irregular Shapes') {
+                irregularResultGeneralStatsEl.style.display = 'none';
+                irregularResultGeometricStatsEl.style.display = 'table';
+            }
+            else if (btn.textContent == 'Custom') {
+                console.log('not implemented - stats view changer');
+            }
+        }
+    }
 }

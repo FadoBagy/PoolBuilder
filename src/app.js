@@ -13,7 +13,9 @@ import {
     circleDispayView,
     irregularDispayView,
     resetPoolDrawing,
-    removeAllActiveStitisticsButtonsStyings
+    removeAllActiveStitisticsButtonsStyings,
+    generalResultView,
+    geometricResultView
 } from './utils/stylings.js';
 
 const rectangleCalculationlRows = document.querySelectorAll('#rectangle-stats tbody tr');
@@ -33,9 +35,12 @@ const rectangleFormEl = document.getElementById('size-input');
 const circleFormEl = document.getElementById('size-input-circle');
 const irregularFormEl = document.getElementById('size-input-irregular');
 
+const generalStatsBtnEl = document.querySelector('#heading-stats button:nth-child(1)');
+const geometricStatsBtnEl = document.querySelector('#heading-stats button:nth-child(2)');
+
 // Statistics styling
 rectangleCalculationlRows.forEach(row => {
-    row.addEventListener('click', (e) => {
+    row.addEventListener('click', () => {
         activeStitisticsButtonsStyings(row, rectangleCalculationlRows);
     });
 });
@@ -63,6 +68,8 @@ rectangleBtnEl.addEventListener('click', (e) => {
     e.preventDefault();
 
     rectangleDispayView();
+    generalResultView();
+    activePrimaryButtonsStyling(resultBtnSectionElArray[0], resultBtnSectionElArray);
 
     removeAllActiveStitisticsButtonsStyings(rectangleCalculationlRows);
     resetStatisticsCircle();
@@ -72,6 +79,8 @@ circleBtnEl.addEventListener('click', (e) => {
     e.preventDefault();
 
     circleDispayView();
+    generalResultView();
+    activePrimaryButtonsStyling(resultBtnSectionElArray[0], resultBtnSectionElArray);
 
     removeAllActiveStitisticsButtonsStyings(circleCalculationlRows);
     resetStatisticsRectangle();
@@ -81,6 +90,8 @@ irregularBtnEl.addEventListener('click', (e) => {
     e.preventDefault();
 
     irregularDispayView();
+    generalResultView();
+    activePrimaryButtonsStyling(resultBtnSectionElArray[0], resultBtnSectionElArray);
 
     removeAllActiveStitisticsButtonsStyings(irregularCalculationlRows);
     resetStatisticsIrregular();
@@ -102,4 +113,16 @@ irregularFormEl.addEventListener('submit', (e) => {
     e.preventDefault();
 
     validateIrregularForm(irregularFormEl);
+});
+
+// Navigating in the results section
+generalStatsBtnEl.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    generalResultView();
+});
+geometricStatsBtnEl.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    geometricResultView();
 });
