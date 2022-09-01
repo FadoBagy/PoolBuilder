@@ -16,31 +16,32 @@ export function makeStatisticsCircle(diameter, width, depth1, depth2) {
         averageDepth = depth1;
     }
 
-    volumeResultEl.innerHTML = `${(Math.PI * Math.pow((diameter / 2), 2) * averageDepth).toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    })} m<sup>3</sup>`;
-    litersResultEl.textContent = `${(Math.PI * Math.pow((diameter / 2), 2) * averageDepth * 1000).toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    })} l`;
+    let volume = (Math.PI * Math.pow((diameter / 2), 2) * averageDepth).toLocaleString('en-US', {
+        minimumFractionDigits: 2, maximumFractionDigits: 2
+    });
+    let liters = (Math.PI * Math.pow((diameter / 2), 2) * averageDepth * 1000).toLocaleString('en-US', {
+        minimumFractionDigits: 2, maximumFractionDigits: 2
+    });
+    let perimeter = (2 * Math.PI * (diameter / 2)).toLocaleString('en-US', {
+        minimumFractionDigits: 2, maximumFractionDigits: 2
+    });
+    let area = (Math.PI * Math.pow((diameter / 2), 2)).toLocaleString('en-US', {
+        minimumFractionDigits: 2, maximumFractionDigits: 2
+    });
+    let radius = (diameter / 2).toLocaleString('en-US', {
+        minimumFractionDigits: 2, maximumFractionDigits: 2
+    });
+    let diameterResult = diameter.toLocaleString('en-US', {
+        minimumFractionDigits: 2, maximumFractionDigits: 2
+    });
 
-    perimeterResultEl.textContent = `${(2 * Math.PI * (diameter / 2)).toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    })} m`;
-    areaResultEl.innerHTML = `${(Math.PI * Math.pow((diameter / 2), 2)).toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    })} m<sup>2</sup>`;
-    radiusResultEl.textContent = `${(diameter / 2).toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    })} m`;
-    diameterResultEl.textContent = `${diameter.toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    })} m`;
+    volumeResultEl.innerHTML = `${volume} m<sup>3</sup>`;
+    litersResultEl.textContent = `${liters} l`;
+
+    perimeterResultEl.textContent = `${perimeter} m`;
+    areaResultEl.innerHTML = `${area} m<sup>2</sup>`;
+    radiusResultEl.textContent = `${radius} m`;
+    diameterResultEl.textContent = `${diameterResult} m`;
     geometricVolumeResultEl.innerHTML = volumeResultEl.innerHTML;
     geometricLitersResultEl.textContent = litersResultEl.textContent;
 };

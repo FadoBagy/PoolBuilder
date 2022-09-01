@@ -53,13 +53,13 @@ body {
 }
 
 #circle-form,
-#irregular-form {
+#triangle-form {
     display: none;
 }
 
 #circle-form p,
 #rectangle-form p,
-#irregular-form p {
+#triangle-form p {
     width: fit-content;
     margin: 0;
     padding-left: 20px;
@@ -150,13 +150,13 @@ body {
 
 #size-input,
 #size-input-circle,
-#irregular-form {
+#triangle-form {
     padding: 10px;
 }
 
 #size-input input,
 #size-input-circle input,
-#irregular-form input {
+#triangle-form input {
     border: none;
     border-radius: 20px;
     font-size: 1rem;
@@ -166,7 +166,7 @@ body {
 
 #size-input input[type="submit"],
 #size-input-circle input[type="submit"],
-#irregular-form input[type="submit"] {
+#triangle-form input[type="submit"] {
     width: 100%;
     background-color: #D2D79F;
     border: none;
@@ -180,7 +180,7 @@ body {
 
 #size-input input[type="submit"]:hover,
 #size-input-circle input[type="submit"]:hover,
-#irregular-form input[type="submit"]:hover {
+#triangle-form input[type="submit"]:hover {
     background-color: #b9c169;
 }
 
@@ -267,7 +267,7 @@ body {
 
 #rectangle-calculation p:hover,
 #circle-calculation p:hover,
-#irregular-calculation p:hover {
+#triangle-calculation p:hover {
     background-color: #b9c169 !important;
     border-radius: 20px !important;
     border: 1px solid #161616 !important;
@@ -279,7 +279,7 @@ body {
 
 #rectangle-stats,
 #circle-stats,
-#irregular-stats {
+#triangle-stats {
     display: flex;
     flex-direction: column;
 }

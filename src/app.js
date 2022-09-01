@@ -1,17 +1,17 @@
 import { validateRectangleForm } from './utils/createPoolRectangle.js';
 import { validateCircleForm } from './utils/createPoolCircle.js';
-import { validateIrregularForm } from './utils/createPoolIrregular.js';
+import { validateTriangleForm } from './utils/createPoolTriangle.js';
 
 import { resetStatisticsRectangle } from './utils/createStatisticsRectangle.js';
 import { resetStatisticsCircle } from './utils/createStatisticsCircle.js';
-import { resetStatisticsIrregular } from './utils/createStatisticsIrregular.js';
+import { resetStatisticsTriangle } from './utils/createStatisticsTriangle.js';
 
 import {
     activeStitisticsButtonsStyings,
     activePrimaryButtonsStyling,
     rectangleDispayView,
     circleDispayView,
-    irregularDispayView,
+    triangleDispayView,
     resetPoolDrawing,
     removeAllActiveStitisticsButtonsStyings,
     generalResultView,
@@ -20,7 +20,7 @@ import {
 
 const rectangleCalculationlRows = document.querySelectorAll('#rectangle-stats tbody tr');
 const circleCalculationlRows = document.querySelectorAll('#circle-stats tbody tr');
-const irregularCalculationlRows = document.querySelectorAll('#irregular-stats tbody tr');
+const triangleCalculationlRows = document.querySelectorAll('#triangle-stats tbody tr');
 
 const shapeBtnSectionEl = document.querySelector('#shape-select div');
 const shapeBtnSectionElArray = Array.from(document.querySelectorAll('#shape-select div button'));
@@ -29,11 +29,11 @@ const resultBtnSectionElArray = Array.from(document.querySelectorAll('#heading-s
 
 const rectangleBtnEl = document.querySelector('#shape-select div button:nth-child(1)');
 const circleBtnEl = document.querySelector('#shape-select div button:nth-child(2)');
-const irregularBtnEl = document.querySelector('#shape-select div button:nth-child(3)');
+const triangleBtnEl = document.querySelector('#shape-select div button:nth-child(3)');
 
 const rectangleFormEl = document.getElementById('size-input');
 const circleFormEl = document.getElementById('size-input-circle');
-const irregularFormEl = document.getElementById('size-input-irregular');
+const triangleFormEl = document.getElementById('size-input-triangle');
 
 const generalStatsBtnEl = document.querySelector('#heading-stats button:nth-child(1)');
 const geometricStatsBtnEl = document.querySelector('#heading-stats button:nth-child(2)');
@@ -49,9 +49,9 @@ circleCalculationlRows.forEach(row => {
         activeStitisticsButtonsStyings(row, circleCalculationlRows);
     });
 });
-irregularCalculationlRows.forEach(row => {
+triangleCalculationlRows.forEach(row => {
     row.addEventListener('click', () => {
-        activeStitisticsButtonsStyings(row, irregularCalculationlRows);
+        activeStitisticsButtonsStyings(row, triangleCalculationlRows);
     });
 });
 
@@ -86,15 +86,15 @@ circleBtnEl.addEventListener('click', (e) => {
     resetStatisticsRectangle();
     resetPoolDrawing();
 });
-irregularBtnEl.addEventListener('click', (e) => {
+triangleBtnEl.addEventListener('click', (e) => {
     e.preventDefault();
 
-    irregularDispayView();
+    triangleDispayView();
     generalResultView();
     activePrimaryButtonsStyling(resultBtnSectionElArray[0], resultBtnSectionElArray);
 
-    removeAllActiveStitisticsButtonsStyings(irregularCalculationlRows);
-    resetStatisticsIrregular();
+    removeAllActiveStitisticsButtonsStyings(triangleCalculationlRows);
+    resetStatisticsTriangle();
     resetPoolDrawing();
 });
 
@@ -109,10 +109,10 @@ circleFormEl.addEventListener('submit', (e) => {
 
     validateCircleForm(circleFormEl);
 });
-irregularFormEl.addEventListener('submit', (e) => {
+triangleFormEl.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    validateIrregularForm(irregularFormEl);
+    validateTriangleForm(triangleFormEl);
 });
 
 // Navigating in the results section

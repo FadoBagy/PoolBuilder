@@ -1,14 +1,14 @@
 const rectangleFormSectionEl = document.getElementById('rectangle-form');
 const circleFormSectionEl = document.getElementById('circle-form');
-const irregularFormSectionEl = document.getElementById('irregular-form');
+const triangleFormSectionEl = document.getElementById('triangle-form');
 
 const rectangleStatsBtnEl = document.getElementById('rectangle-stats');
 const circleStatsBtnEl = document.getElementById('circle-stats');
-const irregularStatsBtnEl = document.getElementById('irregular-stats');
+const triangleStatsBtnEl = document.getElementById('triangle-stats');
 
 const rectangleErrorMsgEl = document.querySelector('#rectangle-form p');
 const circleErrorMsgEl = document.querySelector('#circle-form p');
-const irregularErrorMsgEl = document.querySelector('#irregular-form p');
+const triangleErrorMsgEl = document.querySelector('#triangle-form p');
 
 const poolSectionEl = document.getElementById('pool-section');
 
@@ -17,8 +17,8 @@ const rectangleResultGeneralStatsEl = document.querySelector('#rectangle-stats .
 const rectangleResultGeometricStatsEl = document.querySelector('#rectangle-stats .geometric-stats');
 const circleResultGeneralStatsEl = document.querySelector('#circle-stats .general-stats');
 const circleResultGeometricStatsEl = document.querySelector('#circle-stats .geometric-stats');
-const irregularResultGeneralStatsEl = document.querySelector('#irregular-stats .general-stats');
-const irregularResultGeometricStatsEl = document.querySelector('#irregular-stats .geometric-stats');
+const triangleResultGeneralStatsEl = document.querySelector('#triangle-stats .general-stats');
+const triangleResultGeometricStatsEl = document.querySelector('#triangle-stats .geometric-stats');
 
 export function activeStitisticsButtonsStyings(element, array) {
 
@@ -61,37 +61,37 @@ export function activePrimaryButtonsStyling(element, array) {
 export function rectangleDispayView() {
     rectangleFormSectionEl.style.display = 'block';
     circleFormSectionEl.style.display = 'none';
-    irregularFormSectionEl.style.display = 'none';
+    triangleFormSectionEl.style.display = 'none';
 
     rectangleStatsBtnEl.style.display = 'flex';
     circleStatsBtnEl.style.display = 'none';
-    irregularStatsBtnEl.style.display = 'none';
+    triangleStatsBtnEl.style.display = 'none';
 
     circleErrorMsgEl.textContent = '';
-    irregularErrorMsgEl.textContent = '';
+    triangleErrorMsgEl.textContent = '';
 }
 
 export function circleDispayView() {
     rectangleFormSectionEl.style.display = 'none';
     circleFormSectionEl.style.display = 'block';
-    irregularFormSectionEl.style.display = 'none';
+    triangleFormSectionEl.style.display = 'none';
 
     rectangleStatsBtnEl.style.display = 'none';
     circleStatsBtnEl.style.display = 'flex';
-    irregularStatsBtnEl.style.display = 'none';
+    triangleStatsBtnEl.style.display = 'none';
 
     rectangleErrorMsgEl.textContent = '';
-    irregularErrorMsgEl.textContent = '';
+    triangleErrorMsgEl.textContent = '';
 }
 
-export function irregularDispayView() {
+export function triangleDispayView() {
     rectangleFormSectionEl.style.display = 'none';
     circleFormSectionEl.style.display = 'none';
-    irregularFormSectionEl.style.display = 'block';
+    triangleFormSectionEl.style.display = 'block';
 
     rectangleStatsBtnEl.style.display = 'none';
     circleStatsBtnEl.style.display = 'none';
-    irregularStatsBtnEl.style.display = 'flex';
+    triangleStatsBtnEl.style.display = 'flex';
 
     rectangleErrorMsgEl.textContent = '';
     circleErrorMsgEl.textContent = '';
@@ -114,9 +114,9 @@ export function generalResultView() {
                 circleResultGeneralStatsEl.style.display = 'table';
                 circleResultGeometricStatsEl.style.display = 'none';
             }
-            else if (btn.textContent == 'Irregular Shapes') {
-                irregularResultGeneralStatsEl.style.display = 'table';
-                irregularResultGeometricStatsEl.style.display = 'none';
+            else if (btn.textContent == 'Triangle') {
+                triangleResultGeneralStatsEl.style.display = 'table';
+                triangleResultGeometricStatsEl.style.display = 'none';
             }
             else if (btn.textContent == 'Custom') {
                 console.log('not implemented - stats view changer');
@@ -136,9 +136,9 @@ export function geometricResultView() {
                 circleResultGeneralStatsEl.style.display = 'none';
                 circleResultGeometricStatsEl.style.display = 'table';
             }
-            else if (btn.textContent == 'Irregular Shapes') {
-                irregularResultGeneralStatsEl.style.display = 'none';
-                irregularResultGeometricStatsEl.style.display = 'table';
+            else if (btn.textContent == 'Triangle') {
+                triangleResultGeneralStatsEl.style.display = 'none';
+                triangleResultGeometricStatsEl.style.display = 'table';
             }
             else if (btn.textContent == 'Custom') {
                 console.log('not implemented - stats view changer');
