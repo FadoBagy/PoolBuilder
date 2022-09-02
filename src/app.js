@@ -1,10 +1,10 @@
-import { validateRectangleForm } from './utils/createPoolRectangle.js';
-import { validateCircleForm } from './utils/createPoolCircle.js';
-import { validateTriangleForm } from './utils/createPoolTriangle.js';
+import { validateRectangleForm } from './utils/creating/createPoolRectangle.js';
+import { validateCircleForm } from './utils/creating/createPoolCircle.js';
+import { validateTriangleForm } from './utils/creating/createPoolTriangle.js';
 
-import { resetStatisticsRectangle } from './utils/createStatisticsRectangle.js';
-import { resetStatisticsCircle } from './utils/createStatisticsCircle.js';
-import { resetStatisticsTriangle } from './utils/createStatisticsTriangle.js';
+import { resetStatisticsRectangle } from './utils/creating/createStatisticsRectangle.js';
+import { resetStatisticsCircle } from './utils/creating/createStatisticsCircle.js';
+import { resetStatisticsTriangle } from './utils/creating/createStatisticsTriangle.js';
 
 import {
     activeStitisticsButtonsStyings,
@@ -17,6 +17,9 @@ import {
     generalResultView,
     geometricResultView
 } from './utils/stylings.js';
+
+import { pool } from './utils/creating/pool.js';
+pool();
 
 const rectangleCalculationlRows = document.querySelectorAll('#rectangle-stats tbody tr');
 const circleCalculationlRows = document.querySelectorAll('#circle-stats tbody tr');
@@ -73,6 +76,7 @@ rectangleBtnEl.addEventListener('click', (e) => {
 
     removeAllActiveStitisticsButtonsStyings(rectangleCalculationlRows);
     resetStatisticsCircle();
+    resetStatisticsTriangle();
     resetPoolDrawing();
 });
 circleBtnEl.addEventListener('click', (e) => {
@@ -84,6 +88,7 @@ circleBtnEl.addEventListener('click', (e) => {
 
     removeAllActiveStitisticsButtonsStyings(circleCalculationlRows);
     resetStatisticsRectangle();
+    resetStatisticsTriangle();
     resetPoolDrawing();
 });
 triangleBtnEl.addEventListener('click', (e) => {
@@ -94,7 +99,8 @@ triangleBtnEl.addEventListener('click', (e) => {
     activePrimaryButtonsStyling(resultBtnSectionElArray[0], resultBtnSectionElArray);
 
     removeAllActiveStitisticsButtonsStyings(triangleCalculationlRows);
-    resetStatisticsTriangle();
+    resetStatisticsRectangle();
+    resetStatisticsCircle();
     resetPoolDrawing();
 });
 
