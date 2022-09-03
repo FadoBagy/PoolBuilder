@@ -4,16 +4,22 @@ export function pool() {
         section = wrapper.querySelector('section');
 
     let isResizing = false;
+    let isInsidePooSection = false;
+    poolSection.addEventListener('mousemove', () => {
+        isInsidePooSection = true;
+    });
 
     function onDrag({ movementX, movementY }) {
-        if (!isResizing) {
-            console.log(isResizing);
+        if (!isResizing && isInsidePooSection) {
             let getStyle = window.getComputedStyle(wrapper);
             let leftVal = parseInt(getStyle.left);
             let topVal = parseInt(getStyle.top);
 
-            let poolSectionWidthDifference = (poolSection.getBoundingClientRect().width) - 70;
-            let poolSectionHeightDifference = (poolSection.getBoundingClientRect().height) - 70;
+            let shapeWidth = section.getBoundingClientRect().width;
+            let shapeHeight = section.getBoundingClientRect().height;
+
+            let poolSectionWidthDifference = (poolSection.getBoundingClientRect().width) - shapeWidth - 20;
+            let poolSectionHeightDifference = (poolSection.getBoundingClientRect().height) - shapeHeight - 20;
 
             if (leftVal > poolSectionWidthDifference) {
                 wrapper.style.left = `${poolSectionWidthDifference}px`;
@@ -81,8 +87,17 @@ export function pool() {
         let topVal = parseInt(getStyle.top);
 
         if (currentResizer.classList.contains("se")) {
-            wrapper.style.width = `${widthVal + movementX}px`;
-            wrapper.style.height = `${heightVal + movementY}px`;
+            if (widthVal < 30) {
+                wrapper.style.width = `30px`;
+                wrapper.style.height = `${heightVal + movementY}px`;
+            } else if (heightVal < 30) {
+                wrapper.style.width = `${widthVal + movementX}px`;
+                wrapper.style.height = `30px`;
+            } else {
+                wrapper.style.width = `${widthVal + movementX}px`;
+                wrapper.style.height = `${heightVal + movementY}px`;
+            }
+
         }
         else if (currentResizer.classList.contains("sw")) {
             wrapper.style.width = `${widthVal - movementX}px`;
@@ -104,7 +119,6 @@ export function pool() {
     function stopResize() {
         poolSection.removeEventListener("mousemove", onResize);
         document.removeEventListener("mouseup", stopResize);
-        console.log('here');
         isResizing = false;
     }
 }

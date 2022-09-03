@@ -48,3 +48,22 @@
     right: -1px;
     cursor: se-resize;
 }
+
+.poolP{
+    position: absolute;
+    width: 500px;
+    height: 5px;
+    background-color: #302525;
+    transform: rotate(90deg);
+    margin: 0;
+    margin-top: 248px;
+    border-radius: 20px;
+}
+
+.left{
+    left: 5px;
+}
+
+.right{
+    right: 5px;
+}
