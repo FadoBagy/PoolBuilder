@@ -53,7 +53,7 @@ export function pool() {
         poolSection.addEventListener('mousemove', onDrag);
     });
 
-    section.addEventListener('mouseup', () => {
+    window.addEventListener('mouseup', () => {
         stopDrag();
     });
 
@@ -103,6 +103,24 @@ export function pool() {
             wrapper.style.width = `${widthVal - movementX}px`;
             wrapper.style.height = `${heightVal + movementY}px`;
             wrapper.style.left = `${leftVal + movementX}px`;
+
+            if (widthVal < 30) {
+                wrapper.style.width = `30px`;
+                wrapper.style.height = `${heightVal + movementY}px`;
+                wrapper.style.left = `${leftVal + movementX}px`;
+            } else if (heightVal < 30) {
+                wrapper.style.width = `${widthVal - movementX}px`;
+                wrapper.style.height = `30px`;
+                wrapper.style.left = `${leftVal + movementX}px`;
+            } else if (leftVal < 30) {
+                wrapper.style.width = `${widthVal - movementX}px`;
+                wrapper.style.height = `${heightVal + movementY}px`;
+                wrapper.style.left = `30px`;
+            } else {
+                wrapper.style.width = `${widthVal - movementX}px`;
+                wrapper.style.height = `${heightVal + movementY}px`;
+                wrapper.style.left = `${leftVal + movementX}px`;
+            }
         }
         else if (currentResizer.classList.contains("ne")) {
             wrapper.style.width = `${widthVal + movementX}px`;
