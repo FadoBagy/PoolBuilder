@@ -18,8 +18,8 @@ export function pool() {
             let shapeWidth = section.getBoundingClientRect().width;
             let shapeHeight = section.getBoundingClientRect().height;
 
-            let poolSectionWidthDifference = (poolSection.getBoundingClientRect().width) - shapeWidth - 20;
-            let poolSectionHeightDifference = (poolSection.getBoundingClientRect().height) - shapeHeight - 20;
+            let poolSectionWidthDifference = (poolSection.getBoundingClientRect().width) - shapeWidth - 15;
+            let poolSectionHeightDifference = (poolSection.getBoundingClientRect().height) - shapeHeight - 15;
 
             if (leftVal > poolSectionWidthDifference) {
                 wrapper.style.left = `${poolSectionWidthDifference}px`;
@@ -31,13 +31,13 @@ export function pool() {
                 wrapper.style.left = `${leftVal + movementX}px`;
                 stopDrag();
             }
-            else if (leftVal < 20) {
-                wrapper.style.left = `20px`;
+            else if (leftVal < 5) {
+                wrapper.style.left = `5px`;
                 wrapper.style.top = `${topVal + movementY}px`;
                 stopDrag();
             }
-            else if (topVal < 20) {
-                wrapper.style.top = `20px`;
+            else if (topVal < 5) {
+                wrapper.style.top = `5px`;
                 wrapper.style.left = `${leftVal + movementX}px`;
                 stopDrag();
             }
@@ -100,37 +100,51 @@ export function pool() {
 
         }
         else if (currentResizer.classList.contains("sw")) {
-            wrapper.style.width = `${widthVal - movementX}px`;
-            wrapper.style.height = `${heightVal + movementY}px`;
-            wrapper.style.left = `${leftVal + movementX}px`;
-
             if (widthVal < 30) {
                 wrapper.style.width = `30px`;
                 wrapper.style.height = `${heightVal + movementY}px`;
-                wrapper.style.left = `${leftVal + movementX}px`;
             } else if (heightVal < 30) {
                 wrapper.style.width = `${widthVal - movementX}px`;
                 wrapper.style.height = `30px`;
-                wrapper.style.left = `${leftVal + movementX}px`;
-            } else if (leftVal < 30) {
-                wrapper.style.width = `${widthVal - movementX}px`;
-                wrapper.style.height = `${heightVal + movementY}px`;
-                wrapper.style.left = `30px`;
             } else {
                 wrapper.style.width = `${widthVal - movementX}px`;
                 wrapper.style.height = `${heightVal + movementY}px`;
-                wrapper.style.left = `${leftVal + movementX}px`;
+                if (widthVal > 33) {
+                    wrapper.style.left = `${leftVal + movementX}px`;
+                }
             }
         }
         else if (currentResizer.classList.contains("ne")) {
-            wrapper.style.width = `${widthVal + movementX}px`;
-            wrapper.style.height = `${heightVal - movementY}px`;
-            wrapper.style.top = `${topVal + movementY}px`;
+            if (widthVal < 30) {
+                wrapper.style.width = `30px`;
+                wrapper.style.height = `${heightVal - movementY}px`;
+            } else if (heightVal < 30) {
+                wrapper.style.width = `${widthVal + movementX}px`;
+                wrapper.style.height = `30px`;
+            } else {
+                wrapper.style.width = `${widthVal + movementX}px`;
+                wrapper.style.height = `${heightVal - movementY}px`;
+                if (heightVal > 33) {
+                    wrapper.style.top = `${topVal + movementY}px`;
+                }
+            }
         } else {
-            wrapper.style.width = `${widthVal - movementX}px`;
-            wrapper.style.height = `${heightVal - movementY}px`;
-            wrapper.style.top = `${topVal + movementY}px`;
-            wrapper.style.left = `${leftVal + movementX}px`;
+            if (widthVal < 30) {
+                wrapper.style.width = `30px`;
+                wrapper.style.height = `${heightVal - movementY}px`;
+            } else if (heightVal < 30) {
+                wrapper.style.width = `${widthVal - movementX}px`;
+                wrapper.style.height = `30px`;
+            } else {
+                wrapper.style.width = `${widthVal - movementX}px`;
+                wrapper.style.height = `${heightVal - movementY}px`;
+                if (heightVal > 33) {
+                    wrapper.style.top = `${topVal + movementY}px`;
+                }
+                if (widthVal > 33) {
+                    wrapper.style.left = `${leftVal + movementX}px`;
+                }
+            }
         }
     }
 
