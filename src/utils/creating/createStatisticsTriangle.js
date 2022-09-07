@@ -1,3 +1,5 @@
+import { setStatisticsTriangle } from "../animations.js";
+
 const volumeResultEl = document.querySelector('#triangle-stats .general-stats tbody tr:nth-child(1) td:nth-child(2)');
 const litersResultEl = document.querySelector('#triangle-stats .general-stats tbody tr:nth-child(2) td:nth-child(2)');
 
@@ -14,26 +16,12 @@ export function makeStatisticsTriangle(sideA, sideB, sideC, heightH, depth1, dep
         averageDepth = depth1;
     }
 
-    let area = ((heightH * sideB) / 2).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    let volume = (area * averageDepth).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    let liters = (area * averageDepth * 1000).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    let perimeter = (sideA + sideB + sideC).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
+    let area = (heightH * sideB) / 2;
+    let volume = area * averageDepth;
+    let liters = area * averageDepth * 1000;
+    let perimeter = sideA + sideB + sideC;
 
-    volumeResultEl.innerHTML = `${volume} m<sup>3</sup>`;
-    litersResultEl.textContent = `${liters} l`;
-
-    perimeterResultEl.textContent = `${perimeter} m`;
-    areaResultEl.innerHTML = `${area} m<sup>2</sup>`;
-    geometricVolumeResultEl.innerHTML = volumeResultEl.innerHTML;
-    geometricLitersResultEl.textContent = litersResultEl.textContent;
+    setStatisticsTriangle(volume, liters, perimeter, area)
 };
 
 export function resetStatisticsTriangle() {

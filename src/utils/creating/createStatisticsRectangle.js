@@ -1,4 +1,4 @@
-import { animateNumbersRectangle } from "../animations.js";
+import { setStatisticsRectangle } from "../animations.js";
 
 const volumeResultEl = document.querySelector('#rectangle-stats .general-stats tbody tr:nth-child(1) td:nth-child(2)');
 const litersResultEl = document.querySelector('#rectangle-stats .general-stats tbody tr:nth-child(2) td:nth-child(2)');
@@ -13,11 +13,13 @@ const geometricLitersResultEl = document.querySelector('#rectangle-stats .geomet
 export function makeStatisticsRectangle(width, height, depth1, depth2) {
     let averageDepth = 0;
     let shortSide;
+
     if (depth2) {
         averageDepth = (depth1 + depth2) / 2;
     } else {
         averageDepth = depth1;
     }
+
     if (width > height) {
         shortSide = height;
     } else { shortSide = width; }
@@ -26,20 +28,10 @@ export function makeStatisticsRectangle(width, height, depth1, depth2) {
     let liters = height * width * averageDepth * 1000;
     let perimeter = 2 * (height + width);
     let area = width * height;
-    let radius = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
+    let diagonal = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
     let inradius = shortSide / 2;
 
-    animateNumbersRectangle(volume, liters, perimeter, area, radius, inradius);
-
-    // volumeResultEl.innerHTML = `${volume} m<sup>3</sup>`;
-    // litersResultEl.textContent = `${liters} l`;
-
-    // perimeterResultEl.textContent = `${perimeter} m`;
-    // areaResultEl.innerHTML = `${area} m<sup>2</sup>`;
-    // diagonalResultEl.textContent = `${radius} m`;
-    // inradiusResultEl.textContent = `${inradius} m`;
-    // geometricVolumeResultEl.innerHTML = volumeResultEl.innerHTML;
-    // geometricLitersResultEl.textContent = litersResultEl.textContent;
+    setStatisticsRectangle(volume, liters, perimeter, area, diagonal, inradius);
 };
 
 export function resetStatisticsRectangle() {

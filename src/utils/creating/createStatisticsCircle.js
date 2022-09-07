@@ -1,3 +1,5 @@
+import { setStatisticsCircle } from "../animations.js";
+
 const volumeResultEl = document.querySelector('#circle-stats .general-stats tbody tr:nth-child(1) td:nth-child(2)');
 const litersResultEl = document.querySelector('#circle-stats .general-stats tbody tr:nth-child(2) td:nth-child(2)');
 
@@ -10,41 +12,22 @@ const geometricLitersResultEl = document.querySelector('#circle-stats .geometric
 
 export function makeStatisticsCircle(diameter, width, depth1, depth2) {
     let averageDepth = 0;
+
     if (depth2) {
         averageDepth = (depth1 + depth2) / 2;
     } else {
         averageDepth = depth1;
     }
 
-    let volume = (Math.PI * Math.pow((diameter / 2), 2) * averageDepth).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    let liters = (Math.PI * Math.pow((diameter / 2), 2) * averageDepth * 1000).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    let perimeter = (2 * Math.PI * (diameter / 2)).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    let area = (Math.PI * Math.pow((diameter / 2), 2)).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    let radius = (diameter / 2).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    let diameterResult = diameter.toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
+    let volume = Math.PI * Math.pow((diameter / 2), 2) * averageDepth;
+    let liters = Math.PI * Math.pow((diameter / 2), 2) * averageDepth * 1000;
+    let perimeter = 2 * Math.PI * (diameter / 2);
+    let area = Math.PI * Math.pow((diameter / 2), 2);
+    let radius = diameter / 2;
+    let diameterResult = diameter;
 
-    volumeResultEl.innerHTML = `${volume} m<sup>3</sup>`;
-    litersResultEl.textContent = `${liters} l`;
-
-    perimeterResultEl.textContent = `${perimeter} m`;
-    areaResultEl.innerHTML = `${area} m<sup>2</sup>`;
-    radiusResultEl.textContent = `${radius} m`;
-    diameterResultEl.textContent = `${diameterResult} m`;
-    geometricVolumeResultEl.innerHTML = volumeResultEl.innerHTML;
-    geometricLitersResultEl.textContent = litersResultEl.textContent;
-};
+    setStatisticsCircle(volume, liters, perimeter, area, radius, diameterResult);
+}
 
 export function resetStatisticsCircle() {
     volumeResultEl.innerHTML = 'N/A';
