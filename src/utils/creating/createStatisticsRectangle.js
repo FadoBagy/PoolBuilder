@@ -1,3 +1,5 @@
+import { animateNumbersRectangle } from "../animations.js";
+
 const volumeResultEl = document.querySelector('#rectangle-stats .general-stats tbody tr:nth-child(1) td:nth-child(2)');
 const litersResultEl = document.querySelector('#rectangle-stats .general-stats tbody tr:nth-child(2) td:nth-child(2)');
 
@@ -20,34 +22,24 @@ export function makeStatisticsRectangle(width, height, depth1, depth2) {
         shortSide = height;
     } else { shortSide = width; }
 
-    let volume = (height * width * averageDepth).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    let liters = (height * width * averageDepth * 1000).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    let perimeter = (2 * (height + width)).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    let area = (width * height).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    let radius = (Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2))).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    let inradius = (shortSide / 2).toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
+    let volume = height * width * averageDepth;
+    let liters = height * width * averageDepth * 1000;
+    let perimeter = 2 * (height + width);
+    let area = width * height;
+    let radius = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
+    let inradius = shortSide / 2;
 
-    volumeResultEl.innerHTML = `${volume} m<sup>3</sup>`;
-    litersResultEl.textContent = `${liters} l`;
+    animateNumbersRectangle(volume, liters, perimeter, area, radius, inradius);
 
-    perimeterResultEl.textContent = `${perimeter} m`;
-    areaResultEl.innerHTML = `${area} m<sup>2</sup>`;
-    diagonalResultEl.textContent = `${radius} m`;
-    inradiusResultEl.textContent = `${inradius} m`;
-    geometricVolumeResultEl.innerHTML = volumeResultEl.innerHTML;
-    geometricLitersResultEl.textContent = litersResultEl.textContent;
+    // volumeResultEl.innerHTML = `${volume} m<sup>3</sup>`;
+    // litersResultEl.textContent = `${liters} l`;
+
+    // perimeterResultEl.textContent = `${perimeter} m`;
+    // areaResultEl.innerHTML = `${area} m<sup>2</sup>`;
+    // diagonalResultEl.textContent = `${radius} m`;
+    // inradiusResultEl.textContent = `${inradius} m`;
+    // geometricVolumeResultEl.innerHTML = volumeResultEl.innerHTML;
+    // geometricLitersResultEl.textContent = litersResultEl.textContent;
 };
 
 export function resetStatisticsRectangle() {
