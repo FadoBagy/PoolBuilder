@@ -1,7 +1,11 @@
-export function pool() {
+import { showResizer } from "../stylings.js";
+
+export function poolMovement() {
     const poolSection = document.querySelector('#pool-section');
     const wrapper = document.querySelector('.wrapper'),
         section = wrapper.querySelector('section');
+
+    showResizer();
 
     let isResizing = false;
     let isInsidePooSection = false;
@@ -93,11 +97,16 @@ export function pool() {
             } else if (heightVal < 30) {
                 wrapper.style.width = `${widthVal + movementX}px`;
                 wrapper.style.height = `30px`;
+            } else if (widthVal > 1100) {
+                wrapper.style.width = `1100px`;
+                wrapper.style.height = `${heightVal + movementY}px`;
+            } else if (heightVal > 450) {
+                wrapper.style.width = `${widthVal + movementX}px`;
+                wrapper.style.height = `450px`;
             } else {
                 wrapper.style.width = `${widthVal + movementX}px`;
                 wrapper.style.height = `${heightVal + movementY}px`;
             }
-
         }
         else if (currentResizer.classList.contains("sw")) {
             if (widthVal < 30) {
@@ -106,10 +115,16 @@ export function pool() {
             } else if (heightVal < 30) {
                 wrapper.style.width = `${widthVal - movementX}px`;
                 wrapper.style.height = `30px`;
+            } else if (widthVal > 1100) {
+                wrapper.style.width = `1100px`;
+                wrapper.style.height = `${heightVal + movementY}px`;
+            } else if (heightVal > 450) {
+                wrapper.style.width = `${widthVal - movementX}px`;
+                wrapper.style.height = `450px`;
             } else {
                 wrapper.style.width = `${widthVal - movementX}px`;
                 wrapper.style.height = `${heightVal + movementY}px`;
-                if (widthVal > 33) {
+                if (widthVal < 1100 && widthVal > 33) {
                     wrapper.style.left = `${leftVal + movementX}px`;
                 }
             }
@@ -121,10 +136,16 @@ export function pool() {
             } else if (heightVal < 30) {
                 wrapper.style.width = `${widthVal + movementX}px`;
                 wrapper.style.height = `30px`;
+            } else if (widthVal > 1100) {
+                wrapper.style.width = `1100px`;
+                wrapper.style.height = `${heightVal - movementY}px`;
+            } else if (heightVal > 450) {
+                wrapper.style.width = `${widthVal + movementX}px`;
+                wrapper.style.height = `450px`;
             } else {
                 wrapper.style.width = `${widthVal + movementX}px`;
                 wrapper.style.height = `${heightVal - movementY}px`;
-                if (heightVal > 33) {
+                if (heightVal < 450 && heightVal > 33) {
                     wrapper.style.top = `${topVal + movementY}px`;
                 }
             }
@@ -135,13 +156,19 @@ export function pool() {
             } else if (heightVal < 30) {
                 wrapper.style.width = `${widthVal - movementX}px`;
                 wrapper.style.height = `30px`;
+            } else if (widthVal > 1100) {
+                wrapper.style.width = `1100px`;
+                wrapper.style.height = `${heightVal - movementY}px`;
+            } else if (heightVal > 450) {
+                wrapper.style.width = `${widthVal - movementX}px`;
+                wrapper.style.height = `450px`;
             } else {
                 wrapper.style.width = `${widthVal - movementX}px`;
                 wrapper.style.height = `${heightVal - movementY}px`;
-                if (heightVal > 33) {
+                if (heightVal < 450 && heightVal > 33) {
                     wrapper.style.top = `${topVal + movementY}px`;
                 }
-                if (widthVal > 33) {
+                if (widthVal < 1100 && widthVal > 33) {
                     wrapper.style.left = `${leftVal + movementX}px`;
                 }
             }

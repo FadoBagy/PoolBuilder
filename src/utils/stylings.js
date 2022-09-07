@@ -20,6 +20,8 @@ const circleResultGeometricStatsEl = document.querySelector('#circle-stats .geom
 const triangleResultGeneralStatsEl = document.querySelector('#triangle-stats .general-stats');
 const triangleResultGeometricStatsEl = document.querySelector('#triangle-stats .geometric-stats');
 
+const resizersEl = document.querySelectorAll('.resizer');
+
 export function activeStitisticsButtonsStyings(element, array) {
 
     if (element.classList.contains('active-stat')) {
@@ -145,4 +147,10 @@ export function geometricResultView() {
             }
         }
     }
+}
+
+export function showResizer() {
+    resizersEl.forEach(resizer => {
+        resizer.setAttribute('style', 'display: block;');
+    });
 }

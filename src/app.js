@@ -18,9 +18,6 @@ import {
     geometricResultView
 } from './utils/stylings.js';
 
-import { pool } from './utils/creating/pool.js';
-pool();
-
 const rectangleCalculationlRows = document.querySelectorAll('#rectangle-stats tbody tr');
 const circleCalculationlRows = document.querySelectorAll('#circle-stats tbody tr');
 const triangleCalculationlRows = document.querySelectorAll('#triangle-stats tbody tr');
