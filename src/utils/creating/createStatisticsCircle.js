@@ -1,4 +1,4 @@
-import { setStatisticsCircle } from "../animations.js";
+import { animateNumbers } from "../animations.js";
 
 const volumeResultEl = document.querySelector('#circle-stats .general-stats tbody tr:nth-child(1) td:nth-child(2)');
 const litersResultEl = document.querySelector('#circle-stats .general-stats tbody tr:nth-child(2) td:nth-child(2)');
@@ -26,7 +26,14 @@ export function makeStatisticsCircle(diameter, width, depth1, depth2) {
     let radius = diameter / 2;
     let diameterResult = diameter;
 
-    setStatisticsCircle(volume, liters, perimeter, area, radius, diameterResult);
+    animateNumbers(volumeResultEl, 'm<sup>3</sup>', volume);
+    animateNumbers(litersResultEl, 'l', liters);
+    animateNumbers(perimeterResultEl, 'm', perimeter);
+    animateNumbers(areaResultEl, 'm<sup>2</sup>', area);
+    animateNumbers(radiusResultEl, 'm', radius);
+    animateNumbers(diameterResultEl, 'm', diameterResult);
+    animateNumbers(geometricVolumeResultEl, 'm<sup>3</sup>', volume);
+    animateNumbers(geometricLitersResultEl, 'l', liters);
 }
 
 export function resetStatisticsCircle() {

@@ -1,4 +1,4 @@
-import { setStatisticsRectangle } from "../animations.js";
+import { animateNumbers } from "../animations.js";
 
 const volumeResultEl = document.querySelector('#rectangle-stats .general-stats tbody tr:nth-child(1) td:nth-child(2)');
 const litersResultEl = document.querySelector('#rectangle-stats .general-stats tbody tr:nth-child(2) td:nth-child(2)');
@@ -31,7 +31,14 @@ export function makeStatisticsRectangle(width, height, depth1, depth2) {
     let diagonal = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
     let inradius = shortSide / 2;
 
-    setStatisticsRectangle(volume, liters, perimeter, area, diagonal, inradius);
+    animateNumbers(volumeResultEl, 'm<sup>3</sup>', volume);
+    animateNumbers(litersResultEl, 'l', liters);
+    animateNumbers(perimeterResultEl, 'm', perimeter);
+    animateNumbers(areaResultEl, 'm<sup>2</sup>', area);
+    animateNumbers(diagonalResultEl, 'm', diagonal);
+    animateNumbers(inradiusResultEl, 'm', inradius);
+    animateNumbers(geometricVolumeResultEl, 'm<sup>3</sup>', volume);
+    animateNumbers(geometricLitersResultEl, 'l', liters);
 };
 
 export function resetStatisticsRectangle() {

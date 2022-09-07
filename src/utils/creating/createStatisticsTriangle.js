@@ -1,4 +1,4 @@
-import { setStatisticsTriangle } from "../animations.js";
+import { animateNumbers } from "../animations.js";
 
 const volumeResultEl = document.querySelector('#triangle-stats .general-stats tbody tr:nth-child(1) td:nth-child(2)');
 const litersResultEl = document.querySelector('#triangle-stats .general-stats tbody tr:nth-child(2) td:nth-child(2)');
@@ -21,7 +21,12 @@ export function makeStatisticsTriangle(sideA, sideB, sideC, heightH, depth1, dep
     let liters = area * averageDepth * 1000;
     let perimeter = sideA + sideB + sideC;
 
-    setStatisticsTriangle(volume, liters, perimeter, area)
+    animateNumbers(volumeResultEl, 'm<sup>3</sup>', volume);
+    animateNumbers(litersResultEl, 'l', liters);
+    animateNumbers(perimeterResultEl, 'm', perimeter);
+    animateNumbers(areaResultEl, 'm<sup>2</sup>', area);
+    animateNumbers(geometricVolumeResultEl, 'm<sup>3</sup>', volume);
+    animateNumbers(geometricLitersResultEl, 'l', liters);
 };
 
 export function resetStatisticsTriangle() {
