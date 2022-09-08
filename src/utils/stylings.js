@@ -22,24 +22,90 @@ const triangleResultGeometricStatsEl = document.querySelector('#triangle-stats .
 
 const resizersEl = document.querySelectorAll('.resizer');
 
-export function activeStitisticsButtonsStyings(element, array) {
+const rectangleIconsEl = document.querySelector('.rectangle-icons');
+const circleIconsEl = document.querySelector('.circle-icons');
+const triangleIconsEl = document.querySelector('.triangle-icons');
 
+const poolWrapperEl = document.querySelector('.wrapper');
+
+export function activeStitisticsButtonsStyings(element, array) {
     if (element.classList.contains('active-stat')) {
         element.classList.remove('active-stat');
         element.setAttribute('style',
             'cursor: pointer; transition: 80ms;');
+
+        removeIconsStyle();
     } else {
         for (const btn of array) {
             btn.removeAttribute('style');
             btn.removeAttribute('class');
             btn.setAttribute('style',
                 'cursor: pointer; transition: 80ms;');
+
+            removeIconsStyle();
         }
 
         element.classList.add('active-stat');
         element.setAttribute('style',
             'cursor: pointer; background-color: #b9c169;');
+
+        addIconsStyle(element);
     }
+}
+
+function addIconsStyle(element) {
+    if (element.parentElement.parentElement.parentElement.id == 'rectangle-stats') {
+        if (element.children[0].textContent == 'Perimeter') {
+            document.querySelector('.wrapper').classList.add('active-stat-border');
+            document.querySelector('.rectangle-icons img[alt="perimeter"]').classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Surface area') {
+            document.querySelector('.area-holder').classList.add('active-stat-area');
+            document.querySelector('.rectangle-icons img[alt="area"]').classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Volume') {
+            document.querySelector('.rectangle-icons img[alt="volume"]').classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Liters') {
+            document.querySelector('.rectangle-icons img[alt="liters"]').classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Diagonal') {
+            document.querySelector('.line').classList.add('active-stat-line');
+            document.querySelector('.rectangle-icons img[alt="diagonal"]').classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Inradius') {
+            document.querySelector('.inner-circle').classList.add('active-stat-border');
+            document.querySelector('.inRadiusLine').classList.add('active-stat-background');
+            document.querySelector('.rectangle-icons img[alt="radius"]').classList.add('active-pool-icons-img');
+        }
+    } else if (element.parentElement.parentElement.parentElement.id == 'circle-stats') {
+        // if (element.children[0].textContent == 'Perimeter') {
+        //     document.querySelector('.wrapper').classList.add('active-stat-border');
+        //     document.querySelector('.circle-icons img[alt="perimeter"]').classList.add('active-pool-icons-img');
+        // } else if (element.children[0].textContent == 'Surface area') {
+        //     document.querySelector('.area-holder').classList.add('active-stat-area');
+        //     document.querySelector('.circle-icons img[alt="area"]').classList.add('active-pool-icons-img');
+        // } else if (element.children[0].textContent == 'Volume') {
+        //     document.querySelector('.circle-icons img[alt="volume"]').classList.add('active-pool-icons-img');
+        // } else if (element.children[0].textContent == 'Liters') {
+        //     document.querySelector('.circle-icons img[alt="liters"]').classList.add('active-pool-icons-img');
+        // } else if (element.children[0].textContent == 'Radius') {
+        //     // Implement
+        // } else if (element.children[0].textContent == 'Diameter') {
+        //     // Implement
+        // }
+    } else if (element.parentElement.parentElement.parentElement.id == 'triangle-stats') {
+
+    }
+}
+
+function removeIconsStyle() {
+    document.querySelector('.wrapper').classList.remove("active-stat-border");
+    document.querySelector('.area-holder').classList.remove("active-stat-area");
+    document.querySelector('.line').classList.remove('active-stat-line');
+    document.querySelector('.inner-circle').classList.remove('active-stat-border');
+    document.querySelector('.inRadiusLine').classList.remove('active-stat-background');
+    document.querySelector('.rectangle-icons img[alt="perimeter"]').classList.remove('active-pool-icons-img');
+    document.querySelector('.rectangle-icons img[alt="area"]').classList.remove('active-pool-icons-img');
+    document.querySelector('.rectangle-icons img[alt="volume"]').classList.remove('active-pool-icons-img');
+    document.querySelector('.rectangle-icons img[alt="liters"]').classList.remove('active-pool-icons-img');
+    document.querySelector('.rectangle-icons img[alt="diagonal"]').classList.remove('active-pool-icons-img');
+    document.querySelector('.rectangle-icons img[alt="radius"]').classList.remove('active-pool-icons-img');
 }
 
 export function removeAllActiveStitisticsButtonsStyings(array) {
@@ -69,6 +135,10 @@ export function rectangleDispayView() {
     circleStatsBtnEl.style.display = 'none';
     triangleStatsBtnEl.style.display = 'none';
 
+    rectangleIconsEl.style.display = 'block';
+    circleIconsEl.style.display = 'none';
+    triangleIconsEl.style.display = 'none';
+
     circleErrorMsgEl.textContent = '';
     triangleErrorMsgEl.textContent = '';
 }
@@ -82,6 +152,10 @@ export function circleDispayView() {
     circleStatsBtnEl.style.display = 'flex';
     triangleStatsBtnEl.style.display = 'none';
 
+    rectangleIconsEl.style.display = 'none';
+    circleIconsEl.style.display = 'block';
+    triangleIconsEl.style.display = 'none';
+
     rectangleErrorMsgEl.textContent = '';
     triangleErrorMsgEl.textContent = '';
 }
@@ -94,6 +168,10 @@ export function triangleDispayView() {
     rectangleStatsBtnEl.style.display = 'none';
     circleStatsBtnEl.style.display = 'none';
     triangleStatsBtnEl.style.display = 'flex';
+
+    rectangleIconsEl.style.display = 'none';
+    circleIconsEl.style.display = 'none';
+    triangleIconsEl.style.display = 'block';
 
     rectangleErrorMsgEl.textContent = '';
     circleErrorMsgEl.textContent = '';

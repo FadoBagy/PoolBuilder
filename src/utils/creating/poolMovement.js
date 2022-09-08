@@ -1,6 +1,7 @@
 import { showResizer } from "../stylings.js";
+import { makeStatisticsRectangle } from "./createStatisticsRectangle.js";
 
-export function poolMovement() {
+export function poolMovement(deepDepth, shallowDepth) {
     const poolSection = document.querySelector('#pool-section');
     const wrapper = document.querySelector('.wrapper'),
         section = wrapper.querySelector('section');
@@ -78,7 +79,23 @@ export function poolMovement() {
             poolSection.addEventListener("mousemove", onResize);
         });
 
-        document.addEventListener('mouseup', () => {
+        poolSection.addEventListener('mouseup', () => {
+            let getStyle = window.getComputedStyle(wrapper);
+            let widthVal = parseInt(getStyle.width);
+            let heightVal = parseInt(getStyle.height);
+
+            if (widthVal && heightVal && isResizing) {
+                makeStatisticsRectangle((widthVal / 10), (heightVal / 10), deepDepth, shallowDepth);
+            }
+
+            if (currentResizer) {
+                currentResizer.removeAttribute('style');
+            }
+
+            for (const resizer of resizers) {
+                resizer.classList.add('hover-side');
+            }
+
             stopResize();
         });
     }
@@ -89,20 +106,41 @@ export function poolMovement() {
         let heightVal = parseInt(getStyle.height);
         let leftVal = parseInt(getStyle.left);
         let topVal = parseInt(getStyle.top);
+        let shortSide;
+
+        for (const resizer of resizers) {
+            resizer.classList.remove('hover-side');
+        }
+
+        if (widthVal > heightVal) {
+            shortSide = heightVal;
+        } else { shortSide = widthVal; }
+
+        currentResizer.setAttribute('style', 'border-color: #42855B');
+        document.querySelector('.inner-circle').setAttribute('style', `width: ${shortSide}px;`);
+
+        if (document.querySelector('#size-input input[name="width"]').value && document.querySelector('#size-input input[name="height"]').value) {
+            document.querySelector('#size-input input[name="width"]').value = widthVal / 10;
+            document.querySelector('#size-input input[name="height"]').value = heightVal / 10;
+        }
 
         if (currentResizer.classList.contains("se")) {
             if (widthVal < 30) {
                 wrapper.style.width = `30px`;
                 wrapper.style.height = `${heightVal + movementY}px`;
+                // poolSection.removeEventListener("mousemove", onResize);
             } else if (heightVal < 30) {
                 wrapper.style.width = `${widthVal + movementX}px`;
                 wrapper.style.height = `30px`;
+                // poolSection.removeEventListener("mousemove", onResize);
             } else if (widthVal > 1100) {
                 wrapper.style.width = `1100px`;
                 wrapper.style.height = `${heightVal + movementY}px`;
+                // poolSection.removeEventListener("mousemove", onResize);
             } else if (heightVal > 450) {
                 wrapper.style.width = `${widthVal + movementX}px`;
                 wrapper.style.height = `450px`;
+                // poolSection.removeEventListener("mousemove", onResize);
             } else {
                 wrapper.style.width = `${widthVal + movementX}px`;
                 wrapper.style.height = `${heightVal + movementY}px`;

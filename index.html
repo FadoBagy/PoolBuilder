@@ -34,21 +34,25 @@
                             <div class="section">
                                 <div class="subsection">
                                     <label for="width">Width</label>
-                                    <input type="number" name="width" min="0" autocomplete="off" step="any" value="50">
+                                    <input type="number" name="width" min="0" autocomplete="off" step="any" value="0"
+                                        onClick="this.select();">
                                 </div>
                                 <div class="subsection">
                                     <label for="height">Height</label>
-                                    <input type="number" name="height" min="0" autocomplete="off" step="any" value="25">
+                                    <input type="number" name="height" min="0" autocomplete="off" step="any" value="0"
+                                        onClick="this.select();">
                                 </div>
                             </div>
                             <div class="section">
                                 <div class="subsection">
                                     <label for="depth1">Deepest point</label>
-                                    <input type="number" name="depth1" min="0" autocomplete="off" step="any" value="5">
+                                    <input type="number" name="depth1" min="0" autocomplete="off" step="any" value="0"
+                                        onClick="this.select();">
                                 </div>
                                 <div class="subsection">
                                     <label for="depth2">Shallowest point</label>
-                                    <input type="number" name="depth2" min="0" autocomplete="off" step="any">
+                                    <input type="number" name="depth2" min="0" autocomplete="off" step="any"
+                                        onClick="this.select();">
                                 </div>
                             </div>
                             <input type="submit" value="Calculate">
@@ -288,7 +292,32 @@
             </section>
 
             <section id="visualization-section">
+                <div class="pool-icons">
+                    <div class="rectangle-icons">
+                        <img src="./images/pool-icons/perimeter.png" alt="perimeter">
+                        <img src="./images/pool-icons/area.png" alt="area">
+                        <img src="./images/pool-icons/diagonal.png" alt="diagonal">
+                        <img src="./images/pool-icons/radius.png" alt="radius">
+                        <img src="./images/pool-icons/volume.png" alt="volume">
+                        <img src="./images/pool-icons/liters.png" alt="liters">
+                    </div>
+                    <div class="circle-icons" style="display: none;">
+                        <img src="./images/pool-icons/perimeter.png" alt="perimeter">
+                        <img src="./images/pool-icons/area.png" alt="area">
+                        <img src="./images/pool-icons/radius.png" alt="radius">
+                        <img src="./images/pool-icons/diameter.png" alt="diameter">
+                        <img src="./images/pool-icons/volume.png" alt="volume">
+                        <img src="./images/pool-icons/liters.png" alt="liters">
+                    </div>
+                    <div class="triangle-icons" style="display: none;">
+                        <img src="./images/pool-icons/perimeter.png" alt="perimeter">
+                        <img src="./images/pool-icons/area.png" alt="area">
+                        <img src="./images/pool-icons/volume.png" alt="volume">
+                        <img src="./images/pool-icons/liters.png" alt="liters">
+                    </div>
+                </div>
                 <section id="pool-section">
+
                 </section>
             </section>
         </section>

@@ -1,13 +1,17 @@
 .wrapper {
     position: relative;
-    top: calc(50% - 50px);
-    left: calc(50% - 50px);
+    top: 10px;
+    left: 10px;
+    border: 2px solid #25316D;
 }
 
 .wrapper section {
     width: 100%;
     height: 100%;
-    background: orange;
+    background-color: #25316D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .wrapper section.active {
@@ -23,33 +27,99 @@
 }
 
 .nw {
-    top: -1px;
-    left: -1px;
+    top: -3px;
+    left: -3px;
     cursor: nw-resize;
-    border-top: 7px solid blueviolet;
-    border-left: 7px solid blueviolet;
+    border-top: 7px solid #90B77D;
+    border-left: 7px solid #90B77D;
+    transition: 100ms;
 }
 
 .ne {
-    top: -1px;
-    right: -1px;
+    top: -3px;
+    right: -3px;
     cursor: ne-resize;
-    border-top: 7px solid blueviolet;
-    border-right: 7px solid blueviolet;
+    border-top: 7px solid #90B77D;
+    border-right: 7px solid #90B77D;
+    transition: 100ms;
 }
 
 .sw {
-    bottom: -1px;
-    left: -1px;
+    bottom: -3px;
+    left: -3px;
     cursor: sw-resize;
-    border-bottom: 7px solid blueviolet;
-    border-left: 7px solid blueviolet;
+    border-bottom: 7px solid #90B77D;
+    border-left: 7px solid #90B77D;
+    transition: 100ms;
 }
 
 .se {
-    bottom: -1px;
-    right: -1px;
+    bottom: -3px;
+    right: -3px;
     cursor: se-resize;
-    border-bottom: 7px solid blueviolet;
-    border-right: 7px solid blueviolet;
+    border-bottom: 7px solid #90B77D;
+    border-right: 7px solid #90B77D;
+    transition: 100ms;
+}
+
+.hover-side:hover {
+    border-color: #42855B;
+}
+
+.inner-circle {
+    position: absolute;
+    height: calc(100% - 3px);
+    border-radius: 50%;
+    border: 2px solid #25316d00;
+    display: flex;
+    align-items: center;
+}
+
+.inRadiusLine {
+    width: 50%;
+    height: 2px;
+    background-color: #25316d00;
+}
+
+.line {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(to top left,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0) calc(50% - 2px),
+            #25316d00 50%,
+            rgba(0, 0, 0, 0) calc(50% + 2px),
+            rgba(0, 0, 0, 0) 100%) !important;
+}
+
+
+.area-holder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.active-stat-border {
+    border-color: #97D2EC;
+}
+
+.active-stat-background {
+    background-color: #97D2EC;
+}
+
+.active-stat-area {
+    background-color: #97D2EC !important;
+    opacity: 30%;
+}
+
+.active-stat-line {
+    background:
+        linear-gradient(to top left,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0) calc(50% - 2px),
+            #97D2EC 50%,
+            rgba(0, 0, 0, 0) calc(50% + 2px),
+            rgba(0, 0, 0, 0) 100%) !important;
 }

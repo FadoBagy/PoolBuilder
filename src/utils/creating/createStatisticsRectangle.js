@@ -15,7 +15,7 @@ export function makeStatisticsRectangle(width, height, depth1, depth2) {
     let shortSide;
 
     if (depth2) {
-        averageDepth = (depth1 + depth2) / 2;
+        averageDepth = (parseInt(depth1) + parseInt(depth2)) / 2;
     } else {
         averageDepth = depth1;
     }
@@ -24,8 +24,15 @@ export function makeStatisticsRectangle(width, height, depth1, depth2) {
         shortSide = height;
     } else { shortSide = width; }
 
-    let volume = height * width * averageDepth;
-    let liters = height * width * averageDepth * 1000;
+    let volume;
+    let liters;
+    if (!depth1 && !depth2) {
+        volume = 0;
+        liters = 0;
+    } else {
+        volume = height * width * averageDepth;
+        liters = height * width * averageDepth * 1000;
+    }
     let perimeter = 2 * (height + width);
     let area = width * height;
     let diagonal = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
