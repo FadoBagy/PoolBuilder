@@ -16,12 +16,15 @@ export function validateCircleForm(form) {
     let poolDepth1 = parseFloat(formData.get('depth1'));
     let poolDepth2 = parseFloat(formData.get('depth2'));
 
-    if (poolDiameter >= 1 && poolWidth >= 1 && poolDepth1 > 0) {
+    if (
+        poolDiameter >= 1 && poolDiameter <= 100000000 &&
+        poolWidth >= 1 && poolWidth <= 100000000 &&
+        poolDepth1 > 0 && poolDepth1 <= 100000000 &&
+        poolDepth2 <= 100000000
+    ) {
         createPoolCircle(poolDiameter, poolWidth, poolDepth1, poolDepth2);
         makeStatisticsCircle(poolDiameter, poolWidth, poolDepth1, poolDepth2);
-
         circleErrorMsgEl.textContent = '';
-
         if (poolDepth2) {
             deepDepth.value = poolDepth1;
             shallowDepth.value = poolDepth2;
@@ -32,21 +35,19 @@ export function validateCircleForm(form) {
     } else {
         if (!poolDiameter) {
             circleErrorMsgEl.textContent = 'Enter number for diameter';
-        }
-        else if (!poolWidth) {
+        } else if (!poolWidth) {
             circleErrorMsgEl.textContent = 'Enter number for width';
-        }
-        else if (!poolDepth1) {
+        } else if (!poolDepth1) {
             circleErrorMsgEl.textContent = 'Enter number for deepest point';
         }
 
-        if (poolWidth < 1) {
+        if (poolWidth < 1 || poolWidth > 100000000) {
             circleErrorMsgEl.textContent = 'Enter valid number for width';
-        } else if (poolDiameter < 1) {
+        } else if (poolDiameter < 1 || poolDiameter > 100000000) {
             circleErrorMsgEl.textContent = 'Enter valid number for diameter';
-        } else if (poolDepth1 < 0) {
+        } else if (poolDepth1 < 1 || poolDepth1 > 100000000) {
             circleErrorMsgEl.textContent = 'Enter valid number for deepest point';
-        } else if (poolDepth2 < 0) {
+        } else if (poolDepth2 < 1 || poolDepth2 > 100000000) {
             circleErrorMsgEl.textContent = 'Enter valid number for the shallow point';
         }
     }

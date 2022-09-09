@@ -3,8 +3,8 @@ import { makeStatisticsRectangle } from "./createStatisticsRectangle.js";
 
 export function poolMovement(deepDepth, shallowDepth) {
     const poolSection = document.querySelector('#pool-section');
-    const wrapper = document.querySelector('.wrapper'),
-        section = wrapper.querySelector('section');
+    const wrapper = document.querySelector('.wrapper');
+    const section = wrapper.querySelector('section');
 
     showResizer();
 

@@ -15,13 +15,16 @@ export function validateRectangleForm(form) {
     let poolHeight = parseFloat(formData.get('height'));
     let poolDepth1 = parseFloat(formData.get('depth1'));
     let poolDepth2 = parseFloat(formData.get('depth2'));
-
-    if (poolWidth >= 1 && poolHeight >= 1 && poolDepth1 > 0) {
+    100000000
+    if (
+        poolWidth >= 1 && poolWidth <= 100000000 &&
+        poolHeight >= 1 && poolHeight <= 100000000 &&
+        poolDepth1 > 0 && poolDepth1 <= 100000000 &&
+        poolDepth2 <= 100000000
+    ) {
         createPoolRectangle(poolWidth, poolHeight, poolDepth1, poolDepth2);
         makeStatisticsRectangle(poolWidth, poolHeight, poolDepth1, poolDepth2);
-
         rectangleErrorMsgEl.textContent = '';
-
         if (poolDepth2) {
             deepDepth.value = poolDepth1;
             shallowDepth.value = poolDepth2;
@@ -38,13 +41,13 @@ export function validateRectangleForm(form) {
             rectangleErrorMsgEl.textContent = 'Enter number for deepest point';
         }
 
-        if (poolWidth < 1) {
+        if (poolWidth < 1 || poolWidth > 100000000) {
             rectangleErrorMsgEl.textContent = 'Enter valid number for width';
-        } else if (poolHeight < 1) {
+        } else if (poolHeight < 1 || poolHeight > 100000000) {
             rectangleErrorMsgEl.textContent = 'Enter valid number for height';
-        } else if (poolDepth1 < 0) {
+        } else if (poolDepth1 < 1 || poolDepth1 > 100000000) {
             rectangleErrorMsgEl.textContent = 'Enter valid number for deepest point';
-        } else if (poolDepth2 < 0) {
+        } else if (poolDepth2 < 1 || poolDepth2 > 100000000) {
             rectangleErrorMsgEl.textContent = 'Enter valid number for the shallow point';
         }
     }

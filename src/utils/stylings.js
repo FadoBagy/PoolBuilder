@@ -59,6 +59,10 @@ function addIconsStyle(element) {
     const poolInRadiusLineEl = document.querySelector('.inRadiusLine');
     const diameterCircleEl = document.querySelector('.diameter-circle');
     const radiusCircleEl = document.querySelector('.radius-circle');
+    const triangleMiddleEl = document.querySelector('.triangle-middle');
+    const leftSideTriangleEl = document.querySelector('.left-side');
+    const rightSideTriangleEl = document.querySelector('.right-side');
+    const bottomSideTriangleEl = document.querySelector('.bottom-side');
 
     const perimeterIconElRectangle = document.querySelector('.rectangle-icons img[alt="perimeter"]');
     const areaIconElRectangle = document.querySelector('.rectangle-icons img[alt="area"]');
@@ -74,6 +78,11 @@ function addIconsStyle(element) {
     const radiusIconElCircle = document.querySelector('.circle-icons img[alt="radius"]');
     const diameterIconElCircle = document.querySelector('.circle-icons img[alt="diameter"]');
 
+    const perimeterIconElTriangle = document.querySelector('.triangle-icons img[alt="perimeter"]');
+    const areaIconElTriangle = document.querySelector('.triangle-icons img[alt="area"]');
+    const volumeIconElTriangle = document.querySelector('.triangle-icons img[alt="volume"]');
+    const litersIconElTriangle = document.querySelector('.triangle-icons img[alt="liters"]');
+
     if (
         poolWrapperEl &&
         poolAreaHolderEl &&
@@ -87,27 +96,23 @@ function addIconsStyle(element) {
         diagonalIconElRectangle &&
         radiusIconElRectangle
     ) {
-        if (element.parentElement.parentElement.parentElement.id == 'rectangle-stats') {
-
-            if (element.children[0].textContent == 'Perimeter') {
-                poolWrapperEl.classList.add('active-stat-border');
-                perimeterIconElRectangle.classList.add('active-pool-icons-img');
-            } else if (element.children[0].textContent == 'Surface area') {
-                poolAreaHolderEl.classList.add('active-stat-area');
-                areaIconElRectangle.classList.add('active-pool-icons-img');
-            } else if (element.children[0].textContent == 'Volume') {
-                volumeIconElRectangle.classList.add('active-pool-icons-img');
-            } else if (element.children[0].textContent == 'Liters') {
-                litersIconElRectangle.classList.add('active-pool-icons-img');
-            } else if (element.children[0].textContent == 'Diagonal') {
-                poolLineEl.classList.add('active-stat-line');
-                diagonalIconElRectangle.classList.add('active-pool-icons-img');
-            } else if (element.children[0].textContent == 'Inradius') {
-                poolInnerCircleEl.classList.add('active-stat-border');
-                poolInRadiusLineEl.classList.add('active-stat-background');
-                radiusIconElRectangle.classList.add('active-pool-icons-img');
-            }
-
+        if (element.children[0].textContent == 'Perimeter') {
+            poolWrapperEl.classList.add('active-stat-border');
+            perimeterIconElRectangle.classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Surface area') {
+            poolAreaHolderEl.classList.add('active-stat-area');
+            areaIconElRectangle.classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Volume') {
+            volumeIconElRectangle.classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Liters') {
+            litersIconElRectangle.classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Diagonal') {
+            poolLineEl.classList.add('active-stat-line');
+            diagonalIconElRectangle.classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Inradius') {
+            poolInnerCircleEl.classList.add('active-stat-border');
+            poolInRadiusLineEl.classList.add('active-stat-background');
+            radiusIconElRectangle.classList.add('active-pool-icons-img');
         }
     } else if (
         poolWrapperEl &&
@@ -136,6 +141,30 @@ function addIconsStyle(element) {
             diameterCircleEl.classList.add('active-stat-background', 'visible-block');
             diameterIconElCircle.classList.add('active-pool-icons-img');
         }
+    } else if (
+        poolWrapperEl &&
+        triangleMiddleEl &&
+        leftSideTriangleEl &&
+        rightSideTriangleEl &&
+        bottomSideTriangleEl &&
+        perimeterIconElTriangle &&
+        areaIconElTriangle &&
+        volumeIconElTriangle &&
+        litersIconElTriangle
+    ) {
+        if (element.children[0].textContent == 'Perimeter') {
+            leftSideTriangleEl.classList.add('active-stat-border-right');
+            rightSideTriangleEl.classList.add('active-stat-border-right');
+            bottomSideTriangleEl.classList.add('active-stat-border-top');
+            perimeterIconElTriangle.classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Surface area') {
+            triangleMiddleEl.classList.add('active-stat-border-bottom');
+            areaIconElTriangle.classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Volume') {
+            volumeIconElTriangle.classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Liters') {
+            litersIconElTriangle.classList.add('active-pool-icons-img');
+        }
     }
 }
 
@@ -147,6 +176,10 @@ export function removeIconsStyle() {
     const poolInRadiusLineEl = document.querySelector('.inRadiusLine');
     const diameterCircleEl = document.querySelector('.diameter-circle');
     const radiusCircleEl = document.querySelector('.radius-circle');
+    const triangleMiddleEl = document.querySelector('.triangle-middle');
+    const leftSideTriangleEl = document.querySelector('.left-side');
+    const rightSideTriangleEl = document.querySelector('.right-side');
+    const bottomSideTriangleEl = document.querySelector('.bottom-side');
 
     const perimeterIconElRectangle = document.querySelector('.rectangle-icons img[alt="perimeter"]');
     const areaIconElRectangle = document.querySelector('.rectangle-icons img[alt="area"]');
@@ -161,6 +194,11 @@ export function removeIconsStyle() {
     const litersIconElCircle = document.querySelector('.circle-icons img[alt="liters"]');
     const radiusIconElCircle = document.querySelector('.circle-icons img[alt="radius"]');
     const diameterIconElCircle = document.querySelector('.circle-icons img[alt="diameter"]');
+
+    const perimeterIconElTriangle = document.querySelector('.triangle-icons img[alt="perimeter"]');
+    const areaIconElTriangle = document.querySelector('.triangle-icons img[alt="area"]');
+    const volumeIconElTriangle = document.querySelector('.triangle-icons img[alt="volume"]');
+    const litersIconElTriangle = document.querySelector('.triangle-icons img[alt="liters"]');
 
     if (
         poolWrapperEl &&
@@ -208,6 +246,28 @@ export function removeIconsStyle() {
         litersIconElCircle.classList.remove('active-pool-icons-img');
         radiusIconElCircle.classList.remove('active-pool-icons-img');
         diameterIconElCircle.classList.remove('active-pool-icons-img');
+    } else if (
+        poolWrapperEl &&
+        triangleMiddleEl &&
+        leftSideTriangleEl &&
+        rightSideTriangleEl &&
+        bottomSideTriangleEl &&
+        perimeterIconElTriangle &&
+        areaIconElTriangle &&
+        volumeIconElTriangle &&
+        litersIconElTriangle
+    ) {
+        poolWrapperEl.classList.remove('active-stat-border');
+        triangleMiddleEl.classList.remove('active-stat-border-bottom');
+
+        leftSideTriangleEl.classList.remove('active-stat-border-right');
+        rightSideTriangleEl.classList.remove('active-stat-border-right');
+        bottomSideTriangleEl.classList.remove('active-stat-border-top');
+
+        perimeterIconElTriangle.classList.remove('active-pool-icons-img');
+        areaIconElTriangle.classList.remove('active-pool-icons-img');
+        volumeIconElTriangle.classList.remove('active-pool-icons-img');
+        litersIconElTriangle.classList.remove('active-pool-icons-img');
     }
 
 }
