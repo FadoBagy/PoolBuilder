@@ -94,7 +94,7 @@ function addIconsStyle(element) {
     }
 }
 
-function removeIconsStyle() {
+export function removeIconsStyle() {
     document.querySelector('.wrapper').classList.remove("active-stat-border");
     document.querySelector('.area-holder').classList.remove("active-stat-area");
     document.querySelector('.line').classList.remove('active-stat-line');

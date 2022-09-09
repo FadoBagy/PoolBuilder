@@ -15,7 +15,8 @@ import {
     resetPoolDrawing,
     removeAllActiveStitisticsButtonsStyings,
     generalResultView,
-    geometricResultView
+    geometricResultView,
+    removeIconsStyle
 } from './utils/stylings.js';
 
 const rectangleCalculationlRows = document.querySelectorAll('#rectangle-stats tbody tr');
@@ -71,6 +72,7 @@ rectangleBtnEl.addEventListener('click', (e) => {
     generalResultView();
     activePrimaryButtonsStyling(resultBtnSectionElArray[0], resultBtnSectionElArray);
 
+    removeIconsStyle();
     removeAllActiveStitisticsButtonsStyings(rectangleCalculationlRows);
     resetStatisticsCircle();
     resetStatisticsTriangle();
@@ -83,6 +85,7 @@ circleBtnEl.addEventListener('click', (e) => {
     generalResultView();
     activePrimaryButtonsStyling(resultBtnSectionElArray[0], resultBtnSectionElArray);
 
+    removeIconsStyle();
     removeAllActiveStitisticsButtonsStyings(circleCalculationlRows);
     resetStatisticsRectangle();
     resetStatisticsTriangle();
@@ -95,6 +98,7 @@ triangleBtnEl.addEventListener('click', (e) => {
     generalResultView();
     activePrimaryButtonsStyling(resultBtnSectionElArray[0], resultBtnSectionElArray);
 
+    removeIconsStyle();
     removeAllActiveStitisticsButtonsStyings(triangleCalculationlRows);
     resetStatisticsRectangle();
     resetStatisticsCircle();
