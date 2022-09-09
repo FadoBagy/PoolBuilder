@@ -44,8 +44,6 @@ export function validateRectangleForm(form) {
             rectangleErrorMsgEl.textContent = 'Enter valid number for height';
         } else if (poolDepth1 < 0) {
             rectangleErrorMsgEl.textContent = 'Enter valid number for deepest point';
-        } else if (poolDepth1 < 0) {
-            rectangleErrorMsgEl.textContent = 'Enter valid number for deepest point';
         } else if (poolDepth2 < 0) {
             rectangleErrorMsgEl.textContent = 'Enter valid number for the shallow point';
         }
@@ -80,9 +78,9 @@ export function createPoolRectangle(poolWidth, poolHeight, poolDepth1, poolDepth
         drawingHeight = 450;
     }
 
-    if (poolWidth > poolHeight) {
-        shortSide = poolHeight;
-    } else { shortSide = poolWidth; }
+    if (drawingWidth > drawingHeight) {
+        shortSide = drawingHeight;
+    } else { shortSide = drawingWidth; }
 
     const wrapperEl = document.createElement('div');
     wrapperEl.setAttribute('class', 'wrapper');
@@ -104,7 +102,7 @@ export function createPoolRectangle(poolWidth, poolHeight, poolDepth1, poolDepth
 
     const circleEl = document.createElement('div');
     circleEl.setAttribute('class', 'inner-circle');
-    circleEl.setAttribute('style', `width: ${shortSide * 10}px;`);
+    circleEl.setAttribute('style', `width: ${shortSide}px;`);
     sectionEl.appendChild(circleEl);
     const inRadiusLineEl = document.createElement('div');
     inRadiusLineEl.setAttribute('class', 'inRadiusLine');

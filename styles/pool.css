@@ -24,6 +24,7 @@
     position: absolute;
     z-index: 2;
     border-radius: 3px;
+    z-index: 200;
 }
 
 .nw {
@@ -99,6 +100,31 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    z-index: 100 !important;
+}
+
+.diameter-circle {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #25316D;
+    z-index: 5;
+}
+
+.radius-circle-holder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.radius-circle {
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    background-color: #25316D;
 }
 
 .active-stat-border {
@@ -122,4 +148,12 @@
             #97D2EC 50%,
             rgba(0, 0, 0, 0) calc(50% + 2px),
             rgba(0, 0, 0, 0) 100%) !important;
+}
+
+.circle-radius {
+    border-radius: 50% !important;
+}
+
+.visible-block {
+    display: block !important;
 }

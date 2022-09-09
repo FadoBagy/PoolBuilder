@@ -26,8 +26,6 @@ const rectangleIconsEl = document.querySelector('.rectangle-icons');
 const circleIconsEl = document.querySelector('.circle-icons');
 const triangleIconsEl = document.querySelector('.triangle-icons');
 
-const poolWrapperEl = document.querySelector('.wrapper');
-
 export function activeStitisticsButtonsStyings(element, array) {
     if (element.classList.contains('active-stat')) {
         element.classList.remove('active-stat');
@@ -54,58 +52,164 @@ export function activeStitisticsButtonsStyings(element, array) {
 }
 
 function addIconsStyle(element) {
-    if (element.parentElement.parentElement.parentElement.id == 'rectangle-stats') {
-        if (element.children[0].textContent == 'Perimeter') {
-            document.querySelector('.wrapper').classList.add('active-stat-border');
-            document.querySelector('.rectangle-icons img[alt="perimeter"]').classList.add('active-pool-icons-img');
-        } else if (element.children[0].textContent == 'Surface area') {
-            document.querySelector('.area-holder').classList.add('active-stat-area');
-            document.querySelector('.rectangle-icons img[alt="area"]').classList.add('active-pool-icons-img');
-        } else if (element.children[0].textContent == 'Volume') {
-            document.querySelector('.rectangle-icons img[alt="volume"]').classList.add('active-pool-icons-img');
-        } else if (element.children[0].textContent == 'Liters') {
-            document.querySelector('.rectangle-icons img[alt="liters"]').classList.add('active-pool-icons-img');
-        } else if (element.children[0].textContent == 'Diagonal') {
-            document.querySelector('.line').classList.add('active-stat-line');
-            document.querySelector('.rectangle-icons img[alt="diagonal"]').classList.add('active-pool-icons-img');
-        } else if (element.children[0].textContent == 'Inradius') {
-            document.querySelector('.inner-circle').classList.add('active-stat-border');
-            document.querySelector('.inRadiusLine').classList.add('active-stat-background');
-            document.querySelector('.rectangle-icons img[alt="radius"]').classList.add('active-pool-icons-img');
-        }
-    } else if (element.parentElement.parentElement.parentElement.id == 'circle-stats') {
-        // if (element.children[0].textContent == 'Perimeter') {
-        //     document.querySelector('.wrapper').classList.add('active-stat-border');
-        //     document.querySelector('.circle-icons img[alt="perimeter"]').classList.add('active-pool-icons-img');
-        // } else if (element.children[0].textContent == 'Surface area') {
-        //     document.querySelector('.area-holder').classList.add('active-stat-area');
-        //     document.querySelector('.circle-icons img[alt="area"]').classList.add('active-pool-icons-img');
-        // } else if (element.children[0].textContent == 'Volume') {
-        //     document.querySelector('.circle-icons img[alt="volume"]').classList.add('active-pool-icons-img');
-        // } else if (element.children[0].textContent == 'Liters') {
-        //     document.querySelector('.circle-icons img[alt="liters"]').classList.add('active-pool-icons-img');
-        // } else if (element.children[0].textContent == 'Radius') {
-        //     // Implement
-        // } else if (element.children[0].textContent == 'Diameter') {
-        //     // Implement
-        // }
-    } else if (element.parentElement.parentElement.parentElement.id == 'triangle-stats') {
+    const poolWrapperEl = document.querySelector('.wrapper');
+    const poolAreaHolderEl = document.querySelector('.area-holder');
+    const poolLineEl = document.querySelector('.line');
+    const poolInnerCircleEl = document.querySelector('.inner-circle');
+    const poolInRadiusLineEl = document.querySelector('.inRadiusLine');
+    const diameterCircleEl = document.querySelector('.diameter-circle');
+    const radiusCircleEl = document.querySelector('.radius-circle');
 
+    const perimeterIconElRectangle = document.querySelector('.rectangle-icons img[alt="perimeter"]');
+    const areaIconElRectangle = document.querySelector('.rectangle-icons img[alt="area"]');
+    const volumeIconElRectangle = document.querySelector('.rectangle-icons img[alt="volume"]');
+    const litersIconElRectangle = document.querySelector('.rectangle-icons img[alt="liters"]');
+    const diagonalIconElRectangle = document.querySelector('.rectangle-icons img[alt="diagonal"]');
+    const radiusIconElRectangle = document.querySelector('.rectangle-icons img[alt="radius"]');
+
+    const perimeterIconElCircle = document.querySelector('.circle-icons img[alt="perimeter"]');
+    const areaIconElCircle = document.querySelector('.circle-icons img[alt="area"]');
+    const volumeIconElCircle = document.querySelector('.circle-icons img[alt="volume"]');
+    const litersIconElCircle = document.querySelector('.circle-icons img[alt="liters"]');
+    const radiusIconElCircle = document.querySelector('.circle-icons img[alt="radius"]');
+    const diameterIconElCircle = document.querySelector('.circle-icons img[alt="diameter"]');
+
+    if (
+        poolWrapperEl &&
+        poolAreaHolderEl &&
+        poolLineEl &&
+        poolInnerCircleEl &&
+        poolInRadiusLineEl &&
+        perimeterIconElRectangle &&
+        areaIconElRectangle &&
+        volumeIconElRectangle &&
+        litersIconElRectangle &&
+        diagonalIconElRectangle &&
+        radiusIconElRectangle
+    ) {
+        if (element.parentElement.parentElement.parentElement.id == 'rectangle-stats') {
+
+            if (element.children[0].textContent == 'Perimeter') {
+                poolWrapperEl.classList.add('active-stat-border');
+                perimeterIconElRectangle.classList.add('active-pool-icons-img');
+            } else if (element.children[0].textContent == 'Surface area') {
+                poolAreaHolderEl.classList.add('active-stat-area');
+                areaIconElRectangle.classList.add('active-pool-icons-img');
+            } else if (element.children[0].textContent == 'Volume') {
+                volumeIconElRectangle.classList.add('active-pool-icons-img');
+            } else if (element.children[0].textContent == 'Liters') {
+                litersIconElRectangle.classList.add('active-pool-icons-img');
+            } else if (element.children[0].textContent == 'Diagonal') {
+                poolLineEl.classList.add('active-stat-line');
+                diagonalIconElRectangle.classList.add('active-pool-icons-img');
+            } else if (element.children[0].textContent == 'Inradius') {
+                poolInnerCircleEl.classList.add('active-stat-border');
+                poolInRadiusLineEl.classList.add('active-stat-background');
+                radiusIconElRectangle.classList.add('active-pool-icons-img');
+            }
+
+        }
+    } else if (
+        poolWrapperEl &&
+        poolAreaHolderEl &&
+        diameterCircleEl &&
+        radiusCircleEl &&
+        perimeterIconElCircle &&
+        areaIconElCircle &&
+        volumeIconElCircle &&
+        litersIconElCircle
+    ) {
+        if (element.children[0].textContent == 'Perimeter') {
+            poolWrapperEl.classList.add('active-stat-border');
+            perimeterIconElCircle.classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Surface area') {
+            poolAreaHolderEl.classList.add('active-stat-area');
+            areaIconElCircle.classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Volume') {
+            volumeIconElCircle.classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Liters') {
+            litersIconElCircle.classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Radius') {
+            radiusCircleEl.classList.add('active-stat-background');
+            radiusIconElCircle.classList.add('active-pool-icons-img');
+        } else if (element.children[0].textContent == 'Diameter') {
+            diameterCircleEl.classList.add('active-stat-background', 'visible-block');
+            diameterIconElCircle.classList.add('active-pool-icons-img');
+        }
     }
 }
 
 export function removeIconsStyle() {
-    document.querySelector('.wrapper').classList.remove("active-stat-border");
-    document.querySelector('.area-holder').classList.remove("active-stat-area");
-    document.querySelector('.line').classList.remove('active-stat-line');
-    document.querySelector('.inner-circle').classList.remove('active-stat-border');
-    document.querySelector('.inRadiusLine').classList.remove('active-stat-background');
-    document.querySelector('.rectangle-icons img[alt="perimeter"]').classList.remove('active-pool-icons-img');
-    document.querySelector('.rectangle-icons img[alt="area"]').classList.remove('active-pool-icons-img');
-    document.querySelector('.rectangle-icons img[alt="volume"]').classList.remove('active-pool-icons-img');
-    document.querySelector('.rectangle-icons img[alt="liters"]').classList.remove('active-pool-icons-img');
-    document.querySelector('.rectangle-icons img[alt="diagonal"]').classList.remove('active-pool-icons-img');
-    document.querySelector('.rectangle-icons img[alt="radius"]').classList.remove('active-pool-icons-img');
+    const poolWrapperEl = document.querySelector('.wrapper');
+    const poolAreaHolderEl = document.querySelector('.area-holder');
+    const poolLineEl = document.querySelector('.line');
+    const poolInnerCircleEl = document.querySelector('.inner-circle');
+    const poolInRadiusLineEl = document.querySelector('.inRadiusLine');
+    const diameterCircleEl = document.querySelector('.diameter-circle');
+    const radiusCircleEl = document.querySelector('.radius-circle');
+
+    const perimeterIconElRectangle = document.querySelector('.rectangle-icons img[alt="perimeter"]');
+    const areaIconElRectangle = document.querySelector('.rectangle-icons img[alt="area"]');
+    const volumeIconElRectangle = document.querySelector('.rectangle-icons img[alt="volume"]');
+    const litersIconElRectangle = document.querySelector('.rectangle-icons img[alt="liters"]');
+    const diagonalIconElRectangle = document.querySelector('.rectangle-icons img[alt="diagonal"]');
+    const radiusIconElRectangle = document.querySelector('.rectangle-icons img[alt="radius"]');
+
+    const perimeterIconElCircle = document.querySelector('.circle-icons img[alt="perimeter"]');
+    const areaIconElCircle = document.querySelector('.circle-icons img[alt="area"]');
+    const volumeIconElCircle = document.querySelector('.circle-icons img[alt="volume"]');
+    const litersIconElCircle = document.querySelector('.circle-icons img[alt="liters"]');
+    const radiusIconElCircle = document.querySelector('.circle-icons img[alt="radius"]');
+    const diameterIconElCircle = document.querySelector('.circle-icons img[alt="diameter"]');
+
+    if (
+        poolWrapperEl &&
+        poolAreaHolderEl &&
+        poolLineEl &&
+        poolInnerCircleEl &&
+        poolInRadiusLineEl &&
+        perimeterIconElRectangle &&
+        areaIconElRectangle &&
+        volumeIconElRectangle &&
+        litersIconElRectangle &&
+        diagonalIconElRectangle &&
+        radiusIconElRectangle
+    ) {
+        poolWrapperEl.classList.remove("active-stat-border");
+        poolAreaHolderEl.classList.remove("active-stat-area");
+        poolLineEl.classList.remove('active-stat-line');
+        poolInnerCircleEl.classList.remove('active-stat-border');
+        poolInRadiusLineEl.classList.remove('active-stat-background');
+        perimeterIconElRectangle.classList.remove('active-pool-icons-img');
+        areaIconElRectangle.classList.remove('active-pool-icons-img');
+        volumeIconElRectangle.classList.remove('active-pool-icons-img');
+        litersIconElRectangle.classList.remove('active-pool-icons-img');
+        diagonalIconElRectangle.classList.remove('active-pool-icons-img');
+        radiusIconElRectangle.classList.remove('active-pool-icons-img');
+    } else if (
+        poolWrapperEl &&
+        poolAreaHolderEl &&
+        diameterCircleEl &&
+        radiusCircleEl &&
+        perimeterIconElCircle &&
+        areaIconElCircle &&
+        volumeIconElCircle &&
+        litersIconElCircle &&
+        radiusIconElCircle &&
+        diameterIconElCircle
+    ) {
+        poolWrapperEl.classList.remove('active-stat-border');
+        poolAreaHolderEl.classList.remove('active-stat-area');
+        diameterCircleEl.classList.remove('active-stat-background', 'visible-block');
+        radiusCircleEl.classList.remove('active-stat-background');
+        perimeterIconElCircle.classList.remove('active-pool-icons-img');
+        areaIconElCircle.classList.remove('active-pool-icons-img');
+        volumeIconElCircle.classList.remove('active-pool-icons-img');
+        litersIconElCircle.classList.remove('active-pool-icons-img');
+        radiusIconElCircle.classList.remove('active-pool-icons-img');
+        diameterIconElCircle.classList.remove('active-pool-icons-img');
+    }
+
 }
 
 export function removeAllActiveStitisticsButtonsStyings(array) {
@@ -231,4 +335,22 @@ export function showResizer() {
     resizersEl.forEach(resizer => {
         resizer.setAttribute('style', 'display: block;');
     });
+}
+export function resetInputValues() {
+    document.querySelector('#size-input input[name="width"]').value = 0;
+    document.querySelector('#size-input input[name="height"]').value = 0;
+    document.querySelector('#size-input input[name="depth1"]').value = 0;
+    document.querySelector('#size-input input[name="depth2"]').value = 0;
+
+    document.querySelector('#size-input-circle input[name="diameter"]').value = 0;
+    document.querySelector('#size-input-circle input[name="width"]').value = 0;
+    document.querySelector('#size-input-circle input[name="depth1"]').value = 0;
+    document.querySelector('#size-input-circle input[name="depth2"]').value = 0;
+
+    document.querySelector('#size-input-triangle input[name="sideA"]').value = 0;
+    document.querySelector('#size-input-triangle input[name="sideB"]').value = 0;
+    document.querySelector('#size-input-triangle input[name="sideC"]').value = 0;
+    document.querySelector('#size-input-triangle input[name="heightH"]').value = 0;
+    document.querySelector('#size-input-triangle input[name="depth1"]').value = 0;
+    document.querySelector('#size-input-triangle input[name="depth2"]').value = 0;
 }

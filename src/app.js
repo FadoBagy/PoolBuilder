@@ -16,7 +16,8 @@ import {
     removeAllActiveStitisticsButtonsStyings,
     generalResultView,
     geometricResultView,
-    removeIconsStyle
+    removeIconsStyle,
+    resetInputValues
 } from './utils/stylings.js';
 
 const rectangleCalculationlRows = document.querySelectorAll('#rectangle-stats tbody tr');
@@ -72,6 +73,7 @@ rectangleBtnEl.addEventListener('click', (e) => {
     generalResultView();
     activePrimaryButtonsStyling(resultBtnSectionElArray[0], resultBtnSectionElArray);
 
+    resetInputValues();
     removeIconsStyle();
     removeAllActiveStitisticsButtonsStyings(rectangleCalculationlRows);
     resetStatisticsCircle();
@@ -85,6 +87,7 @@ circleBtnEl.addEventListener('click', (e) => {
     generalResultView();
     activePrimaryButtonsStyling(resultBtnSectionElArray[0], resultBtnSectionElArray);
 
+    resetInputValues();
     removeIconsStyle();
     removeAllActiveStitisticsButtonsStyings(circleCalculationlRows);
     resetStatisticsRectangle();
@@ -98,6 +101,7 @@ triangleBtnEl.addEventListener('click', (e) => {
     generalResultView();
     activePrimaryButtonsStyling(resultBtnSectionElArray[0], resultBtnSectionElArray);
 
+    resetInputValues();
     removeIconsStyle();
     removeAllActiveStitisticsButtonsStyings(triangleCalculationlRows);
     resetStatisticsRectangle();
@@ -110,16 +114,25 @@ rectangleFormEl.addEventListener('submit', (e) => {
     e.preventDefault();
 
     validateRectangleForm(rectangleFormEl);
+
+    removeAllActiveStitisticsButtonsStyings(rectangleCalculationlRows);
+    removeIconsStyle();
 });
 circleFormEl.addEventListener('submit', (e) => {
     e.preventDefault();
 
     validateCircleForm(circleFormEl);
+
+    removeAllActiveStitisticsButtonsStyings(circleCalculationlRows);
+    removeIconsStyle();
 });
 triangleFormEl.addEventListener('submit', (e) => {
     e.preventDefault();
 
     validateTriangleForm(triangleFormEl);
+
+    removeAllActiveStitisticsButtonsStyings(triangleCalculationlRows);
+    removeIconsStyle();
 });
 
 // Navigating in the results section
