@@ -77,7 +77,7 @@ export function poolMovement(deepDepth, shallowDepth) {
 
             poolSection.addEventListener("mousemove", onResize);
         });
-        poolSection.addEventListener('mouseup', () => {
+        document.addEventListener('mouseup', () => {
             let getStyle = window.getComputedStyle(wrapper);
             let widthVal = parseInt(getStyle.width);
             let heightVal = parseInt(getStyle.height);

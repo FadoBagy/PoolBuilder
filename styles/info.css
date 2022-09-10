@@ -1,0 +1,47 @@
+i {
+    color: #90B77D;
+    cursor: pointer;
+}
+
+.info {
+    width: 70%;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 30px;
+    background-image: linear-gradient(to top, #483838, #302525);
+    color: #f2f2f2;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.line-separator {
+    width: 70%;
+    height: 3px;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.how-to,
+.additional-info {
+    width: 62%;
+    text-align: justify;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.how-to h1,
+.additional-info h1 {
+    text-align: center;
+}
+
+.how-to p,
+.additional-info p {
+    font-size: 1.3rem;
+    margin-top: 10px;
+}
+
+.additional-info li {
+    list-style: circle;
+    font-size: 1.2rem;
+}
