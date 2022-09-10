@@ -51,7 +51,7 @@ export function validateRectangleForm(form) {
     }
 }
 
-export function createPoolRectangle(width, height, depth1, depth2) {
+export function createPoolRectangle(width, height, depthDeep, depthShallow) {
     resetPoolDrawing();
 
     let drawingWidth = width * 10;
@@ -121,5 +121,5 @@ export function createPoolRectangle(width, height, depth1, depth2) {
     poolSectionEl.appendChild(wrapperEl);
 
     wrapperEl.setAttribute('style', `width: ${drawingWidth}px; height: ${drawingHeight}px;`);
-    poolMovement(depth1, depth2);
+    poolMovement(depthDeep, depthShallow);
 }

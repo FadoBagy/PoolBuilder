@@ -10,13 +10,13 @@ const diameterResultEl = document.querySelector('#circle-stats .geometric-stats 
 const geometricVolumeResultEl = document.querySelector('#circle-stats .geometric-stats tbody tr:nth-child(5) td:nth-child(2)');
 const geometricLitersResultEl = document.querySelector('#circle-stats .geometric-stats tbody tr:nth-child(6) td:nth-child(2)');
 
-export function makeStatisticsCircle(diameter, width, depth1, depth2) {
+export function makeStatisticsCircle(diameter, width, depthDeep, depthShallow) {
     let averageDepth = 0;
 
-    if (depth2) {
-        averageDepth = (depth1 + depth2) / 2;
+    if (depthShallow) {
+        averageDepth = (parseFloat(depthDeep) + parseFloat(depthShallow)) / 2;
     } else {
-        averageDepth = depth1;
+        averageDepth = depthDeep;
     }
 
     let volume = Math.PI * Math.pow((diameter / 2), 2) * averageDepth;

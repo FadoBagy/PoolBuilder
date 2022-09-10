@@ -10,14 +10,14 @@ const inradiusResultEl = document.querySelector('#rectangle-stats .geometric-sta
 const geometricVolumeResultEl = document.querySelector('#rectangle-stats .geometric-stats tbody tr:nth-child(5) td:nth-child(2)');
 const geometricLitersResultEl = document.querySelector('#rectangle-stats .geometric-stats tbody tr:nth-child(6) td:nth-child(2)');
 
-export function makeStatisticsRectangle(width, height, depth1, depth2) {
+export function makeStatisticsRectangle(width, height, depthDeep, depthShallow) {
     let averageDepth = 0;
     let shortSide;
 
-    if (depth2) {
-        averageDepth = (parseInt(depth1) + parseInt(depth2)) / 2;
+    if (depthShallow) {
+        averageDepth = (parseFloat(depthDeep) + parseFloat(depthShallow)) / 2;
     } else {
-        averageDepth = depth1;
+        averageDepth = depthDeep;
     }
 
     if (width > height) {
@@ -26,7 +26,7 @@ export function makeStatisticsRectangle(width, height, depth1, depth2) {
 
     let volume;
     let liters;
-    if (!depth1 && !depth2) {
+    if (!depthDeep && !depthShallow) {
         volume = 0;
         liters = 0;
     } else {
