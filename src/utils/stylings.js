@@ -6,11 +6,13 @@ const rectangleStatsBtnEl = document.getElementById('rectangle-stats');
 const circleStatsBtnEl = document.getElementById('circle-stats');
 const triangleStatsBtnEl = document.getElementById('triangle-stats');
 
+const rectangleIconsEl = document.querySelector('.rectangle-icons');
+const circleIconsEl = document.querySelector('.circle-icons');
+const triangleIconsEl = document.querySelector('.triangle-icons');
+
 const rectangleErrorMsgEl = document.querySelector('#rectangle-form p');
 const circleErrorMsgEl = document.querySelector('#circle-form p');
 const triangleErrorMsgEl = document.querySelector('#triangle-form p');
-
-const poolSectionEl = document.getElementById('pool-section');
 
 const shapeButtonsEl = document.querySelectorAll('#shape-select button');
 const rectangleResultGeneralStatsEl = document.querySelector('#rectangle-stats .general-stats');
@@ -20,18 +22,11 @@ const circleResultGeometricStatsEl = document.querySelector('#circle-stats .geom
 const triangleResultGeneralStatsEl = document.querySelector('#triangle-stats .general-stats');
 const triangleResultGeometricStatsEl = document.querySelector('#triangle-stats .geometric-stats');
 
-const resizersEl = document.querySelectorAll('.resizer');
-
-const rectangleIconsEl = document.querySelector('.rectangle-icons');
-const circleIconsEl = document.querySelector('.circle-icons');
-const triangleIconsEl = document.querySelector('.triangle-icons');
-
 export function activeStitisticsButtonsStyings(element, array) {
     if (element.classList.contains('active-stat')) {
         element.classList.remove('active-stat');
         element.setAttribute('style',
             'cursor: pointer; transition: 80ms;');
-
         removeIconsStyle();
     } else {
         for (const btn of array) {
@@ -39,24 +34,22 @@ export function activeStitisticsButtonsStyings(element, array) {
             btn.removeAttribute('class');
             btn.setAttribute('style',
                 'cursor: pointer; transition: 80ms;');
-
             removeIconsStyle();
         }
-
         element.classList.add('active-stat');
         element.setAttribute('style',
             'cursor: pointer; background-color: #b9c169;');
-
         addIconsStyle(element);
     }
 }
 
 function addIconsStyle(element) {
-    const poolWrapperEl = document.querySelector('.wrapper');
-    const poolAreaHolderEl = document.querySelector('.area-holder');
-    const poolLineEl = document.querySelector('.line');
-    const poolInnerCircleEl = document.querySelector('.inner-circle');
-    const poolInRadiusLineEl = document.querySelector('.inRadiusLine');
+    // Getting shapes components
+    const wrapperEl = document.querySelector('.wrapper');
+    const areaHolderEl = document.querySelector('.area-holder');
+    const diagonalRectangleEl = document.querySelector('.line');
+    const innerCircleRectangleEl = document.querySelector('.inner-circle');
+    const inRadiusLineRectangleEl = document.querySelector('.inRadiusLine');
     const diameterCircleEl = document.querySelector('.diameter-circle');
     const radiusCircleEl = document.querySelector('.radius-circle');
     const triangleMiddleEl = document.querySelector('.triangle-middle');
@@ -64,6 +57,7 @@ function addIconsStyle(element) {
     const rightSideTriangleEl = document.querySelector('.right-side');
     const bottomSideTriangleEl = document.querySelector('.bottom-side');
 
+    // Getting rectangle icon elements
     const perimeterIconElRectangle = document.querySelector('.rectangle-icons img[alt="perimeter"]');
     const areaIconElRectangle = document.querySelector('.rectangle-icons img[alt="area"]');
     const volumeIconElRectangle = document.querySelector('.rectangle-icons img[alt="volume"]');
@@ -71,6 +65,7 @@ function addIconsStyle(element) {
     const diagonalIconElRectangle = document.querySelector('.rectangle-icons img[alt="diagonal"]');
     const radiusIconElRectangle = document.querySelector('.rectangle-icons img[alt="radius"]');
 
+    // Getting circle icon elements
     const perimeterIconElCircle = document.querySelector('.circle-icons img[alt="perimeter"]');
     const areaIconElCircle = document.querySelector('.circle-icons img[alt="area"]');
     const volumeIconElCircle = document.querySelector('.circle-icons img[alt="volume"]');
@@ -78,17 +73,18 @@ function addIconsStyle(element) {
     const radiusIconElCircle = document.querySelector('.circle-icons img[alt="radius"]');
     const diameterIconElCircle = document.querySelector('.circle-icons img[alt="diameter"]');
 
+    // Getting triangle icon elements
     const perimeterIconElTriangle = document.querySelector('.triangle-icons img[alt="perimeter"]');
     const areaIconElTriangle = document.querySelector('.triangle-icons img[alt="area"]');
     const volumeIconElTriangle = document.querySelector('.triangle-icons img[alt="volume"]');
     const litersIconElTriangle = document.querySelector('.triangle-icons img[alt="liters"]');
 
     if (
-        poolWrapperEl &&
-        poolAreaHolderEl &&
-        poolLineEl &&
-        poolInnerCircleEl &&
-        poolInRadiusLineEl &&
+        wrapperEl &&
+        areaHolderEl &&
+        diagonalRectangleEl &&
+        innerCircleRectangleEl &&
+        inRadiusLineRectangleEl &&
         perimeterIconElRectangle &&
         areaIconElRectangle &&
         volumeIconElRectangle &&
@@ -96,27 +92,28 @@ function addIconsStyle(element) {
         diagonalIconElRectangle &&
         radiusIconElRectangle
     ) {
+        // If the shape of rectangle highlighting the corresponding parts and icons
         if (element.children[0].textContent == 'Perimeter') {
-            poolWrapperEl.classList.add('active-stat-border');
+            wrapperEl.classList.add('active-stat-border');
             perimeterIconElRectangle.classList.add('active-pool-icons-img');
         } else if (element.children[0].textContent == 'Surface area') {
-            poolAreaHolderEl.classList.add('active-stat-area');
+            areaHolderEl.classList.add('active-stat-area');
             areaIconElRectangle.classList.add('active-pool-icons-img');
         } else if (element.children[0].textContent == 'Volume') {
             volumeIconElRectangle.classList.add('active-pool-icons-img');
         } else if (element.children[0].textContent == 'Liters') {
             litersIconElRectangle.classList.add('active-pool-icons-img');
         } else if (element.children[0].textContent == 'Diagonal') {
-            poolLineEl.classList.add('active-stat-line');
+            diagonalRectangleEl.classList.add('active-stat-line');
             diagonalIconElRectangle.classList.add('active-pool-icons-img');
         } else if (element.children[0].textContent == 'Inradius') {
-            poolInnerCircleEl.classList.add('active-stat-border');
-            poolInRadiusLineEl.classList.add('active-stat-background');
+            innerCircleRectangleEl.classList.add('active-stat-border');
+            inRadiusLineRectangleEl.classList.add('active-stat-background');
             radiusIconElRectangle.classList.add('active-pool-icons-img');
         }
     } else if (
-        poolWrapperEl &&
-        poolAreaHolderEl &&
+        wrapperEl &&
+        areaHolderEl &&
         diameterCircleEl &&
         radiusCircleEl &&
         perimeterIconElCircle &&
@@ -124,11 +121,12 @@ function addIconsStyle(element) {
         volumeIconElCircle &&
         litersIconElCircle
     ) {
+        // If the shape of circle highlighting the corresponding parts and icons
         if (element.children[0].textContent == 'Perimeter') {
-            poolWrapperEl.classList.add('active-stat-border');
+            wrapperEl.classList.add('active-stat-border');
             perimeterIconElCircle.classList.add('active-pool-icons-img');
         } else if (element.children[0].textContent == 'Surface area') {
-            poolAreaHolderEl.classList.add('active-stat-area');
+            areaHolderEl.classList.add('active-stat-area');
             areaIconElCircle.classList.add('active-pool-icons-img');
         } else if (element.children[0].textContent == 'Volume') {
             volumeIconElCircle.classList.add('active-pool-icons-img');
@@ -142,7 +140,7 @@ function addIconsStyle(element) {
             diameterIconElCircle.classList.add('active-pool-icons-img');
         }
     } else if (
-        poolWrapperEl &&
+        wrapperEl &&
         triangleMiddleEl &&
         leftSideTriangleEl &&
         rightSideTriangleEl &&
@@ -152,6 +150,7 @@ function addIconsStyle(element) {
         volumeIconElTriangle &&
         litersIconElTriangle
     ) {
+        // If the shape of triangle highlighting the corresponding parts and icons
         if (element.children[0].textContent == 'Perimeter') {
             leftSideTriangleEl.classList.add('active-stat-border-right');
             rightSideTriangleEl.classList.add('active-stat-border-right');
@@ -169,6 +168,7 @@ function addIconsStyle(element) {
 }
 
 export function removeIconsStyle() {
+    // Getting shapes components
     const poolWrapperEl = document.querySelector('.wrapper');
     const poolAreaHolderEl = document.querySelector('.area-holder');
     const poolLineEl = document.querySelector('.line');
@@ -181,6 +181,7 @@ export function removeIconsStyle() {
     const rightSideTriangleEl = document.querySelector('.right-side');
     const bottomSideTriangleEl = document.querySelector('.bottom-side');
 
+    // Getting rectangle icon elements
     const perimeterIconElRectangle = document.querySelector('.rectangle-icons img[alt="perimeter"]');
     const areaIconElRectangle = document.querySelector('.rectangle-icons img[alt="area"]');
     const volumeIconElRectangle = document.querySelector('.rectangle-icons img[alt="volume"]');
@@ -188,6 +189,7 @@ export function removeIconsStyle() {
     const diagonalIconElRectangle = document.querySelector('.rectangle-icons img[alt="diagonal"]');
     const radiusIconElRectangle = document.querySelector('.rectangle-icons img[alt="radius"]');
 
+    // Getting circle icon elements
     const perimeterIconElCircle = document.querySelector('.circle-icons img[alt="perimeter"]');
     const areaIconElCircle = document.querySelector('.circle-icons img[alt="area"]');
     const volumeIconElCircle = document.querySelector('.circle-icons img[alt="volume"]');
@@ -195,6 +197,7 @@ export function removeIconsStyle() {
     const radiusIconElCircle = document.querySelector('.circle-icons img[alt="radius"]');
     const diameterIconElCircle = document.querySelector('.circle-icons img[alt="diameter"]');
 
+    // Getting triangle icon elements
     const perimeterIconElTriangle = document.querySelector('.triangle-icons img[alt="perimeter"]');
     const areaIconElTriangle = document.querySelector('.triangle-icons img[alt="area"]');
     const volumeIconElTriangle = document.querySelector('.triangle-icons img[alt="volume"]');
@@ -213,6 +216,7 @@ export function removeIconsStyle() {
         diagonalIconElRectangle &&
         radiusIconElRectangle
     ) {
+        // If the shape of rectangle remove all styling from parts and icons
         poolWrapperEl.classList.remove("active-stat-border");
         poolAreaHolderEl.classList.remove("active-stat-area");
         poolLineEl.classList.remove('active-stat-line');
@@ -236,6 +240,7 @@ export function removeIconsStyle() {
         radiusIconElCircle &&
         diameterIconElCircle
     ) {
+        // If the shape of circle remove all styling from parts and icons
         poolWrapperEl.classList.remove('active-stat-border');
         poolAreaHolderEl.classList.remove('active-stat-area');
         diameterCircleEl.classList.remove('active-stat-background', 'visible-block');
@@ -257,13 +262,12 @@ export function removeIconsStyle() {
         volumeIconElTriangle &&
         litersIconElTriangle
     ) {
+        // If the shape of triangle remove all styling from parts and icons
         poolWrapperEl.classList.remove('active-stat-border');
         triangleMiddleEl.classList.remove('active-stat-border-bottom');
-
         leftSideTriangleEl.classList.remove('active-stat-border-right');
         rightSideTriangleEl.classList.remove('active-stat-border-right');
         bottomSideTriangleEl.classList.remove('active-stat-border-top');
-
         perimeterIconElTriangle.classList.remove('active-pool-icons-img');
         areaIconElTriangle.classList.remove('active-pool-icons-img');
         volumeIconElTriangle.classList.remove('active-pool-icons-img');
@@ -342,6 +346,8 @@ export function triangleDispayView() {
 }
 
 export function resetPoolDrawing() {
+    const poolSectionEl = document.getElementById('pool-section');
+
     while (poolSectionEl.firstChild) {
         poolSectionEl.removeChild(poolSectionEl.lastChild);
     };
@@ -392,21 +398,26 @@ export function geometricResultView() {
 }
 
 export function showResizer() {
+    const resizersEl = document.querySelectorAll('.resizer');
+
     resizersEl.forEach(resizer => {
         resizer.setAttribute('style', 'display: block;');
     });
 }
 export function resetInputValues() {
+    // Rectangle input values
     document.querySelector('#size-input input[name="width"]').value = 0;
     document.querySelector('#size-input input[name="height"]').value = 0;
     document.querySelector('#size-input input[name="depth1"]').value = 0;
     document.querySelector('#size-input input[name="depth2"]').value = 0;
 
+    // Circle input values
     document.querySelector('#size-input-circle input[name="diameter"]').value = 0;
     document.querySelector('#size-input-circle input[name="width"]').value = 0;
     document.querySelector('#size-input-circle input[name="depth1"]').value = 0;
     document.querySelector('#size-input-circle input[name="depth2"]').value = 0;
 
+    // Triangle input values
     document.querySelector('#size-input-triangle input[name="sideA"]').value = 0;
     document.querySelector('#size-input-triangle input[name="sideB"]').value = 0;
     document.querySelector('#size-input-triangle input[name="sideC"]').value = 0;

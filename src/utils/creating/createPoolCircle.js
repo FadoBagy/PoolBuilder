@@ -1,69 +1,67 @@
-import { resetPoolDrawing } from "../stylings.js";
 import { makeStatisticsCircle } from "./createStatisticsCircle.js";
+import { resetPoolDrawing } from "../stylings.js";
 import { poolMovement } from "./poolMovement.js";
 
 const circleErrorMsgEl = document.querySelector('#circle-form p');
-
 const poolSectionEl = document.getElementById('pool-section');
-
-const deepDepth = document.querySelector('#size-input-circle input[name="depth1"]');
-const shallowDepth = document.querySelector('#size-input-circle input[name="depth2"]');
+const deepDepthInputEl = document.querySelector('#size-input-circle input[name="depth1"]');
+const shallowDepthInputEl = document.querySelector('#size-input-circle input[name="depth2"]');
 
 export function validateCircleForm(form) {
     let formData = new FormData(form);
-    let poolDiameter = parseFloat(formData.get('diameter'));
-    let poolWidth = parseFloat(formData.get('width'));
-    let poolDepth1 = parseFloat(formData.get('depth1'));
-    let poolDepth2 = parseFloat(formData.get('depth2'));
+    let diameter = parseFloat(formData.get('diameter'));
+    let width = parseFloat(formData.get('width'));
+    let depthDeep = parseFloat(formData.get('depth1'));
+    let depthShallow = parseFloat(formData.get('depth2'));
 
     if (
-        poolDiameter >= 1 && poolDiameter <= 100000000 &&
-        poolWidth >= 1 && poolWidth <= 100000000 &&
-        poolDepth1 > 0 && poolDepth1 <= 100000000 &&
-        poolDepth2 <= 100000000
+        diameter >= 1 && diameter <= 100000000 &&
+        width >= 1 && width <= 100000000 &&
+        depthDeep > 0 && depthDeep <= 100000000 &&
+        depthShallow <= 100000000
     ) {
-        createPoolCircle(poolDiameter, poolWidth, poolDepth1, poolDepth2);
-        makeStatisticsCircle(poolDiameter, poolWidth, poolDepth1, poolDepth2);
+        createPoolCircle(diameter, width, depthDeep, depthShallow);
+        makeStatisticsCircle(diameter, width, depthDeep, depthShallow);
         circleErrorMsgEl.textContent = '';
-        if (poolDepth2) {
-            deepDepth.value = poolDepth1;
-            shallowDepth.value = poolDepth2;
+        if (depthShallow) {
+            deepDepthInputEl.value = depthDeep;
+            shallowDepthInputEl.value = depthShallow;
         } else {
-            deepDepth.value = poolDepth1;
-            shallowDepth.value = poolDepth1;
+            deepDepthInputEl.value = depthDeep;
+            shallowDepthInputEl.value = depthDeep;
         }
     } else {
-        if (!poolDiameter) {
+        if (!diameter) {
             circleErrorMsgEl.textContent = 'Enter number for diameter';
-        } else if (!poolWidth) {
+        } else if (!width) {
             circleErrorMsgEl.textContent = 'Enter number for width';
-        } else if (!poolDepth1) {
+        } else if (!depthDeep) {
             circleErrorMsgEl.textContent = 'Enter number for deepest point';
         }
 
-        if (poolWidth < 1 || poolWidth > 100000000) {
+        if (width < 1 || width > 100000000) {
             circleErrorMsgEl.textContent = 'Enter valid number for width';
-        } else if (poolDiameter < 1 || poolDiameter > 100000000) {
+        } else if (diameter < 1 || diameter > 100000000) {
             circleErrorMsgEl.textContent = 'Enter valid number for diameter';
-        } else if (poolDepth1 < 1 || poolDepth1 > 100000000) {
+        } else if (depthDeep < 1 || depthDeep > 100000000) {
             circleErrorMsgEl.textContent = 'Enter valid number for deepest point';
-        } else if (poolDepth2 < 1 || poolDepth2 > 100000000) {
+        } else if (depthShallow < 1 || depthShallow > 100000000) {
             circleErrorMsgEl.textContent = 'Enter valid number for the shallow point';
         }
     }
 }
 
-export function createPoolCircle(diameter, poolWidth, poolDepth1, poolDepth2) {
+export function createPoolCircle(diameter, width, depthDeep, depthShallow) {
     resetPoolDrawing();
 
-    let drawingWidth = poolWidth * 10;
+    let drawingWidth = width * 10;
     let drawingDiameter = diameter * 10;
 
-    if (poolWidth <= 10) {
-        drawingWidth = poolWidth * 20;
+    if (width <= 10) {
+        drawingWidth = width * 20;
     }
-    if (poolWidth == 1) {
-        drawingWidth = poolWidth * 40;
+    if (width == 1) {
+        drawingWidth = width * 40;
     }
 
     if (diameter <= 10) {
@@ -73,7 +71,7 @@ export function createPoolCircle(diameter, poolWidth, poolDepth1, poolDepth2) {
         drawingDiameter = diameter * 40;
     }
 
-    if (poolWidth > 110) {
+    if (width > 110) {
         drawingWidth = 1100;
     }
     if (diameter > 45) {
@@ -89,12 +87,10 @@ export function createPoolCircle(diameter, poolWidth, poolDepth1, poolDepth2) {
     const areaHolderEl = document.createElement('div');
     areaHolderEl.setAttribute('class', 'area-holder circle-radius');
     sectionEl.appendChild(areaHolderEl);
-
     const diameterLine = document.createElement('div');
     diameterLine.setAttribute('class', 'diameter-circle');
     diameterLine.setAttribute('style', `display: none`);
     sectionEl.appendChild(diameterLine);
-
     const radiusLineHolder = document.createElement('div');
     radiusLineHolder.setAttribute('class', 'radius-circle-holder circle-radius');
     const radiusLine = document.createElement('div');
@@ -107,5 +103,5 @@ export function createPoolCircle(diameter, poolWidth, poolDepth1, poolDepth2) {
 
     wrapperEl.setAttribute('style',
         `width: ${drawingWidth}px; height: ${drawingDiameter}px; border-radius: 50% !important;`);
-    poolMovement(poolDepth1, poolDepth2);
+    poolMovement(depthDeep, depthShallow);
 }

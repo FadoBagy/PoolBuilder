@@ -7,22 +7,35 @@ export function poolMovement(deepDepth, shallowDepth) {
     const section = wrapper.querySelector('section');
 
     showResizer();
-
     let isResizing = false;
-    let isInsidePooSection = false;
+    let isInsidePoolSection = false;
     poolSection.addEventListener('mousemove', () => {
-        isInsidePooSection = true;
+        isInsidePoolSection = true;
     });
 
+    // Dragging element
+    section.addEventListener('mousedown', () => {
+        section.classList.add('active');
+        poolSection.addEventListener('mousemove', onDrag);
+    });
+
+    window.addEventListener('mouseup', () => {
+        stopDrag();
+    });
+
+    function stopDrag() {
+        section.classList.remove('active');
+        poolSection.removeEventListener('mousemove', onDrag);
+    }
+
     function onDrag({ movementX, movementY }) {
-        if (!isResizing && isInsidePooSection) {
+        if (!isResizing && isInsidePoolSection) {
             let getStyle = window.getComputedStyle(wrapper);
             let leftVal = parseInt(getStyle.left);
             let topVal = parseInt(getStyle.top);
 
             let shapeWidth = section.getBoundingClientRect().width;
             let shapeHeight = section.getBoundingClientRect().height;
-
             let poolSectionWidthDifference = (poolSection.getBoundingClientRect().width) - shapeWidth - 15;
             let poolSectionHeightDifference = (poolSection.getBoundingClientRect().height) - shapeHeight - 15;
 
@@ -53,21 +66,7 @@ export function poolMovement(deepDepth, shallowDepth) {
         }
     }
 
-    section.addEventListener('mousedown', () => {
-        section.classList.add('active');
-        poolSection.addEventListener('mousemove', onDrag);
-    });
-
-    window.addEventListener('mouseup', () => {
-        stopDrag();
-    });
-
-    function stopDrag() {
-        section.classList.remove('active');
-        poolSection.removeEventListener('mousemove', onDrag);
-    }
-
-    // Resizing
+    // Resizing element
     const resizers = document.querySelectorAll(".resizer");
     let currentResizer;
 
@@ -78,7 +77,6 @@ export function poolMovement(deepDepth, shallowDepth) {
 
             poolSection.addEventListener("mousemove", onResize);
         });
-
         poolSection.addEventListener('mouseup', () => {
             let getStyle = window.getComputedStyle(wrapper);
             let widthVal = parseInt(getStyle.width);
@@ -87,15 +85,12 @@ export function poolMovement(deepDepth, shallowDepth) {
             if (widthVal && heightVal && isResizing) {
                 makeStatisticsRectangle((widthVal / 10), (heightVal / 10), deepDepth, shallowDepth);
             }
-
             if (currentResizer) {
                 currentResizer.removeAttribute('style');
             }
-
             for (const resizer of resizers) {
                 resizer.classList.add('hover-side');
             }
-
             stopResize();
         });
     }
@@ -107,11 +102,12 @@ export function poolMovement(deepDepth, shallowDepth) {
         let leftVal = parseInt(getStyle.left);
         let topVal = parseInt(getStyle.top);
         let shortSide;
+        let rectangleWidthInputEl = document.querySelector('#size-input input[name="width"]');
+        let rectangleHeightInputEl = document.querySelector('#size-input input[name="height"]');
 
         for (const resizer of resizers) {
             resizer.classList.remove('hover-side');
         }
-
         if (widthVal > heightVal) {
             shortSide = heightVal;
         } else { shortSide = widthVal; }
@@ -119,9 +115,9 @@ export function poolMovement(deepDepth, shallowDepth) {
         currentResizer.setAttribute('style', 'border-color: #42855B');
         document.querySelector('.inner-circle').setAttribute('style', `width: ${shortSide}px;`);
 
-        if (document.querySelector('#size-input input[name="width"]').value && document.querySelector('#size-input input[name="height"]').value) {
-            document.querySelector('#size-input input[name="width"]').value = widthVal / 10;
-            document.querySelector('#size-input input[name="height"]').value = heightVal / 10;
+        if (rectangleWidthInputEl.value && rectangleHeightInputEl.value) {
+            rectangleWidthInputEl.value = widthVal / 10;
+            rectangleHeightInputEl.value = heightVal / 10;
         }
 
         if (currentResizer.classList.contains("se")) {

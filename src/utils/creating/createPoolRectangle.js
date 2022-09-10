@@ -1,83 +1,81 @@
-import { resetPoolDrawing } from "../stylings.js";
 import { makeStatisticsRectangle } from "./createStatisticsRectangle.js";
+import { resetPoolDrawing } from "../stylings.js";
 import { poolMovement } from './poolMovement.js';
 
 const rectangleErrorMsgEl = document.querySelector('#rectangle-form p');
-
 const poolSectionEl = document.getElementById('pool-section');
-
-const deepDepth = document.querySelector('#size-input input[name="depth1"]');
-const shallowDepth = document.querySelector('#size-input input[name="depth2"]');
+const deepDepthInputEl = document.querySelector('#size-input input[name="depth1"]');
+const shallowDepthInputEl = document.querySelector('#size-input input[name="depth2"]');
 
 export function validateRectangleForm(form) {
     let formData = new FormData(form);
-    let poolWidth = parseFloat(formData.get('width'));
-    let poolHeight = parseFloat(formData.get('height'));
-    let poolDepth1 = parseFloat(formData.get('depth1'));
-    let poolDepth2 = parseFloat(formData.get('depth2'));
-    100000000
+    let width = parseFloat(formData.get('width'));
+    let height = parseFloat(formData.get('height'));
+    let depthDeep = parseFloat(formData.get('depth1'));
+    let depthShallow = parseFloat(formData.get('depth2'));
+
     if (
-        poolWidth >= 1 && poolWidth <= 100000000 &&
-        poolHeight >= 1 && poolHeight <= 100000000 &&
-        poolDepth1 > 0 && poolDepth1 <= 100000000 &&
-        poolDepth2 <= 100000000
+        width >= 1 && width <= 100000000 &&
+        height >= 1 && height <= 100000000 &&
+        depthDeep > 0 && depthDeep <= 100000000 &&
+        depthShallow <= 100000000
     ) {
-        createPoolRectangle(poolWidth, poolHeight, poolDepth1, poolDepth2);
-        makeStatisticsRectangle(poolWidth, poolHeight, poolDepth1, poolDepth2);
+        createPoolRectangle(width, height, depthDeep, depthShallow);
+        makeStatisticsRectangle(width, height, depthDeep, depthShallow);
         rectangleErrorMsgEl.textContent = '';
-        if (poolDepth2) {
-            deepDepth.value = poolDepth1;
-            shallowDepth.value = poolDepth2;
+        if (depthShallow) {
+            deepDepthInputEl.value = depthDeep;
+            shallowDepthInputEl.value = depthShallow;
         } else {
-            deepDepth.value = poolDepth1;
-            shallowDepth.value = poolDepth1;
+            deepDepthInputEl.value = depthDeep;
+            shallowDepthInputEl.value = depthDeep;
         }
     } else {
-        if (!poolWidth) {
+        if (!width) {
             rectangleErrorMsgEl.textContent = 'Enter number for width';
-        } else if (!poolHeight) {
+        } else if (!height) {
             rectangleErrorMsgEl.textContent = 'Enter number for height';
-        } else if (!poolDepth1) {
+        } else if (!depthDeep) {
             rectangleErrorMsgEl.textContent = 'Enter number for deepest point';
         }
 
-        if (poolWidth < 1 || poolWidth > 100000000) {
+        if (width < 1 || width > 100000000) {
             rectangleErrorMsgEl.textContent = 'Enter valid number for width';
-        } else if (poolHeight < 1 || poolHeight > 100000000) {
+        } else if (height < 1 || height > 100000000) {
             rectangleErrorMsgEl.textContent = 'Enter valid number for height';
-        } else if (poolDepth1 < 1 || poolDepth1 > 100000000) {
+        } else if (depthDeep < 1 || depthDeep > 100000000) {
             rectangleErrorMsgEl.textContent = 'Enter valid number for deepest point';
-        } else if (poolDepth2 < 1 || poolDepth2 > 100000000) {
+        } else if (depthShallow < 1 || depthShallow > 100000000) {
             rectangleErrorMsgEl.textContent = 'Enter valid number for the shallow point';
         }
     }
 }
 
-export function createPoolRectangle(poolWidth, poolHeight, poolDepth1, poolDepth2) {
+export function createPoolRectangle(width, height, depth1, depth2) {
     resetPoolDrawing();
 
-    let drawingWidth = poolWidth * 10;
-    let drawingHeight = poolHeight * 10;
+    let drawingWidth = width * 10;
+    let drawingHeight = height * 10;
     let shortSide;
 
-    if (poolWidth <= 10) {
-        drawingWidth = poolWidth * 20;
+    if (width <= 10) {
+        drawingWidth = width * 20;
     }
-    if (poolWidth == 1) {
-        drawingWidth = poolWidth * 40;
-    }
-
-    if (poolHeight <= 10) {
-        drawingHeight = poolHeight * 20;
-    }
-    if (poolHeight == 1) {
-        drawingHeight = poolHeight * 40;
+    if (width == 1) {
+        drawingWidth = width * 40;
     }
 
-    if (poolWidth > 110) {
+    if (height <= 10) {
+        drawingHeight = height * 20;
+    }
+    if (height == 1) {
+        drawingHeight = height * 40;
+    }
+
+    if (width > 110) {
         drawingWidth = 1100;
     }
-    if (poolHeight > 45) {
+    if (height > 45) {
         drawingHeight = 450;
     }
 
@@ -111,7 +109,6 @@ export function createPoolRectangle(poolWidth, poolHeight, poolDepth1, poolDepth
     inRadiusLineEl.setAttribute('class', 'inRadiusLine');
     circleEl.appendChild(inRadiusLineEl);
 
-
     const lineEl = document.createElement('div');
     lineEl.setAttribute('class', 'line');
     sectionEl.appendChild(lineEl);
@@ -124,5 +121,5 @@ export function createPoolRectangle(poolWidth, poolHeight, poolDepth1, poolDepth
     poolSectionEl.appendChild(wrapperEl);
 
     wrapperEl.setAttribute('style', `width: ${drawingWidth}px; height: ${drawingHeight}px;`);
-    poolMovement(poolDepth1, poolDepth2);
+    poolMovement(depth1, depth2);
 }

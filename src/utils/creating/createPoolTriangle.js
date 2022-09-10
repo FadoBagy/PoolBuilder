@@ -1,14 +1,11 @@
-import { resetPoolDrawing } from "../stylings.js";
 import { makeStatisticsTriangle } from "./createStatisticsTriangle.js";
+import { resetPoolDrawing } from "../stylings.js";
 import { poolMovement } from "./poolMovement.js";
 
 const triangleErrorMsgEl = document.querySelector('#triangle-form p');
-
 const poolSectionEl = document.getElementById('pool-section');
-
-
-const deepDepth = document.querySelector('#size-input-triangle input[name="depth1"]');
-const shallowDepth = document.querySelector('#size-input-triangle input[name="depth2"]');
+const deepDepthInputEl = document.querySelector('#size-input-triangle input[name="depth1"]');
+const shallowDepthInputEl = document.querySelector('#size-input-triangle input[name="depth2"]');
 
 export function validateTriangleForm(form) {
     let formData = new FormData(form);
@@ -16,26 +13,26 @@ export function validateTriangleForm(form) {
     let sideB = parseFloat(formData.get('sideB'));
     let sideC = parseFloat(formData.get('sideC'));
     let heightH = parseFloat(formData.get('heightH'));
-    let depth1 = parseFloat(formData.get('depth1'));
-    let depth2 = parseFloat(formData.get('depth2'));
+    let depthDeep = parseFloat(formData.get('depth1'));
+    let depthShallow = parseFloat(formData.get('depth2'));
 
     if (
         sideA >= 1 && sideA <= 100000000 &&
         sideB >= 1 && sideB <= 100000000 &&
         sideC >= 1 && sideC <= 100000000 &&
         heightH >= 1 && heightH <= 100000000 &&
-        depth1 > 0 && depth1 <= 100000000 &&
-        depth2 <= 100000000
+        depthDeep > 0 && depthDeep <= 100000000 &&
+        depthShallow <= 100000000
     ) {
-        createPoolTriangle(sideA, sideB, sideC, heightH, depth1, depth2);
-        makeStatisticsTriangle(sideA, sideB, sideC, heightH, depth1, depth2);
+        createPoolTriangle(sideA, sideB, sideC, heightH, depthDeep, depthShallow);
+        makeStatisticsTriangle(sideA, sideB, sideC, heightH, depthDeep, depthShallow);
         triangleErrorMsgEl.textContent = '';
-        if (depth2) {
-            deepDepth.value = depth1;
-            shallowDepth.value = depth2;
+        if (depthShallow) {
+            deepDepthInputEl.value = depthDeep;
+            shallowDepthInputEl.value = depthShallow;
         } else {
-            deepDepth.value = depth1;
-            shallowDepth.value = depth1;
+            deepDepthInputEl.value = depthDeep;
+            shallowDepthInputEl.value = depthDeep;
         }
     } else {
         if (!sideA) {
@@ -46,7 +43,7 @@ export function validateTriangleForm(form) {
             triangleErrorMsgEl.textContent = 'Enter number for side c';
         } else if (!heightH) {
             triangleErrorMsgEl.textContent = 'Enter number for height h';
-        } else if (!depth1) {
+        } else if (!depthDeep) {
             triangleErrorMsgEl.textContent = 'Enter number for deepest point';
         }
 
@@ -58,15 +55,15 @@ export function validateTriangleForm(form) {
             triangleErrorMsgEl.textContent = 'Enter valid number for side c';
         } else if (heightH < 1 || heightH > 100000000) {
             triangleErrorMsgEl.textContent = 'Enter valid number for height h';
-        } else if (depth1 < 1 || depth1 > 100000000) {
+        } else if (depthDeep < 1 || depthDeep > 100000000) {
             triangleErrorMsgEl.textContent = 'Enter valid number for deepest point';
-        } else if (depth2 < 1 || depth2 > 100000000) {
+        } else if (depthShallow < 1 || depthShallow > 100000000) {
             triangleErrorMsgEl.textContent = 'Enter valid number for the shallow point';
         }
     }
 }
 
-export function createPoolTriangle(sideA, sideB, sideC, heightH, depth1, depth2) {
+export function createPoolTriangle(sideA, sideB, sideC, heightH, depthDeep, depthShallow) {
     resetPoolDrawing();
 
     const wrapperEl = document.createElement('div');
@@ -94,5 +91,5 @@ export function createPoolTriangle(sideA, sideB, sideC, heightH, depth1, depth2)
     wrapperEl.appendChild(sectionEl);
     poolSectionEl.appendChild(wrapperEl);
 
-    poolMovement(depth1, depth2);
+    poolMovement(depthDeep, depthShallow);
 }
