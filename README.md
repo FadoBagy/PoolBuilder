@@ -1,7 +1,7 @@
 ## About The Project
-Have you ever wondered how much water you would need to fill your pool, or perhaps want to find out information about the pool out of curiosity. Look no further! With this website you can enter the dimensions of a pool and immediately find out additional information about it. Like **perimeter** or **surface area**, because every pool can be divided into simple shapes.
+Have you ever wondered how much water you would need to fill your pool, or perhaps want to find out information about the pool out of curiosity. Look no further! With this web application you can enter the dimensions of a pool and immediately find out additional information about it. Like **perimeter** or **surface area**, because every pool can be divided into simple shapes.
 
-This project can always be improved, so if you find any problems with the site or have suggestions you can report them [here](https://github.com/FadoBagy/PoolBuilder/issues), and they will be addressed as soon as possible. Any feedback is appreciated.
+This project can always be improved, so if you find any problems with the app or have suggestions you can report them [here](https://github.com/FadoBagy/PoolBuilder/issues), and they will be addressed as soon as possible. Any feedback is appreciated.
 
 ## Getting Started
 You can't just run the project without protocol like http or https. To get a local copy up and running follow these simple steps:
@@ -27,4 +27,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 Mladen Nedev - mlados43@gmail.com
+
 Project Link: https://github.com/FadoBagy/PoolBuilder
