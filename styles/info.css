@@ -46,3 +46,13 @@ a {
     list-style: circle;
     font-size: 1.2rem;
 }
+
+.pools-info {
+    text-align: justify;
+    display: flex;
+}
+
+.pools-info p {
+    font-size: 1.3rem;
+    padding: 10px;
+}
