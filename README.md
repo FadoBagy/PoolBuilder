@@ -27,4 +27,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 Mladen Nedev - mlados43@gmail.com
+
 Project Link: https://github.com/FadoBagy/PoolBuilder
