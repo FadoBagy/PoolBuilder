@@ -4,7 +4,7 @@ Have you ever wondered how much water you would need to fill your pool, or perha
 This project can always be improved, so if you find any problems with the app or have suggestions you can report them [here](https://github.com/FadoBagy/PoolBuilder/issues), and they will be addressed as soon as possible. Any feedback is appreciated.
 
 ## Getting Started
-You can't just run the project without protocol like http or https. To get a local copy up and running follow these simple steps:
+You can't just run the project without protocol like http or https. An easy way to get a local copy up and running, follow these simple steps:
 
  1. In Visual Studio Code download an extension called [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
  2. Navigate to the project folder
