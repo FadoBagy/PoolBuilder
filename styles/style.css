@@ -325,8 +325,6 @@ body {
     }
 
     .section {
-        /* display: flex; */
-
         flex-direction: column;
     }
 
@@ -348,18 +346,6 @@ body {
     #statistics-section {
         padding-top: 5px;
     }
-
-    /* #circle-form p,
-    #rectangle-form p,
-    #triangle-form p {
-        width: fit-content;
-        margin: 0;
-        padding-left: 20px;
-        opacity: 70%;
-        color: #ffc5c5;
-        font-weight: bold;
-        font-size: 1.2rem;
-    } */
 }
 
 
