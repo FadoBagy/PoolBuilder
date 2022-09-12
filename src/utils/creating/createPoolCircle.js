@@ -53,55 +53,85 @@ export function validateCircleForm(form) {
 
 export function createPoolCircle(diameter, width, depthDeep, depthShallow) {
     resetPoolDrawing();
+    let getStyle = window.getComputedStyle(poolSectionEl);
+    let widthVal = parseInt(getStyle.width);
 
-    let drawingWidth = width * 10;
-    let drawingDiameter = diameter * 10;
+    if (widthVal >= 1100) {
+        let drawingWidth = width * 10;
+        let drawingDiameter = diameter * 10;
 
-    if (width <= 10) {
-        drawingWidth = width * 20;
+        if (width <= 10) {
+            drawingWidth = width * 20;
+        }
+        if (width == 1) {
+            drawingWidth = width * 40;
+        }
+
+        if (diameter <= 10) {
+            drawingDiameter = diameter * 20;
+        }
+        if (diameter == 1) {
+            drawingDiameter = diameter * 40;
+        }
+
+        if (width > 110) {
+            drawingWidth = 1100;
+        }
+        if (diameter > 45) {
+            drawingDiameter = 450;
+        }
+
+        const wrapperEl = document.createElement('div');
+        wrapperEl.setAttribute('class', 'wrapper');
+
+        const sectionEl = document.createElement('section');
+        sectionEl.setAttribute('class', 'circle-radius');
+
+        const areaHolderEl = document.createElement('div');
+        areaHolderEl.setAttribute('class', 'area-holder circle-radius');
+        sectionEl.appendChild(areaHolderEl);
+        const diameterLine = document.createElement('div');
+        diameterLine.setAttribute('class', 'diameter-circle');
+        diameterLine.setAttribute('style', `display: none`);
+        sectionEl.appendChild(diameterLine);
+        const radiusLineHolder = document.createElement('div');
+        radiusLineHolder.setAttribute('class', 'radius-circle-holder circle-radius');
+        const radiusLine = document.createElement('div');
+        radiusLine.setAttribute('class', 'radius-circle');
+        radiusLineHolder.appendChild(radiusLine);
+        sectionEl.appendChild(radiusLineHolder);
+
+        wrapperEl.appendChild(sectionEl);
+        poolSectionEl.appendChild(wrapperEl);
+
+        wrapperEl.setAttribute('style',
+            `width: ${drawingWidth}px; height: ${drawingDiameter}px; border-radius: 50% !important;`);
+        poolMovement(depthDeep, depthShallow);
+    } else {
+        const wrapperEl = document.createElement('div');
+        wrapperEl.setAttribute('class', 'wrapper');
+
+        const sectionEl = document.createElement('section');
+        sectionEl.setAttribute('class', 'circle-radius');
+
+        const areaHolderEl = document.createElement('div');
+        areaHolderEl.setAttribute('class', 'area-holder circle-radius');
+        sectionEl.appendChild(areaHolderEl);
+        const diameterLine = document.createElement('div');
+        diameterLine.setAttribute('class', 'diameter-circle');
+        diameterLine.setAttribute('style', `display: none`);
+        sectionEl.appendChild(diameterLine);
+        const radiusLineHolder = document.createElement('div');
+        radiusLineHolder.setAttribute('class', 'radius-circle-holder circle-radius');
+        const radiusLine = document.createElement('div');
+        radiusLine.setAttribute('class', 'radius-circle');
+        radiusLineHolder.appendChild(radiusLine);
+        sectionEl.appendChild(radiusLineHolder);
+
+        wrapperEl.appendChild(sectionEl);
+        poolSectionEl.appendChild(wrapperEl);
+
+        wrapperEl.setAttribute('style',
+            `width: 200px; height: 200px; border-radius: 50% !important;`);
     }
-    if (width == 1) {
-        drawingWidth = width * 40;
-    }
-
-    if (diameter <= 10) {
-        drawingDiameter = diameter * 20;
-    }
-    if (diameter == 1) {
-        drawingDiameter = diameter * 40;
-    }
-
-    if (width > 110) {
-        drawingWidth = 1100;
-    }
-    if (diameter > 45) {
-        drawingDiameter = 450;
-    }
-
-    const wrapperEl = document.createElement('div');
-    wrapperEl.setAttribute('class', 'wrapper');
-
-    const sectionEl = document.createElement('section');
-    sectionEl.setAttribute('class', 'circle-radius');
-
-    const areaHolderEl = document.createElement('div');
-    areaHolderEl.setAttribute('class', 'area-holder circle-radius');
-    sectionEl.appendChild(areaHolderEl);
-    const diameterLine = document.createElement('div');
-    diameterLine.setAttribute('class', 'diameter-circle');
-    diameterLine.setAttribute('style', `display: none`);
-    sectionEl.appendChild(diameterLine);
-    const radiusLineHolder = document.createElement('div');
-    radiusLineHolder.setAttribute('class', 'radius-circle-holder circle-radius');
-    const radiusLine = document.createElement('div');
-    radiusLine.setAttribute('class', 'radius-circle');
-    radiusLineHolder.appendChild(radiusLine);
-    sectionEl.appendChild(radiusLineHolder);
-
-    wrapperEl.appendChild(sectionEl);
-    poolSectionEl.appendChild(wrapperEl);
-
-    wrapperEl.setAttribute('style',
-        `width: ${drawingWidth}px; height: ${drawingDiameter}px; border-radius: 50% !important;`);
-    poolMovement(depthDeep, depthShallow);
 }

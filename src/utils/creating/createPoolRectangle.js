@@ -53,73 +53,103 @@ export function validateRectangleForm(form) {
 
 export function createPoolRectangle(width, height, depthDeep, depthShallow) {
     resetPoolDrawing();
+    let getStyle = window.getComputedStyle(poolSectionEl);
+    let widthVal = parseInt(getStyle.width);
 
-    let drawingWidth = width * 10;
-    let drawingHeight = height * 10;
-    let shortSide;
+    if (widthVal >= 1100) {
+        let drawingWidth = width * 10;
+        let drawingHeight = height * 10;
+        let shortSide;
 
-    if (width <= 10) {
-        drawingWidth = width * 20;
+        if (width <= 10) {
+            drawingWidth = width * 20;
+        }
+        if (width == 1) {
+            drawingWidth = width * 40;
+        }
+
+        if (height <= 10) {
+            drawingHeight = height * 20;
+        }
+        if (height == 1) {
+            drawingHeight = height * 40;
+        }
+
+        if (width > 110) {
+            drawingWidth = 1100;
+        }
+        if (height > 45) {
+            drawingHeight = 450;
+        }
+
+        if (drawingWidth > drawingHeight) {
+            shortSide = drawingHeight;
+        } else { shortSide = drawingWidth; }
+
+        const wrapperEl = document.createElement('div');
+        wrapperEl.setAttribute('class', 'wrapper');
+
+        const sectionEl = document.createElement('section');
+
+        const neEl = document.createElement('div');
+        neEl.setAttribute('class', 'resizer ne hover-side');
+        sectionEl.appendChild(neEl);
+        const nwEl = document.createElement('div');
+        nwEl.setAttribute('class', 'resizer nw hover-side');
+        sectionEl.appendChild(nwEl);
+        const swEl = document.createElement('div');
+        swEl.setAttribute('class', 'resizer sw hover-side');
+        sectionEl.appendChild(swEl);
+        const seEl = document.createElement('div');
+        seEl.setAttribute('class', 'resizer se hover-side');
+        sectionEl.appendChild(seEl);
+
+        const circleEl = document.createElement('div');
+        circleEl.setAttribute('class', 'inner-circle');
+        circleEl.setAttribute('style', `width: ${shortSide}px;`);
+        sectionEl.appendChild(circleEl);
+        const inRadiusLineEl = document.createElement('div');
+        inRadiusLineEl.setAttribute('class', 'inRadiusLine');
+        circleEl.appendChild(inRadiusLineEl);
+
+        const lineEl = document.createElement('div');
+        lineEl.setAttribute('class', 'line');
+        sectionEl.appendChild(lineEl);
+
+        const areaHolderEl = document.createElement('div');
+        areaHolderEl.setAttribute('class', 'area-holder');
+        sectionEl.appendChild(areaHolderEl);
+
+        wrapperEl.appendChild(sectionEl);
+        poolSectionEl.appendChild(wrapperEl);
+
+        wrapperEl.setAttribute('style', `width: ${drawingWidth}px; height: ${drawingHeight}px;`);
+        poolMovement(depthDeep, depthShallow);
+    } else {
+        const wrapperEl = document.createElement('div');
+        wrapperEl.setAttribute('class', 'wrapper');
+
+        const sectionEl = document.createElement('section');
+
+        const circleEl = document.createElement('div');
+        circleEl.setAttribute('class', 'inner-circle');
+        circleEl.setAttribute('style', `width: 100px;`);
+        sectionEl.appendChild(circleEl);
+        const inRadiusLineEl = document.createElement('div');
+        inRadiusLineEl.setAttribute('class', 'inRadiusLine');
+        circleEl.appendChild(inRadiusLineEl);
+
+        const lineEl = document.createElement('div');
+        lineEl.setAttribute('class', 'line');
+        sectionEl.appendChild(lineEl);
+
+        const areaHolderEl = document.createElement('div');
+        areaHolderEl.setAttribute('class', 'area-holder');
+        sectionEl.appendChild(areaHolderEl);
+
+        wrapperEl.appendChild(sectionEl);
+        poolSectionEl.appendChild(wrapperEl);
+
+        wrapperEl.setAttribute('style', `width: 200px; height: 150px;`);
     }
-    if (width == 1) {
-        drawingWidth = width * 40;
-    }
-
-    if (height <= 10) {
-        drawingHeight = height * 20;
-    }
-    if (height == 1) {
-        drawingHeight = height * 40;
-    }
-
-    if (width > 110) {
-        drawingWidth = 1100;
-    }
-    if (height > 45) {
-        drawingHeight = 450;
-    }
-
-    if (drawingWidth > drawingHeight) {
-        shortSide = drawingHeight;
-    } else { shortSide = drawingWidth; }
-
-    const wrapperEl = document.createElement('div');
-    wrapperEl.setAttribute('class', 'wrapper');
-
-    const sectionEl = document.createElement('section');
-
-    const neEl = document.createElement('div');
-    neEl.setAttribute('class', 'resizer ne hover-side');
-    sectionEl.appendChild(neEl);
-    const nwEl = document.createElement('div');
-    nwEl.setAttribute('class', 'resizer nw hover-side');
-    sectionEl.appendChild(nwEl);
-    const swEl = document.createElement('div');
-    swEl.setAttribute('class', 'resizer sw hover-side');
-    sectionEl.appendChild(swEl);
-    const seEl = document.createElement('div');
-    seEl.setAttribute('class', 'resizer se hover-side');
-    sectionEl.appendChild(seEl);
-
-    const circleEl = document.createElement('div');
-    circleEl.setAttribute('class', 'inner-circle');
-    circleEl.setAttribute('style', `width: ${shortSide}px;`);
-    sectionEl.appendChild(circleEl);
-    const inRadiusLineEl = document.createElement('div');
-    inRadiusLineEl.setAttribute('class', 'inRadiusLine');
-    circleEl.appendChild(inRadiusLineEl);
-
-    const lineEl = document.createElement('div');
-    lineEl.setAttribute('class', 'line');
-    sectionEl.appendChild(lineEl);
-
-    const areaHolderEl = document.createElement('div');
-    areaHolderEl.setAttribute('class', 'area-holder');
-    sectionEl.appendChild(areaHolderEl);
-
-    wrapperEl.appendChild(sectionEl);
-    poolSectionEl.appendChild(wrapperEl);
-
-    wrapperEl.setAttribute('style', `width: ${drawingWidth}px; height: ${drawingHeight}px;`);
-    poolMovement(depthDeep, depthShallow);
 }

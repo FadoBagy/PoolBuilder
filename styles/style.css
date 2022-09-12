@@ -79,7 +79,6 @@ body {
 
 #results {
     width: 100%;
-    height: 510px;
     color: #f2f2f2;
     font-size: 1.2rem;
     border-radius: 20px;
@@ -110,7 +109,6 @@ body {
 }
 
 #input-section {
-    height: 500px;
     font-size: 1.4rem;
     z-index: 50;
 
@@ -310,4 +308,99 @@ body {
 
 .circle {
     border-radius: 50%;
+}
+
+@media only screen and (max-width: 1480px) {
+
+    #circle-form,
+    #rectangle-form,
+    #triangle-form {
+        padding: 10px;
+    }
+
+    #size-input,
+    #size-input-circle,
+    #triangle-form {
+        padding: 0px;
+    }
+
+    .section {
+        /* display: flex; */
+
+        flex-direction: column;
+    }
+
+    .section label {
+        margin-left: 0px;
+    }
+
+    #size-input input,
+    #size-input-circle input,
+    #triangle-form input {
+        margin-right: 0px;
+        width: 100%;
+    }
+
+    .subsection {
+        padding: 3px;
+    }
+
+    #statistics-section {
+        padding-top: 5px;
+    }
+
+    /* #circle-form p,
+    #rectangle-form p,
+    #triangle-form p {
+        width: fit-content;
+        margin: 0;
+        padding-left: 20px;
+        opacity: 70%;
+        color: #ffc5c5;
+        font-weight: bold;
+        font-size: 1.2rem;
+    } */
+}
+
+
+@media only screen and (max-width: 1012px) {
+    #calculator {
+        width: 100%;
+        padding: 10px;
+    }
+
+    #main-section {
+        flex-direction: column;
+    }
+
+    #input-section {
+        margin: auto;
+        width: 100%;
+    }
+
+    .content-table {
+        min-width: 0;
+    }
+
+    #heading-stats button {
+        margin-bottom: 5px;
+    }
+
+    #statistics-section {
+        padding: 0;
+    }
+
+    .pool-icons {
+        justify-content: center;
+    }
+
+    .rectangle-icons,
+    .circle-icons,
+    .triangle-icons {
+        border-radius: 20px 20px 5px 5px;
+    }
+
+    #pool-section {
+        border-radius: 10px 10px 20px 20px;
+    }
 }
